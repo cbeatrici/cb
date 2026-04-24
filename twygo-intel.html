@@ -69,6 +69,68 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .aoff{color:rgba(255,255,255,.15);font-size:10px}
 .sdot{width:7px;height:7px;border-radius:50%;display:inline-block}
 .don{background:var(--accent2);box-shadow:0 0 6px var(--accent2)}.doff{background:rgba(255,255,255,.15)}
+/* Positioning map */
+.pos-map{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pos-quad{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;min-height:90px}
+.pos-quad-label{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.pos-tag{font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;display:inline-block;margin:2px 2px 2px 0}
+.pt-lms{background:rgba(90,245,200,.08);color:var(--accent2);border:1px solid rgba(90,245,200,.2)}
+.pt-dho{background:rgba(200,245,90,.08);color:var(--accent);border:1px solid rgba(200,245,90,.2)}
+.pt-twygo{background:rgba(245,165,90,.15);color:var(--accent3);border:1px solid rgba(245,165,90,.4);font-weight:700}
+/* Battlecard */
+.bc-table{width:100%;border-collapse:collapse}
+.bc-table th{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);background:var(--surface2)}
+.bc-table th.twygo-col{color:var(--accent3)}
+.bc-table td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;color:var(--text);vertical-align:top;line-height:1.4}
+.bc-table tr:last-child td{border:none}
+.bc-table td.dim{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.bc-table td.twygo-val{background:rgba(245,165,90,.06);color:var(--accent3)}
+.win{font-size:9px;background:rgba(200,245,90,.15);color:var(--accent);padding:1px 5px;border-radius:3px;margin-left:4px;font-family:var(--fm)}
+/* DHO radar */
+.dho-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.dho-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px}
+.dho-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px}
+.dho-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid var(--border)}
+.dho-row:last-child{border:none}
+.dho-key{font-size:10px;color:var(--muted)}
+.dho-val{font-size:10px;font-weight:500;color:var(--text)}
+.threat-high{color:var(--danger)}.threat-med{color:var(--accent3)}.threat-low{color:var(--accent2)}
+/* Social presence table */
+.soc-table{width:100%;border-collapse:collapse}
+.soc-table th{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.soc-table td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
+.soc-table tr:last-child td{border:none}
+.soc-table tr:hover td{background:rgba(255,255,255,.02)}
+.seg-num{font-family:var(--fm);font-size:11px;color:var(--text)}
+.seg-dash{color:rgba(255,255,255,.2);font-size:10px}
+.freq-badge{font-size:10px;font-family:var(--fm);padding:2px 7px;border-radius:3px;border:1px solid var(--border2);color:var(--muted)}
+.freq-high{border-color:rgba(200,245,90,.3);color:var(--accent);background:rgba(200,245,90,.06)}
+.freq-med{border-color:rgba(245,165,90,.3);color:var(--accent3);background:rgba(245,165,90,.06)}
+/* Two col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two-col.a60{grid-template-columns:1.5fr 1fr}
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .15s}
+.pcard:hover{border-color:var(--border2)}
+.pcard-header{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+.pcard-header:hover .pcard-chevron{color:var(--text)}
+.pcard-name{font-size:14px;font-weight:600;color:var(--text);flex:1}
+.pcard-chevron{font-size:12px;color:var(--muted);transition:transform .2s;margin-left:auto}
+.pcard.open .pcard-chevron{transform:rotate(180deg)}
+.pcard-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.pcard.open .pcard-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding-top:14px}
+.pcard-section{display:flex;flex-direction:column;gap:6px}
+.pcard-section.wide{grid-column:span 3}
+.pcard-section.half{grid-column:span 1}
+.pslabel{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;display:block}
+.psval{font-size:12px;color:var(--text);line-height:1.5}
+.psval.muted{color:var(--muted)}
+.pcard-ads{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ads-link{font-size:10px;font-family:var(--fm);padding:2px 8px;border-radius:3px;text-decoration:none;border:1px solid;transition:opacity .15s;white-space:nowrap}
+.ads-link:hover{opacity:.8}
+.al-g{color:#63b3ed;border-color:#63b3ed44;background:#63b3ed11}
+.al-m{color:#f6ad55;border-color:#f6ad5544;background:#f6ad5511}
+.al-l{color:#c8f55a;border-color:#c8f55a44;background:#c8f55a11}
+.pcard-obs{font-size:12px;color:var(--muted);line-height:1.6;background:rgba(255,255,255,.03);border-radius:6px;padding:10px 12px;border-left:2px solid var(--border2)}
 .alist{display:flex;flex-direction:column;gap:10px}
 .acard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;border-left:3px solid}
 .acard.high{border-left-color:var(--danger)}.acard.med{border-left-color:var(--accent3)}.acard.low{border-left-color:var(--accent2)}
@@ -83,7 +145,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .hplayers{font-family:var(--fm);font-size:10px;color:var(--muted)}
 .hbar-bg{height:3px;border-radius:99px;background:rgba(255,255,255,.06);margin-top:6px}
 .hbar-fill{height:100%;border-radius:99px;background:var(--accent)}
-.ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .ocard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;border-top:2px solid var(--accent2)}
 .otitle{font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px}
 .odesc{font-size:12px;color:var(--muted);line-height:1.5}
@@ -120,7 +182,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
       <div class="nav-label">Visualizações</div>
       <button class="nav-item active" onclick="setView('overview',this)"><span class="nav-dot"></span>Visão Geral</button>
       <button class="nav-item" onclick="setView('players',this)"><span class="nav-dot"></span>Players</button>
-      <button class="nav-item" onclick="setView('ads',this)"><span class="nav-dot"></span>Share of Voice</button>
+      <button class="nav-item" onclick="setView('ads',this)"><span class="nav-dot"></span>Anúncios</button>
       <button class="nav-item" onclick="setView('history',this)"><span class="nav-dot"></span>Histórico</button>
       <button class="nav-item" onclick="setView('opportunities',this)"><span class="nav-dot"></span>Oportunidades</button>
     </div>
@@ -142,29 +204,64 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 
     <!-- OVERVIEW -->
     <div id="view-overview" class="view active">
+
+      <!-- Métricas rápidas -->
       <div class="metrics-row" id="metrics-row"></div>
-      <div class="section">
-        <div class="sec-hdr"><div class="sec-title">Share of Voice — Ads Ativos</div><div class="sec-line"></div></div>
-        <div class="charts-grid">
-          <div class="cc wide">
-            <div class="ct">Anúncios por player e plataforma</div>
-            <div class="legend">
-              <div class="li"><div class="ld" style="background:#63b3ed"></div>Google Ads</div>
-              <div class="li"><div class="ld" style="background:#f6ad55"></div>Meta Ads</div>
-              <div class="li"><div class="ld" style="background:#c8f55a"></div>LinkedIn Ads</div>
-            </div>
-            <div class="cw" style="height:260px"><canvas id="sovChart" role="img" aria-label="Anúncios ativos por player"></canvas></div>
-          </div>
+
+      <!-- Alertas + Ganchos -->
+      <div class="two-col a60" style="margin-bottom:28px">
+        <div class="section" style="margin:0">
+          <div class="sec-hdr"><div class="sec-title">Alertas Estratégicos</div><div class="sec-line"></div></div>
+          <div class="alist" id="alerts-list"></div>
+        </div>
+        <div class="section" style="margin:0">
+          <div class="sec-hdr"><div class="sec-title">Top Ganchos do Mercado</div><div class="sec-line"></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px" id="hooks-grid"></div>
         </div>
       </div>
+
+      <!-- Mapa de posicionamento -->
       <div class="section">
-        <div class="sec-hdr"><div class="sec-title">Alertas Estratégicos</div><div class="sec-line"></div></div>
-        <div class="alist" id="alerts-list"></div>
+        <div class="sec-hdr"><div class="sec-title">Mapa de Posicionamento</div><div class="sec-line"></div></div>
+        <div class="pos-map" id="pos-map"></div>
       </div>
+
+      <!-- Presença social e orgânica -->
       <div class="section">
-        <div class="sec-hdr"><div class="sec-title">Top Ganchos do Mercado</div><div class="sec-line"></div></div>
-        <div class="hgrid" id="hooks-grid"></div>
+        <div class="sec-hdr"><div class="sec-title">Presença Social e Orgânica</div><div class="sec-line"></div></div>
+        <div class="cc" style="padding:0;overflow:hidden">
+          <table class="soc-table" id="soc-table">
+            <thead><tr>
+              <th>Player</th><th>Seg.</th>
+              <th>LI Seg.</th><th>IG Seg.</th>
+              <th>Freq. Social</th><th>E-mail</th><th>SEO / Blog</th>
+            </tr></thead>
+            <tbody id="soc-tbody"></tbody>
+          </table>
+        </div>
       </div>
+
+      <!-- Battlecard top 3 -->
+      <div class="section">
+        <div class="sec-hdr"><div class="sec-title">Battlecard — Top 3 Concorrentes</div><div class="sec-line"></div></div>
+        <div class="cc" style="padding:0;overflow:hidden">
+          <table class="bc-table" id="bc-table">
+            <thead><tr>
+              <th style="width:130px">Dimensão</th>
+              <th class="twygo-col">Twygo</th>
+              <th>Revvo</th><th>Scaffold</th><th>Ludos Pro</th>
+            </tr></thead>
+            <tbody id="bc-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Radar DHO -->
+      <div class="section">
+        <div class="sec-hdr"><div class="sec-title">Radar DHO — 2026</div><div class="sec-line"></div></div>
+        <div class="dho-grid" id="dho-grid"></div>
+      </div>
+
     </div>
 
     <!-- PLAYERS -->
@@ -175,12 +272,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
         <button class="tab" onclick="filterP('DHO',this)">DHO</button>
         <button class="tab" onclick="filterP('LXP',this)">LXP</button>
       </div>
-      <div class="cc">
-        <table class="ptable">
-          <thead><tr><th>Player</th><th>Seg.</th><th>Google</th><th>Meta</th><th>LinkedIn</th><th>Social</th><th>E-mail</th><th>Diferencial</th></tr></thead>
-          <tbody id="ptbody"></tbody>
-        </table>
-      </div>
+      <div id="pcards" style="display:flex;flex-direction:column;gap:10px"></div>
     </div>
 
     <!-- ADS -->
@@ -246,43 +338,70 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 
 <script>
 const PM = [
-  {id:'mobiliza',  name:'Mobiliza',          seg:'LMS', diff:'Conteúdos prontos, automação T&D'},
-  {id:'ludos',     name:'Ludos Pro',          seg:'LMS', diff:'Gamificação, onboarding'},
-  {id:'engage',    name:'Engage',             seg:'LMS', diff:'Comunicação interna, cultura'},
-  {id:'next',      name:'Next LMS',           seg:'LMS', diff:'Comunicação alinhada entre canais'},
-  {id:'woli',      name:'Woli',               seg:'LMS', diff:'Gamificação, app mobile'},
-  {id:'revvo',     name:'Revvo',              seg:'LMS', diff:'LearningFlix (conteúdo próprio)'},
-  {id:'scaffold',  name:'Scaffold Education', seg:'LMS', diff:'Plataforma + consultoria instrucional'},
-  {id:'edusense',  name:'EduSense',           seg:'LMS', diff:'Learning Awards, UGC, mentoria'},
-  {id:'kubo',      name:'Kubo',               seg:'LXP', diff:'Experiência centrada no colaborador'},
-  {id:'qulture',   name:'Qulture',            seg:'DHO', diff:'Gestão desempenho, inbound agressivo'},
-  {id:'teamculture',name:'Team Culture',      seg:'DHO', diff:'Cultura organizacional'},
-  {id:'yourh',     name:'YouRH',              seg:'DHO', diff:'Software RH para PMEs'},
-  {id:'smartleader',name:'SmartLeader',       seg:'DHO', diff:'Desenvolvimento de liderança'},
+  {id:'mobiliza',   name:'Mobiliza',          seg:'LMS', diff:'Conteúdos prontos, automação T&D',
+    links:{google:'https://adstransparency.google.com/?region=BR&domain=mobiliza.com.br', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=205967299421126', linkedin:''}},
+  {id:'ludos',      name:'Ludos Pro',          seg:'LMS', diff:'Gamificação, onboarding',
+    links:{google:'https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=119800505385425', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=ludos+pro&countries=BR'}},
+  {id:'engage',     name:'Engage',             seg:'LMS', diff:'Comunicação interna, cultura',
+    links:{google:'https://adstransparency.google.com/?region=BR&domain=engage.bz', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=1470440886550691', linkedin:''}},
+  {id:'next',       name:'Next LMS',           seg:'LMS', diff:'Comunicação alinhada entre canais',
+    links:{google:'', meta:'', linkedin:''}},
+  {id:'woli',       name:'Woli',               seg:'LMS', diff:'Gamificação, app mobile',
+    links:{google:'', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=474671152723516', linkedin:''}},
+  {id:'revvo',      name:'Revvo',              seg:'LMS', diff:'LearningFlix (conteúdo próprio)',
+    links:{google:'https://adstransparency.google.com/?region=BR&domain=revvo.com.br', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=166079413908756', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=revvo&countries=BR'}},
+  {id:'scaffold',   name:'Scaffold Education', seg:'LMS', diff:'Plataforma + consultoria instrucional',
+    links:{google:'https://adstransparency.google.com/?region=BR', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=102271805201087', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=scaffold&countries=BR'}},
+  {id:'edusense',   name:'EduSense',           seg:'LMS', diff:'Learning Awards, UGC, mentoria',
+    links:{google:'', meta:'', linkedin:''}},
+  {id:'kubo',       name:'Kubo',               seg:'LXP', diff:'Experiência centrada no colaborador',
+    links:{google:'https://adstransparency.google.com/?region=BR&domain=kubolxp.com.br', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=304821343223801', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=kubo+lxp&countries=BR'}},
+  {id:'qulture',    name:'Qulture',            seg:'DHO', diff:'Gestão desempenho, inbound agressivo',
+    links:{google:'https://adstransparency.google.com/?region=BR&domain=qulture.rocks', meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&search_type=page&view_all_page_id=304821343223801', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=Qulture+Rocks&countries=BR'}},
+  {id:'teamculture',name:'Team Culture',       seg:'DHO', diff:'Cultura organizacional',
+    links:{google:'', meta:'', linkedin:''}},
+  {id:'yourh',      name:'YouRH',              seg:'DHO', diff:'Software RH para PMEs',
+    links:{google:'https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR', meta:'', linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=yourh&countries=BR'}},
+  {id:'smartleader',name:'SmartLeader',        seg:'DHO', diff:'Desenvolvimento de liderança',
+    links:{google:'https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR', meta:'', linkedin:''}},
 ];
 
 const INIT = {months:{'Fev/2026':{
   players:{
-    mobiliza:   {google:0,  meta:0, linkedin:0,  social:'9/mês',   email:'6 envios'},
-    ludos:      {google:46, meta:3, linkedin:13, social:'regular',  email:'sim'},
-    engage:     {google:9,  meta:0, linkedin:0,  social:'ausente',  email:'não'},
-    next:       {google:0,  meta:0, linkedin:0,  social:'baixo',    email:'não'},
-    woli:       {google:20, meta:0, linkedin:0,  social:'regular',  email:'sim'},
-    revvo:      {google:54, meta:0, linkedin:9,  social:'13/mês',   email:'não'},
-    scaffold:   {google:52, meta:7, linkedin:53, social:'regular',  email:'não'},
-    edusense:   {google:0,  meta:0, linkedin:0,  social:'3x/sem',   email:'não'},
-    kubo:       {google:9,  meta:0, linkedin:6,  social:'diária',   email:'quinzenal'},
-    qulture:    {google:200,meta:38,linkedin:62, social:'regular',  email:'sim'},
-    teamculture:{google:0,  meta:0, linkedin:0,  social:'regular',  email:'sim'},
-    yourh:      {google:52, meta:0, linkedin:4,  social:'regular',  email:'sim'},
-    smartleader:{google:0,  meta:0, linkedin:0,  social:'regular',  email:'não'},
+    mobiliza:   {google:0,  meta:0, linkedin:0,  social:'9/mês',   email:'6 envios',
+      obs:'📊 LI: 8.362 seg · IG: 2.691 seg · 627 posts. Newsletter LinkedIn: "Mobiliza Academy Blog". Blog SEO ativo (LMS, onboarding, soft skills). Produto: LMS + Applique (autoria integrada) + 300+ cursos prontos. Trial 7 dias. Sem API. ICP: médio/grande porte, RH e T&D. Tom: profissional, parceiro de longo prazo. 🔍 SEO: disputa "universidade corporativa", "LMS corporativo". 📧 6 e-mails/mês espelhando conteúdo das redes.'},
+    ludos:      {google:46, meta:3, linkedin:13, social:'regular',  email:'sim',
+      obs:'📊 LI: 4.366 seg · IG: 3.522 seg · 836 posts. Fundada 2018. +1,5M pessoas treinadas. LATAM + América do Norte + Europa. Reconhecimentos: 100 Open Startups, 100 Startups to Watch (PEGN), HolonIQ EdTech Watch List. Seed round. Possui API. ICP: SMB a Enterprise. 🔍 SEO: disputa termos de gamificação. 📧 E-mail marketing ativo. 🎯 Ganchos ads: "criação de cursos em minutos", gamificação. Preço fixo — sem variação de plano (fraqueza).'},
+    engage:     {google:9,  meta:0, linkedin:0,  social:'ausente',  email:'não',
+      obs:'📊 Ausente de redes sociais — ponto cego estratégico grave. Site: engage.bz. Posicionamento de comunicação interna/engajamento, não LMS tradicional. Google com gatilhos de urgência sobre comunicação corporativa. Baixa sobreposição com T&D da Twygo. 💡 Oportunidade de SDR na base de clientes deles.'},
+    next:       {google:0,  meta:0, linkedin:0,  social:'baixo',    email:'não',
+      obs:'📊 ~5 curtidas por post no LinkedIn. Foca na solução, não na dor — erro clássico de comunicação. Sem ads, sem e-mail, sem presença orgânica relevante. Baixíssima ameaça competitiva.'},
+    woli:       {google:20, meta:0, linkedin:0,  social:'regular',  email:'sim',
+      obs:'📊 Reforça "IA" na comunicação desde jan/26. App mobile como diferencial principal. Webinar Primeira Liderança (mar/26). Não comunica funcionalidades existentes (ex: Estúdio de Criação). Curso gratuito como isca de atração. 📧 E-mail para divulgação de eventos. 🔍 SEO: "aprendizado flexível", "LMS mobile".'},
+    revvo:      {google:54, meta:0, linkedin:9,  social:'13/mês',   email:'não',
+      obs:'📊 LI: 7 posts/mês · IG: 6 posts/mês. Fundada 2012 (LEO Learning Brasil), renomeada 2022. +400 clientes, R$30M fat. anual. Meta: R$500M até 2027. Internacionalização LATAM. Investidor: LTG (minoritário). IA própria: Judy (treinável com conteúdo da empresa). Visual: azul/neon. Podcast exclusivo. Pausou Meta Ads (possível realocação budget). 🔍 SEO: "plataforma treinamento corporativo", "LMS". ICP: grandes empresas, Diretores T&D. Ganchos: LearningFlix, Judy IA, compliance.'},
+    scaffold:   {google:52, meta:7, linkedin:53, social:'regular',  email:'não',
+      obs:'📊 LI: 4.350 seg · IG: 4.070 seg · 567 posts. CEO: Sara Hughes (Founder-Led Marketing forte). Série "All her fault" 13k curtidas. RoadShows: Curitiba (18/03) + São Paulo (22/04). Cases: Abbott Laboratórios, multinacional varejista moda, redes de franquias. Produto: plataforma + consultoria pedagógica + produção de conteúdo. 🎯 Meta ganchos: baixo engajamento, treinar operacionais, pouca visibilidade. LI: InMail, artigos técnicos, ebooks, roadshows. ⚠️ Fraqueza: tudo passa pelo CEO — risco pessoa-chave.'},
+    edusense:   {google:0,  meta:0, linkedin:0,  social:'3x/sem',   email:'não',
+      obs:'📊 3x/semana LI e IG (espelhado). Learning Awards: programa de premiação de clientes em 4 categorias — gera cases, UGC e prova social orgânica. UGC: clientes produzem vídeos (custo zero de produção). Módulo de Mentoria como diferencial de produto. 💡 Estratégia 100% orgânica — sustentável mas sem escala rápida.'},
+    kubo:       {google:9,  meta:0, linkedin:6,  social:'diária',   email:'quinzenal',
+      obs:'📊 LI: quase diária · IG: identidade visual renovada (alegre/colorida). +300k alunos em +50 países (KUBO by NDD). Newsletter quinzenal ativa. Blog SEO: LXP, onboarding, universidade corporativa, EdTech. Comunidade #deRH. IA própria: KIA. Diferencial: treina colaboradores, clientes, parceiros E franqueados. 🔍 SEO: dominante em "LXP", "plataforma experiência aprendizado". ICP: empresas com redes de parceiros/franquias (ESAB, Desbravador). Webinar NR-1 (tema saturado). Posicionamento LXP ≠ Twygo.'},
+    qulture:    {google:200,meta:38,linkedin:62, social:'regular',  email:'sim',
+      obs:'📊 LI: 40.692 seg · IG: 583K seg (MAIOR do mercado!) · apenas 14 posts no IG. Adquirida pela UOL EdTech — impactou comunicação e customização (fraqueza em reviews Capterra). Produto: gestão desempenho, OKRs, 1:1, PDI, feedback 360, People Analytics + Sapiência (streaming PLG). 🔍 SEO: dominante em "gestão de desempenho", "OKR", "avaliação 360". 📧 E-mail agressivo com materiais ricos. Founder-Led Marketing. ICP: tech companies, scale-ups. ⚠️ Fraqueza pós-UOL: customização limitada em OKRs e módulos.'},
+    teamculture:{google:0,  meta:0, linkedin:0,  social:'regular',  email:'sim',
+      obs:'📊 Live com CEO como formato principal de engajamento. Foco em cultura organizacional. Sem ads. E-mail ativo.'},
+    yourh:      {google:52, meta:0, linkedin:4,  social:'regular',  email:'sim',
+      obs:'📊 Tom funcional/processual. Foco em PME e gestão do DP (departamento pessoal). 52 ads Google: "software RH", "sistema gestão pessoas". LI Ads fundo de funil (4 anúncios). 🔍 SEO: "software RH PME", "sistema folha pagamento". Baixa sobreposição com T&D da Twygo. 📧 E-mail com conteúdo de liderança e feedback.'},
+    smartleader:{google:0,  meta:0, linkedin:0,  social:'regular',  email:'não',
+      obs:'📊 Canal principal: Instagram (autoridade em liderança). LinkedIn secundário. Sem ads ativos. Especialista em desenvolvimento de liderança corporativa. Sobreposição parcial com Twygo em trilhas de liderança.'},
   },
   alerts:[
-    {level:'high',title:'Scaffold — RoadShow Curitiba (18/03/26)',desc:'Evento presencial exclusivo no Hard Rock Café. Tema Multipotencialidade. Ativação física gera reconhecimento e prova social no segmento.'},
-    {level:'high',title:'Revvo pausou Meta Ads — possível realocação de budget',desc:'Meta desativado mas Google continua com 54 anúncios (maior LMS). Pode indicar baixa qualidade de leads no Meta ou aposta no Search.'},
-    {level:'med', title:'Qulture lançou Sapiência como oferta de topo de funil',desc:'Streaming de conteúdos educativos como isca para geração de leads. DHO se aproximando do território de T&D da Twygo.'},
-    {level:'med', title:'Ludos Pro com PR em mídia + premiação Open Startups',desc:'Reconhecimento externo (100 Open Startups Edtech) amplifica autoridade sem custo de mídia.'},
-    {level:'low', title:'Kubo renovou identidade visual',desc:'Mercado LMS modernizando branding. Tendência de comunicação mais alegre, especialmente no Instagram.'},
+    {level:'high',title:'Scaffold — RoadShows Curitiba (18/03) + São Paulo (22/04)',desc:'Dois eventos presenciais confirmados. Hard Rock Café em Curitiba + SP em abril. Cases de franquias e multinacionais. Ativação física + LI Ads (53 anúncios) = estratégia integrada mais madura do segmento LMS.'},
+    {level:'high',title:'Revvo pausou Meta Ads — possível realocação de budget',desc:'Meta desativado mas Google mantém 54 anúncios (maior LMS). Pode indicar baixa qualidade de leads no Meta ou aposta no Search. IA Judy como novo diferencial de produto — aproxima da Sophia da Twygo.'},
+    {level:'high',title:'Qulture (UOL EdTech): 583K seguidores no IG com apenas 14 posts',desc:'Maior audiência social do mercado monitorado. IG parece canal de brand awareness concentrado, não de conteúdo. Sapiência (streaming) como PLG de topo de funil aproxima DHO do território T&D da Twygo. Fraqueza pós-aquisição UOL: customização limitada (reviews Capterra).'},
+    {level:'med', title:'Ludos Pro com PR em mídia + premiação Open Startups',desc:'Reconhecimento externo (100 Open Startups, HolonIQ Watch List) amplifica autoridade sem custo de mídia. Presença LATAM + América do Norte. 1,5M pessoas treinadas como prova social no site.'},
+    {level:'med', title:'Kubo: +300k alunos em +50 países — escala global silenciosa',desc:'Kubo by NDD tem escala global não comunicada agressivamente. Newsletter quinzenal + blog SEO forte. Diferenciam-se com treinamento de toda a cadeia de valor (franqueados, clientes, parceiros). Posicionamento distinto da Twygo mas com ICP sobrepostos.'},
+    {level:'low', title:'Kubo renovou identidade visual + Mobiliza tem newsletter LI ativa',desc:'Mercado LMS modernizando branding. Mobiliza tem newsletter "Academy Blog" no LinkedIn — estratégia de conteúdo que gera autoridade orgânica. Tendência de inbound content crescendo no segmento.'},
   ],
   hooks:[
     {label:'Gamificação / engajamento baixo', players:5, pct:90},
@@ -293,17 +412,20 @@ const INIT = {months:{'Fev/2026':{
     {label:'Liderança e gestão de pessoas',     players:2, pct:35},
   ],
   opportunities:[
-    {title:'ROI de T&D em números',         desc:'Nenhum concorrente comunica retorno financeiro de treinamento. Diferencial não explorado no mercado.'},
-    {title:'UGC — clientes como prova social',desc:'EduSense usa vídeos de clientes com sucesso. Twygo tem base para replicar. Custo zero de produção.'},
-    {title:'Meta Ads — espaço vazio no LMS', desc:'Apenas Ludos Pro (3 anúncios) ativo no Meta LMS. Canal subexplorado = CPL potencialmente menor.'},
-    {title:'Programa de reconhecimento',     desc:'EduSense Learning Awards gera cases e engajamento. Twygo poderia criar equivalente via Connect.'},
-    {title:'Dores de equipes operacionais',  desc:'Scaffold explora treinar equipes de campo/logística. Tema pouco disputado com alta empatia.'},
-    {title:'SDR ativo na base Engage',       desc:'Engage ausente das redes. Clientes deles precisam de LMS — oportunidade de abordagem via LinkedIn.'},
+    {title:'Meta Ads — canal vazio no LMS', tag:'Canal', desc:'Apenas Ludos Pro tem Meta ativo (3 anúncios). Revvo acabou de pausar. Com o FIN-012 validado e R$93 de Custo/MQL, Twygo pode dominar o canal com baixa concorrência e CPL menor.'},
+    {title:'ROI de T&D — ninguém comunica número', tag:'Messaging', desc:'Nenhum concorrente usa retorno financeiro como gancho. Twygo poderia ser a única plataforma que fala de resultado mensurável — "quanto custa não treinar" como ângulo inédito.'},
+    {title:'UGC de clientes — custo zero, credibilidade alta', tag:'Conteúdo', desc:'EduSense provou com Learning Awards e vídeos de clientes. Twygo tem base de clientes ativa — um programa simples de depoimentos em vídeo gera cases sem custo de produção.'},
+    {title:'SDR ativo na base do Engage', tag:'Aquisição', desc:'Engage ausente das redes, sem ads, sem e-mail. Clientes deles precisam de LMS. LinkedIn SDR para RH/T&D de empresas que usam Engage é uma janela aberta.'},
+    {title:'Fraqueza pós-UOL da Qulture', tag:'DHO', desc:'Reviews Capterra apontam customização limitada e dificuldade de comunicação pós-aquisição UOL. Empresas insatisfeitas com suporte e flexibilidade são ICP para a Twygo em 2026.'},
+    {title:'SEO em "treinamento equipes operacionais"', tag:'SEO', desc:'Scaffold explora esse nicho em ads mas ninguém domina organicamente. Termos como "treinar equipe campo", "treinamento logística", "capacitação operacional" têm volume e baixa competição.'},
+    {title:'Newsletter como canal de nutrição', tag:'Conteúdo', desc:'Mobiliza tem newsletter no LinkedIn. Kubo tem quinzenal por e-mail. Twygo pode lançar newsletter de T&D com posicionamento de autoridade — canal com alcance bypass de algoritmo.'},
+    {title:'Série de conteúdo com narrativa no LinkedIn', tag:'Social', desc:'Scaffold provou com 13k curtidas ("All her fault"). Formato PDF/carrossel com progressão de história — algoritmo LI 2026 favorece documentos (6,6% de engajamento médio vs. 2% de texto puro).'},
   ],
   nextSteps:[
-    {title:'Ativar criativo com dor de equipes operacionais no Meta Ads',desc:'Meta vazio no LMS. Twygo já tem R$93 Custo/MQL com melhor criativo (FIN-012: dor específica −35%). Gancho sugerido: "Treinar equipes no campo sem parar a operação".'},
-    {title:'Criar série de conteúdo com narrativa no LinkedIn',desc:'Scaffold provou que storytelling funciona (13k curtidas na série "All her fault"). Formato: série de 4-6 posts com progressão narrativa sobre T&D.'},
-    {title:'Monitorar Revvo em março — Meta pausado pode ser oportunidade',desc:'Se saíram do Meta por baixa qualidade de leads, valida o canal para Twygo. Verificar no próximo relatório se voltaram ou confirmaram saída.'},
+    {title:'Criar 3 criativos Meta Ads com dor operacional e ativar em teste A/B',desc:'Meta está vazio no LMS. Ganchos validados: "Treinar equipe no campo sem parar a operação", "Onboarding de 200 técnicos em 5 meses" (case Kubo/ESAB é referência de narrativa). Orçamento mínimo para validar CPL vs. Google.'},
+    {title:'Lançar série de conteúdo narrativo no LinkedIn — 6 posts em 3 semanas',desc:'Formato: PDF/carrossel com progressão de história sobre T&D. Tema sugerido: "O gestor que parou de treinar — e o que aconteceu depois". Algoritmo LI 2026 prioriza documentos (4x mais engajamento que texto). Referência: série Scaffold.'},
+    {title:'Montar programa básico de UGC com 5 clientes âncora',desc:'EduSense faz isso sem custo. Twygo pode selecionar 5 clientes satisfeitos, gravar depoimentos curtos em vídeo (formato Stories/Reels) e usar como prova social em Meta Ads e LI orgânico.'},
+    {title:'Monitorar Qulture em março — fraqueza pós-UOL pode gerar janela',desc:'Reviews Capterra recentes apontam clientes insatisfeitos com customização e suporte. Empresas em ciclo de renovação de contrato com Qulture são ICP para a Twygo. Vale ativar SDR segmentado nesse perfil.'},
   ]
 }}};
 
@@ -413,25 +535,103 @@ function renderHistory(){
   mkL('hgChart','google',top);mkL('hlChart','linkedin',top);
 }
 
+function toggleCard(id){
+  const el=document.getElementById('pc-'+id);
+  if(el)el.classList.toggle('open');
+}
+
 function renderPlayersTable(){
   const p=getP();
   const filtered=PM.filter(x=>PF==='all'||x.seg===PF);
-  document.getElementById('ptbody').innerHTML=filtered.map(x=>{
+  document.getElementById('pcards').innerHTML=filtered.map(x=>{
     const d=p[x.id]||{};
     const sc=x.seg==='LMS'?'slms':x.seg==='DHO'?'sdho':'slxp';
-    const gT=(d.google||0)>0?`<span class="anum ag">${d.google}</span>`:`<span class="aoff">—</span>`;
-    const mT=(d.meta||0)>0?`<span class="anum am">${d.meta}</span>`:`<span class="aoff">—</span>`;
-    const lT=(d.linkedin||0)>0?`<span class="anum al">${d.linkedin}</span>`:`<span class="aoff">—</span>`;
+    const gN=d.google||0, mN=d.meta||0, lN=d.linkedin||0;
+    const total=gN+mN+lN;
+    const gTag=gN>0?`<span class="anum ag">${gN}</span>`:`<span class="aoff" style="font-size:10px;font-family:var(--fm)">—</span>`;
+    const mTag=mN>0?`<span class="anum am">${mN}</span>`:`<span class="aoff" style="font-size:10px;font-family:var(--fm)">—</span>`;
+    const lTag=lN>0?`<span class="anum al">${lN}</span>`:`<span class="aoff" style="font-size:10px;font-family:var(--fm)">—</span>`;
     const hs=d.social&&d.social!=='ausente'&&d.social!=='baixo';
     const he=d.email&&d.email!=='não';
-    return `<tr>
-      <td style="font-weight:500">${x.name}</td>
-      <td><span class="stag ${sc}">${x.seg}</span></td>
-      <td>${gT}</td><td>${mT}</td><td>${lT}</td>
-      <td><span class="sdot ${hs?'don':'doff'}"></span> ${d.social||'—'}</td>
-      <td><span class="sdot ${he?'don':'doff'}"></span> ${d.email||'—'}</td>
-      <td style="color:var(--muted);font-size:11px;max-width:160px">${x.diff}</td>
-    </tr>`;
+    const hasLibG=x.links?.google, hasLibM=x.links?.meta, hasLibL=x.links?.linkedin;
+
+    // Parse obs into structured fields by detecting emoji markers
+    const obs=d.obs||'';
+    const socialMatch=obs.match(/📊([^🔍📧🎯⚠️💡]*)/);
+    const seoMatch=obs.match(/🔍([^📊📧🎯⚠️💡]*)/);
+    const emailMatch=obs.match(/📧([^📊🔍🎯⚠️💡]*)/);
+    const ganchoMatch=obs.match(/🎯([^📊🔍📧⚠️💡]*)/);
+    const weakMatch=obs.match(/⚠️([^📊🔍📧🎯💡]*)/);
+    const tipMatch=obs.match(/💡([^📊🔍📧🎯⚠️]*)/);
+    const cleanObs=obs.replace(/[📊🔍📧🎯⚠️💡][^📊🔍📧🎯⚠️💡]*/g,'').trim();
+
+    const socialRaw=socialMatch?socialMatch[1].trim():'';
+    const seoRaw=seoMatch?seoMatch[1].trim():'';
+    const emailRaw=emailMatch?emailMatch[1].trim():'';
+    const ganchoRaw=ganchoMatch?ganchoMatch[1].trim():'';
+    const weakRaw=weakMatch?weakMatch[1].trim():'';
+    const tipRaw=tipMatch?tipMatch[1].trim():'';
+    const baseObs=cleanObs||obs;
+
+    return `
+    <div class="pcard" id="pc-${x.id}">
+      <div class="pcard-header" onclick="toggleCard('${x.id}')">
+        <span class="stag ${sc}">${x.seg}</span>
+        <span class="pcard-name">${x.name}</span>
+        <div style="display:flex;gap:6px;align-items:center;margin-right:8px">
+          ${gTag}${mTag}${lTag}
+          ${total===0?`<span style="font-size:10px;font-family:var(--fm);color:rgba(255,255,255,.2)">sem ads</span>`:''}
+        </div>
+        <span class="pcard-chevron">▼</span>
+      </div>
+      <div class="pcard-body">
+
+        <div class="pcard-section half">
+          <span class="pslabel">Ads ativos</span>
+          <div class="pcard-ads">
+            <span style="font-size:11px;color:var(--muted);font-family:var(--fm)">G:</span>${gTag}
+            <span style="font-size:11px;color:var(--muted);font-family:var(--fm)">M:</span>${mTag}
+            <span style="font-size:11px;color:var(--muted);font-family:var(--fm)">LI:</span>${lTag}
+          </div>
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+            ${hasLibG?`<a href="${x.links.google}" target="_blank" class="ads-link al-g">↗ Google</a>`:''}
+            ${hasLibM?`<a href="${x.links.meta}" target="_blank" class="ads-link al-m">↗ Meta</a>`:''}
+            ${hasLibL?`<a href="${x.links.linkedin}" target="_blank" class="ads-link al-l">↗ LinkedIn</a>`:''}
+          </div>
+        </div>
+
+        <div class="pcard-section half">
+          <span class="pslabel">Presença orgânica</span>
+          <div class="psval"><span class="sdot ${hs?'don':'doff'}" style="margin-right:5px"></span>Social: ${d.social||'—'}</div>
+          <div class="psval" style="margin-top:4px"><span class="sdot ${he?'don':'doff'}" style="margin-right:5px"></span>E-mail: ${d.email||'—'}</div>
+          ${seoRaw?`<div class="psval muted" style="margin-top:4px;font-size:11px">🔍 ${seoRaw}</div>`:''}
+        </div>
+
+        <div class="pcard-section half">
+          <span class="pslabel">Diferencial principal</span>
+          <div class="psval">${x.diff}</div>
+          ${weakRaw?`<div style="margin-top:6px;font-size:11px;color:#f55a5a;line-height:1.4">⚠️ ${weakRaw}</div>`:''}
+          ${tipRaw?`<div style="margin-top:6px;font-size:11px;color:var(--accent2);line-height:1.4">💡 ${tipRaw}</div>`:''}
+        </div>
+
+        ${socialRaw||ganchoRaw||emailRaw?`
+        <div class="pcard-section" style="grid-column:span 3">
+          <span class="pslabel">Inteligência adicional</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
+            ${socialRaw?`<div style="background:rgba(255,255,255,.03);border-radius:6px;padding:8px 10px"><div style="font-size:9px;font-family:var(--fm);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Social / Audiência</div><div style="font-size:11px;color:var(--text);line-height:1.5">${socialRaw}</div></div>`:''}
+            ${ganchoRaw?`<div style="background:rgba(255,255,255,.03);border-radius:6px;padding:8px 10px"><div style="font-size:9px;font-family:var(--fm);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Ganchos / ICP</div><div style="font-size:11px;color:var(--text);line-height:1.5">${ganchoRaw}</div></div>`:''}
+            ${emailRaw?`<div style="background:rgba(255,255,255,.03);border-radius:6px;padding:8px 10px"><div style="font-size:9px;font-family:var(--fm);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">E-mail / Newsletter</div><div style="font-size:11px;color:var(--text);line-height:1.5">${emailRaw}</div></div>`:''}
+          </div>
+        </div>`:''}
+
+        ${baseObs&&baseObs!==obs?`
+        <div class="pcard-section wide">
+          <span class="pslabel">Observações do mês</span>
+          <div class="pcard-obs">${baseObs}</div>
+        </div>`:''}
+
+      </div>
+    </div>`;
   }).join('');
 }
 
@@ -461,7 +661,12 @@ function renderHooks(){
 
 function renderOpportunities(){
   const o=getMD().opportunities||[];
-  document.getElementById('opp-grid').innerHTML=o.map(x=>`<div class="ocard"><div class="otitle">${x.title}</div><div class="odesc">${x.desc}</div></div>`).join('');
+  document.getElementById('opp-grid').innerHTML=o.map(x=>`
+    <div class="ocard">
+      ${x.tag?`<div style="font-family:var(--fm);font-size:9px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">${x.tag}</div>`:''}
+      <div class="otitle">${x.title}</div>
+      <div class="odesc">${x.desc}</div>
+    </div>`).join('');
   const s=getMD().nextSteps||[];
   document.getElementById('steps-list').innerHTML=s.map((x,i)=>`
     <div class="acard low">
@@ -470,7 +675,119 @@ function renderOpportunities(){
     </div>`).join('');
 }
 
-const VT={overview:['Visão Geral','Inteligência competitiva · LMS/LXP + DHO'],players:['Players','Todos os concorrentes monitorados'],ads:['Share of Voice','Distribuição por plataforma e player'],history:['Histórico','Evolução mês a mês'],opportunities:['Oportunidades','Gaps e próximos passos para a Twygo']};
+const VT={overview:['Visão Geral','Resumo executivo · Posicionamento · Battlecard · Radar DHO'],players:['Players','Todos os concorrentes monitorados'],ads:['Anúncios','Share of voice por plataforma e player'],history:['Histórico','Evolução mês a mês'],opportunities:['Oportunidades','Gaps e próximos passos para a Twygo']};
+
+// Social/SEO metadata per player (static knowledge)
+const SOCIAL_META = {
+  mobiliza:   {li:'8.362', ig:'2.691', seo:'Blog + Newsletter LI'},
+  ludos:      {li:'4.366', ig:'3.522', seo:'Blog SEO gamificação'},
+  engage:     {li:'—',     ig:'—',     seo:'—'},
+  next:       {li:'—',     ig:'—',     seo:'—'},
+  woli:       {li:'—',     ig:'—',     seo:'—'},
+  revvo:      {li:'—',     ig:'—',     seo:'Blog SEO T&D'},
+  scaffold:   {li:'4.350', ig:'4.070', seo:'Blog + eventos'},
+  edusense:   {li:'—',     ig:'—',     seo:'—'},
+  kubo:       {li:'—',     ig:'+300k alunos', seo:'Blog SEO LXP forte'},
+  qulture:    {li:'40.692',ig:'583K',  seo:'Dominante desempenho/OKR'},
+  teamculture:{li:'—',     ig:'—',     seo:'—'},
+  yourh:      {li:'—',     ig:'—',     seo:'SEO RH/PME'},
+  smartleader:{li:'—',     ig:'—',     seo:'IG como canal auth.'},
+};
+
+function renderOverview(){
+  renderMetrics();
+  renderAlerts();
+  renderHooks();
+  renderPositioningMap();
+  renderSocialTable();
+  renderBattlecard();
+  renderDHORadar();
+}
+
+function renderPositioningMap(){
+  const quads = [
+    {label:'Plataforma + Conteúdo Próprio', players:['Revvo'], note:'LearningFlix + Smart LMS + Judy IA'},
+    {label:'Plataforma + Consultoria', players:['Scaffold Education'], note:'Tecnologia + design instrucional'},
+    {label:'Plataforma Completa + IA', players:['TWYGO'], note:'LMS + Sophia IA + Twygo Connect', twygo:true},
+    {label:'Plataforma Gamificada', players:['Ludos Pro','Woli'], note:'Engajamento e onboarding'},
+    {label:'LXP / Experiência', players:['Kubo'], note:'Centrado no colaborador, franquias'},
+    {label:'Comunicação Interna', players:['Engage','Next LMS'], note:'Comunicação + engajamento'},
+    {label:'Gestão de Desempenho', players:['Qulture'], note:'OKR, PDI, feedback 360 — DHO'},
+    {label:'Automação T&D', players:['Mobiliza','EduSense'], note:'Biblioteca + cursos prontos'},
+    {label:'RH / Desenvolvimento', players:['YouRH','SmartLeader','Team Culture'], note:'DHO — processos e liderança'},
+  ];
+  document.getElementById('pos-map').innerHTML = quads.map(q=>`
+    <div class="pos-quad" ${q.twygo?'style="border-color:rgba(245,165,90,.4);background:rgba(245,165,90,.04)"':''}>
+      <div class="pos-quad-label">${q.label}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px">
+        ${q.players.map(p=>`<span class="pos-tag ${q.twygo?'pt-twygo':p==='Qulture'||p==='YouRH'||p==='SmartLeader'||p==='Team Culture'?'pt-dho':'pt-lms'}">${p}</span>`).join('')}
+      </div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.4">${q.note}</div>
+    </div>`).join('');
+}
+
+function renderSocialTable(){
+  const p = getP();
+  document.getElementById('soc-tbody').innerHTML = PM.map(x=>{
+    const d = p[x.id]||{};
+    const sm = SOCIAL_META[x.id]||{};
+    const sc=x.seg==='LMS'?'slms':x.seg==='DHO'?'sdho':'slxp';
+    const freq = d.social||'—';
+    const isHigh = freq==='diária'||freq==='3x/sem';
+    const isMed = freq.includes('/mês')||freq==='regular'||freq==='quinzenal';
+    const freqCls = isHigh?'freq-high':isMed?'freq-med':'freq-badge';
+    const he = d.email&&d.email!=='não';
+    return `<tr>
+      <td style="font-weight:500;font-size:13px">${x.name}</td>
+      <td><span class="stag ${sc}">${x.seg}</span></td>
+      <td class="seg-num">${sm.li||'<span class="seg-dash">—</span>'}</td>
+      <td class="seg-num">${sm.ig||'<span class="seg-dash">—</span>'}</td>
+      <td><span class="freq-badge ${freqCls}">${freq}</span></td>
+      <td><span class="sdot ${he?'don':'doff'}" style="margin-right:5px"></span>${d.email||'—'}</td>
+      <td style="font-size:11px;color:var(--muted)">${sm.seo||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderBattlecard(){
+  const rows = [
+    {dim:'Posicionamento', twygo:'LMS completo + IA Sophia', revvo:'LMS + LearningFlix + Judy IA', scaffold:'LMS + Consultoria pedagógica', ludos:'LMS gamificado'},
+    {dim:'ICP / Público', twygo:'Médio/Grande porte, T&D', revvo:'Grandes empresas, Dir. T&D', scaffold:'Franquias, multinacionais', ludos:'SMB a Enterprise'},
+    {dim:'Diferencial produto', twygo:'Sophia IA + Twygo Connect ★', revvo:'800h conteúdo + Judy IA', scaffold:'Design instrucional + RoadShows', ludos:'+1,5M treinados + gamif.'},
+    {dim:'Google Ads', twygo:'Ativo — Search + PMax', revvo:'54 anúncios (maior LMS)', scaffold:'52 anúncios', ludos:'46 anúncios'},
+    {dim:'Meta Ads', twygo:'Ativo ★', revvo:'Pausado (oportunidade)', scaffold:'7 anúncios', ludos:'3 anúncios'},
+    {dim:'LinkedIn Ads', twygo:'InMail ativo (FIN-008)', revvo:'9 anúncios', scaffold:'53 anúncios (maior LMS)', ludos:'13 anúncios'},
+    {dim:'Social orgânico', twygo:'Twygo Connect (webinars)', revvo:'Podcast + 13 posts/mês', scaffold:'13k curtidas — série viral', ludos:'4.366 LI · 3.522 IG'},
+    {dim:'Fraqueza deles', twygo:'—', revvo:'Meta pausado, sem eventos físicos', scaffold:'Depende do CEO (pessoa-chave)', ludos:'Preço fixo, nicho gamif.'},
+  ];
+  document.getElementById('bc-tbody').innerHTML = rows.map(r=>`<tr>
+    <td class="dim">${r.dim}</td>
+    <td class="twygo-val">${r.twygo.replace('★','<span class="win">✓</span>')}</td>
+    <td style="color:var(--text)">${r.revvo}</td>
+    <td style="color:var(--text)">${r.scaffold}</td>
+    <td style="color:var(--text)">${r.ludos}</td>
+  </tr>`).join('');
+}
+
+function renderDHORadar(){
+  const cards = [
+    {name:'Qulture', badge:'dho', gtm:'Inbound agressivo + PLG (Sapiência)', overlap:'Alta — T&D via streaming', ads:'G:200 M:38 LI:62', threat:'high', threatLabel:'Alta'},
+    {name:'YouRH', badge:'dho', gtm:'SLG — foco em PME', overlap:'Baixa — RH processual/DP', ads:'G:52 LI:4', threat:'low', threatLabel:'Baixa'},
+    {name:'SmartLeader', badge:'dho', gtm:'Autoridade IG + orgânico', overlap:'Média — trilhas liderança', ads:'G:0', threat:'med', threatLabel:'Média'},
+    {name:'Team Culture', badge:'dho', gtm:'Lives com CEO + e-mail', overlap:'Baixa — cultura org.', ads:'G:0', threat:'low', threatLabel:'Baixa'},
+  ];
+  document.getElementById('dho-grid').innerHTML = cards.map(c=>`
+    <div class="dho-card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span class="dho-name">${c.name}</span>
+        <span class="stag sdho" style="margin-left:auto">DHO</span>
+      </div>
+      <div class="dho-row"><span class="dho-key">GTM</span><span class="dho-val" style="font-size:10px;text-align:right;max-width:160px;line-height:1.3">${c.gtm}</span></div>
+      <div class="dho-row"><span class="dho-key">Sobreposição T&D</span><span class="dho-val">${c.overlap}</span></div>
+      <div class="dho-row"><span class="dho-key">Ads</span><span class="dho-val" style="font-family:var(--fm)">${c.ads}</span></div>
+      <div class="dho-row"><span class="dho-key">Ameaça 2026</span><span class="dho-val threat-${c.threat}">${c.threatLabel}</span></div>
+    </div>`).join('');
+}
 
 function setView(v,btn){
   CV=v;
@@ -481,7 +798,7 @@ function setView(v,btn){
   const[t,s]=VT[v]||['',''];
   document.getElementById('view-title').textContent=t;
   document.getElementById('view-sub').textContent=s;
-  if(v==='overview')renderSov();
+  if(v==='overview')renderOverview();
   if(v==='ads')setTimeout(renderAds,50);
   if(v==='history')setTimeout(renderHistory,50);
   if(v==='players')renderPlayersTable();
@@ -495,17 +812,38 @@ function filterP(seg,btn){
   renderPlayersTable();
 }
 
+function mkLibLink(url, label, color){
+  if(!url) return `<span style="color:rgba(255,255,255,.15);font-size:10px;font-family:var(--fm)">— sem biblioteca</span>`;
+  return `<a href="${url}" target="_blank" style="font-size:10px;font-family:var(--fm);color:${color};text-decoration:none;padding:2px 7px;border-radius:3px;border:1px solid ${color}33;background:${color}11" onmouseover="this.style.background='${color}22'" onmouseout="this.style.background='${color}11'">↗ Ver ${label}</a>`;
+}
+
 function buildForm(){
   const lms=PM.filter(x=>x.seg!=='DHO');
   const dho=PM.filter(x=>x.seg==='DHO');
   const mk=(el,list)=>{
     el.innerHTML=list.map(x=>`
-      <div style="margin-bottom:12px">
-        <div style="font-size:11px;color:var(--muted);font-family:var(--fm);margin-bottom:6px">${x.name}</div>
-        <div class="frow">
-          <div class="fg"><div class="flabel">Google</div><input class="finput" id="f-${x.id}-g" type="number" min="0" placeholder="0"></div>
-          <div class="fg"><div class="flabel">Meta</div><input class="finput" id="f-${x.id}-m" type="number" min="0" placeholder="0"></div>
-          <div class="fg"><div class="flabel">LinkedIn</div><input class="finput" id="f-${x.id}-l" type="number" min="0" placeholder="0"></div>
+      <div style="margin-bottom:18px;padding:14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+        <div style="font-size:12px;font-weight:500;color:var(--text);font-family:var(--fb);margin-bottom:10px">${x.name}</div>
+        <div class="frow" style="margin-bottom:8px">
+          <div class="fg">
+            <div class="flabel">Google Ads</div>
+            <input class="finput" id="f-${x.id}-g" type="number" min="0" placeholder="0">
+            <div style="margin-top:5px">${mkLibLink(x.links.google,'Google','#63b3ed')}</div>
+          </div>
+          <div class="fg">
+            <div class="flabel">Meta Ads</div>
+            <input class="finput" id="f-${x.id}-m" type="number" min="0" placeholder="0">
+            <div style="margin-top:5px">${mkLibLink(x.links.meta,'Meta','#f6ad55')}</div>
+          </div>
+          <div class="fg">
+            <div class="flabel">LinkedIn Ads</div>
+            <input class="finput" id="f-${x.id}-l" type="number" min="0" placeholder="0">
+            <div style="margin-top:5px">${mkLibLink(x.links.linkedin,'LinkedIn','#c8f55a')}</div>
+          </div>
+        </div>
+        <div class="fg" style="margin-top:10px">
+          <div class="flabel">Observações — tom de voz, gatilhos, criativos em destaque</div>
+          <textarea class="finput" id="f-${x.id}-obs" rows="2" placeholder="Ex: Tom provocativo. Gancho principal: 'Você ainda usa planilha?'. Criativo com vídeo do CEO performou bem no LinkedIn." style="resize:vertical;font-family:var(--fb);line-height:1.5"></textarea>
         </div>
       </div>`).join('');
   };
@@ -521,7 +859,9 @@ function openModal(){
     const g=document.getElementById(`f-${x.id}-g`);
     const m=document.getElementById(`f-${x.id}-m`);
     const l=document.getElementById(`f-${x.id}-l`);
+    const obs=document.getElementById(`f-${x.id}-obs`);
     if(g)g.value=d.google||'';if(m)m.value=d.meta||'';if(l)l.value=d.linkedin||'';
+    if(obs)obs.value=d.obs||'';
   });
   document.getElementById('modal').classList.add('open');
 }
@@ -538,7 +878,8 @@ function saveMonth(){
       google:parseInt(document.getElementById(`f-${x.id}-g`)?.value)||0,
       meta:  parseInt(document.getElementById(`f-${x.id}-m`)?.value)||0,
       linkedin:parseInt(document.getElementById(`f-${x.id}-l`)?.value)||0,
-      social:cur.social||'—',email:cur.email||'—'
+      social:cur.social||'—',email:cur.email||'—',
+      obs: document.getElementById(`f-${x.id}-obs`)?.value.trim()||''
     };
   });
   const raw=document.getElementById('inp-alerts').value.trim();
@@ -555,15 +896,15 @@ document.getElementById('modal').addEventListener('click',e=>{if(e.target===docu
 
 function renderAll(){
   document.getElementById('mbadge').textContent=CM;
-  renderMonths();renderMetrics();renderAlerts();renderHooks();
-  if(CV==='overview')renderSov();
+  renderMonths();
+  if(CV==='overview')renderOverview();
   else if(CV==='ads')renderAds();
   else if(CV==='history')renderHistory();
   else if(CV==='players')renderPlayersTable();
   else if(CV==='opportunities')renderOpportunities();
 }
 
-renderAll();renderSov();
+renderAll();
 </script>
 </body>
 </html>
