@@ -295,19 +295,18 @@ textarea.fi{resize:none;height:52px;line-height:1.4}
 <!-- ENTRADA SOCIAL + NL + BUSCA -->
 <div class="page" id="pg-entrada-social">
   <div class="fbar">
-    <span class="flbl">Seção:</span>
-    <select class="fsel" id="es-section" onchange="buildEntradaSocial()">
-      <option value="social">Redes Sociais</option>
-      <option value="nl">Newsletter</option>
-      <option value="busca">Busca Orgânica</option>
-      <option value="alertas">Alertas / Destaques</option>
-    </select>
-    <div class="fdiv"></div>
     <span class="flbl">Mês:</span>
     <select class="fsel" id="es-mes" onchange="buildEntradaSocial()">
       <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
       <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
     </select>
+    <div class="fdiv"></div>
+    <div style="display:flex;gap:3px;background:var(--g100);border-radius:8px;padding:3px">
+      <button class="tab active" id="es-tab-social" onclick="switchEsTab('social',this)">Redes Sociais</button>
+      <button class="tab" id="es-tab-nl" onclick="switchEsTab('nl',this)">Newsletter</button>
+      <button class="tab" id="es-tab-busca" onclick="switchEsTab('busca',this)">Busca Orgânica</button>
+      <button class="tab" id="es-tab-alertas" onclick="switchEsTab('alertas',this)">Alertas</button>
+    </div>
   </div>
   <div id="es-body"></div>
 </div>
@@ -463,8 +462,16 @@ function getData(mes){
   };
 }
 function getPlayers(mes){
-  // herda players do BASE fev2026 mas mescla com STORE se existir
+  // herda estrutura de fev2026 mas zera dados mensais para meses sem base própria
+  var isBase=!!BASE[mes]&&!!BASE[mes].players;
   var base=JSON.parse(JSON.stringify(BASE.fev2026.players));
+  // para meses que não têm players próprios na BASE, zera campos que variam por mês
+  if(!isBase){
+    base=base.map(function(p){
+      return Object.assign(p,{li:0,ig:0,email:0,email_det:'Não identificado.',insights:'',busca:{org:0,pago:0,canal:'',obs:''}});
+    });
+  }
+  // mescla com STORE se existir (dados salvos manualmente)
   var s=STORE[mes]&&STORE[mes].players;
   if(!s) return base;
   return base.map(function(p){
@@ -678,9 +685,18 @@ function saveAd(mes,name){
   renderAds(); renderHist();
 }
 
+var _esCurrentTab = 'social';
+
+function switchEsTab(tab, btn){
+  _esCurrentTab = tab;
+  document.querySelectorAll('[id^="es-tab-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  buildEntradaSocial();
+}
+
 // BUILD ENTRADA SOCIAL + NL + BUSCA + ALERTAS
 function buildEntradaSocial(){
-  var sec=document.getElementById('es-section').value,mes=document.getElementById('es-mes').value;
+  var sec=_esCurrentTab, mes=document.getElementById('es-mes').value;
   var d=getData(mes); var isFev=(mes==='fev2026'); var body='';
   if(sec==='social'){
     body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Redes Sociais — '+MES[mes]+(isFev?'<span class="pbadge" style="margin-left:6px">Fev/26 carregado</span>':'')+'</div>'
