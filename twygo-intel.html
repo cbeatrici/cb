@@ -287,8 +287,27 @@ textarea.fi{resize:none;height:52px;line-height:1.4}
       <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
       <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
     </select>
-    <span style="font-size:11px;color:var(--txm);margin-left:4px">— Clique nos links para abrir a biblioteca, confira e preencha a quantidade</span>
+    <div class="fdiv"></div>
+    <button class="sbtn" onclick="showApiConfig()" style="background:var(--gn)">⚡ Atualizar via Meta API</button>
+    <span style="font-size:11px;color:var(--txm);margin-left:4px">ou preencha manualmente abaixo</span>
   </div>
+
+  <!-- Painel de configuração da API -->
+  <div id="api-config-panel" style="display:none;background:white;border:1px solid var(--g200);border-radius:10px;padding:14px;margin-bottom:12px">
+    <div class="ptitle"><span class="pdot"></span>Configuração Meta Ad Library API</div>
+    <div style="font-size:11px;color:var(--txm);margin-bottom:10px">Cole seu token de acesso abaixo. Ele fica salvo apenas no seu browser, nunca é enviado a nenhum servidor externo além da Meta.</div>
+    <div style="display:flex;gap:8px;align-items:flex-end;margin-bottom:10px">
+      <div class="fwrap" style="flex:1"><label class="flb">Token de acesso Meta</label><input class="fi" type="password" id="meta-token" placeholder="EAAf..." style="font-family:monospace"></div>
+      <button class="sbtn" onclick="saveToken()">Salvar token</button>
+      <span class="sok" id="token-ok">Salvo!</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="sbtn" onclick="fetchAllMeta()" id="fetch-btn">Buscar anúncios ativos de todos os players</button>
+      <span id="fetch-status" style="font-size:11px;color:var(--txm)"></span>
+    </div>
+    <div id="fetch-results" style="margin-top:10px"></div>
+  </div>
+
   <div id="ea-blocks"></div>
 </div>
 
@@ -929,8 +948,132 @@ function go(id,btn){
   if(id==='entrada-social') buildEntradaSocial();
 }
 
-// INIT
-renderGeral(); renderSocial(); renderNL(); renderAds(); renderBusca(); renderHist();
+// ═══════════════════════════════════════════════════════════════════
+// META AD LIBRARY API INTEGRATION
+// ═══════════════════════════════════════════════════════════════════
+
+// Page IDs extraídos do relatório de fevereiro
+var META_PAGE_IDS = {
+  'Mobiliza':      '205967299421126',
+  'Ludos Pro':     '119800505385425',
+  'Woli':          '1470440886550691',
+  'Revvo':         '474671152723516',
+  'Scaffold':      '166079413908756',
+  'Kubo':          '102271805201087',
+  'Qulture Rocks': '304821343223801',
+  'YouRH':         '304821343223801', // confirmar
+  'SmartLeader':   '225609054273681',
+  'Afferolab':     '546856885363202',
+  'Convênia':      '298180803629043'
+};
+
+var _metaToken = '';
+
+function showApiConfig(){
+  var panel = document.getElementById('api-config-panel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  if(_metaToken) document.getElementById('meta-token').value = _metaToken;
+}
+
+function saveToken(){
+  _metaToken = document.getElementById('meta-token').value.trim();
+  showOk('token-ok');
+}
+
+async function fetchAllMeta(){
+  var token = document.getElementById('meta-token').value.trim() || _metaToken;
+  if(!token){ alert('Cole o token de acesso primeiro.'); return; }
+  _metaToken = token;
+
+  var btn = document.getElementById('fetch-btn');
+  var status = document.getElementById('fetch-status');
+  var results = document.getElementById('fetch-results');
+  btn.disabled = true;
+  btn.textContent = 'Buscando...';
+  results.innerHTML = '';
+
+  var mes = document.getElementById('ea-mes').value;
+  var players = Object.keys(META_PAGE_IDS);
+  var html = '<table style="width:100%;border-collapse:collapse;font-size:11px"><thead><tr style="background:var(--g50)"><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Player</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Anúncios ativos</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Exemplo de gancho</th><th style="padding:6px 8px;border-bottom:1px solid var(--g200)">Ação</th></tr></thead><tbody>';
+
+  for(var i=0; i<players.length; i++){
+    var name = players[i];
+    var pageId = META_PAGE_IDS[name];
+    status.textContent = 'Buscando ' + name + '... (' + (i+1) + '/' + players.length + ')';
+
+    try {
+      var url = 'https://graph.facebook.com/v19.0/ads_archive'
+        + '?access_token=' + encodeURIComponent(token)
+        + '&ad_reached_countries=BR'
+        + '&search_page_ids=' + pageId
+        + '&ad_active_status=ACTIVE'
+        + '&fields=ad_creative_bodies,ad_creative_link_titles,ad_delivery_start_time,page_name'
+        + '&limit=50';
+
+      var resp = await fetch(url);
+      var data = await resp.json();
+
+      if(data.error){
+        html += '<tr><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td><td colspan="3" style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--rd)">Erro: '+data.error.message+'</td></tr>';
+        continue;
+      }
+
+      var ads = data.data || [];
+      var count = ads.length;
+      // try to get next pages count
+      var afterCursor = data.paging && data.paging.cursors && data.paging.cursors.after;
+      var hasMore = data.paging && data.paging.next;
+
+      // Extract first creative body as example
+      var example = '';
+      for(var j=0; j<ads.length; j++){
+        var bodies = ads[j].ad_creative_bodies;
+        if(bodies && bodies.length > 0){ example = bodies[0].substring(0,80)+'…'; break; }
+        var titles = ads[j].ad_creative_link_titles;
+        if(titles && titles.length > 0){ example = titles[0].substring(0,80)+'…'; break; }
+      }
+
+      var safeN = name.replace(/'/g,"\\'");
+      html += '<tr style="background:white"><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td>'
+        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><span style="font-size:14px;font-weight:700;color:var(--p)">'+count+'</span>'+(hasMore?' <span style="font-size:10px;color:var(--txm)">(pode ter mais)</span>':'')+'</td>'
+        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--txm);font-style:italic;max-width:200px">'+(example||'—')+'</td>'
+        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><button class="sbtn" style="padding:3px 10px;font-size:10px" onclick="applyMetaCount(\''+safeN+'\','+count+')">Aplicar</button></td>'
+      +'</tr>';
+
+    } catch(e){
+      html += '<tr><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td><td colspan="3" style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--rd)">Falha na requisição</td></tr>';
+    }
+
+    // Small delay to avoid rate limiting
+    await new Promise(function(r){ setTimeout(r, 300); });
+  }
+
+  html += '</tbody></table>';
+  results.innerHTML = html;
+  status.textContent = 'Concluído! Clique em "Aplicar" para salvar os dados de cada player.';
+  btn.disabled = false;
+  btn.textContent = 'Buscar anúncios ativos de todos os players';
+}
+
+function applyMetaCount(name, count){
+  var mes = document.getElementById('ea-mes').value;
+  // Update the input field in the form
+  var input = document.getElementById('ea-'+mes+'-'+name+'-meta');
+  if(input){
+    input.value = count;
+    input.style.background = '#DCFCE7';
+    setTimeout(function(){ input.style.background = ''; }, 2000);
+  }
+  // Also save directly to store
+  ensureStore(mes);
+  if(!STORE[mes].ads) STORE[mes].ads = {};
+  if(!STORE[mes].ads[name]) STORE[mes].ads[name] = {meta:0,google:0,linkedin:0,status:'Inativo',obs:''};
+  STORE[mes].ads[name].meta = count;
+  STORE[mes].ads[name].status = count > 0 ? 'Ativo' : 'Inativo';
+  renderAds(); renderHist();
+}
+
+ renderSocial(); renderNL(); renderAds(); renderBusca(); renderHist();
 </script>
 </body>
 </html>
