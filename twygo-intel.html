@@ -340,37 +340,78 @@ var MES = {
   abr2026:'Abril 2026', mai2026:'Maio 2026', jun2026:'Junho 2026'
 };
 
+// Links de biblioteca de anúncios extraídos do relatório de fevereiro
+// Links de redes sociais editáveis na aba "+ Social / NL" > Redes Sociais
 var PLAYERS = [
   {name:'Mobiliza',seg:'LMS',dom:'mobiliza.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=mobiliza+lms&country=BR',google:'https://adstransparency.google.com/advertiser/AR14776765498808221697?region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Mobiliza'}},
+   social:{li:'https://www.linkedin.com/company/mobilizaead/',ig:'https://www.instagram.com/mobiliza.ead/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=205967299421126',
+          google:'https://adstransparency.google.com/?region=BR&domain=mobiliza.com.br',
+          linkedin:''}},
   {name:'Ludos Pro',seg:'LMS',dom:'ludospro.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=ludos+pro&country=BR',google:'https://adstransparency.google.com/advertiser?query=ludos+pro&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Ludos+Pro'}},
+   social:{li:'https://www.linkedin.com/company/ludos-pro/',ig:'https://www.instagram.com/ludospro/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=119800505385425',
+          google:'https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=ludos+pro&countries=BR'}},
   {name:'Engage',seg:'LMS',dom:'engage.bz',
-   links:{meta:'https://www.facebook.com/ads/library/?q=engage+plataforma&country=BR',google:'https://adstransparency.google.com/advertiser?query=engage+plataforma&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Engage+plataforma'}},
+   social:{li:'https://www.linkedin.com/company/engage-comunicacao/',ig:''},
+   links:{meta:'',
+          google:'https://adstransparency.google.com/?region=BR&domain=engage.bz',
+          linkedin:''}},
   {name:'Next LMS',seg:'LMS',dom:'nextlms.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=next+lms&country=BR',google:'https://adstransparency.google.com/advertiser?query=next+lms&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Next+LMS'}},
+   social:{li:'https://www.linkedin.com/company/next-lms/',ig:'https://www.instagram.com/nextlms/'},
+   links:{meta:'',google:'',linkedin:''}},
   {name:'Woli',seg:'LMS',dom:'woli.app',
-   links:{meta:'https://www.facebook.com/ads/library/?q=woli+app&country=BR',google:'https://adstransparency.google.com/advertiser?query=woli&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Woli'}},
+   social:{li:'https://www.linkedin.com/company/woliapp/',ig:'https://www.instagram.com/woli.app/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=1470440886550691',
+          google:'https://adstransparency.google.com/advertiser/AR14482849830595985409?region=BR',
+          linkedin:''}},
   {name:'Revvo',seg:'LMS',dom:'revvo.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=revvo&country=BR',google:'https://adstransparency.google.com/advertiser?query=revvo&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Revvo'}},
+   social:{li:'https://www.linkedin.com/company/revvo-br/',ig:'https://www.instagram.com/revvo.br/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bdirection%5d=desc&sort_data%5bmode%5d=total_impressions&view_all_page_id=474671152723516',
+          google:'https://adstransparency.google.com/?region=BR&domain=revvo.com.br',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=revvo&countries=BR'}},
   {name:'Scaffold',seg:'LMS',dom:'scaffoldeducation.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=scaffold+education&country=BR',google:'https://adstransparency.google.com/advertiser?query=scaffold+education&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Scaffold+Education'}},
+   social:{li:'https://www.linkedin.com/company/scaffold-education/',ig:'https://www.instagram.com/scaffoldeducation/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=166079413908756',
+          google:'https://adstransparency.google.com/?region=BR',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=scaffold&countries=BR'}},
   {name:'EduSense',seg:'LMS',dom:'edusense.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=edusense&country=BR',google:'https://adstransparency.google.com/advertiser?query=edusense&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=EduSense'}},
-  {name:'Kubo',seg:'LMS',dom:'kubo.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=kubo+lxp&country=BR',google:'https://adstransparency.google.com/advertiser?query=kubo&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Kubo'}},
+   social:{li:'https://www.linkedin.com/company/edusense-br/',ig:'https://www.instagram.com/edusense.br/'},
+   links:{meta:'',google:'',linkedin:''}},
+  {name:'Kubo',seg:'LMS',dom:'kubolxp.com.br',
+   social:{li:'https://www.linkedin.com/company/kubolxp/',ig:'https://www.instagram.com/kubolxp/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=102271805201087',
+          google:'https://adstransparency.google.com/?region=BR&domain=kubolxp.com.br',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=kubo+lxp&countries=BR'}},
   {name:'Qulture Rocks',seg:'DHO',dom:'qulture.rocks',
-   links:{meta:'https://www.facebook.com/ads/library/?q=qulture+rocks&country=BR',google:'https://adstransparency.google.com/advertiser?query=qulture+rocks&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Qulture+Rocks'}},
+   social:{li:'https://www.linkedin.com/company/qulture-rocks/',ig:'https://www.instagram.com/qulturerocks/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=304821343223801',
+          google:'https://adstransparency.google.com/?region=BR&domain=qulture.rocks',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=Qulture+Rocks&countries=BR'}},
   {name:'Team Culture',seg:'DHO',dom:'teamculture.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=team+culture&country=BR',google:'https://adstransparency.google.com/advertiser?query=team+culture&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Team+Culture'}},
+   social:{li:'https://www.linkedin.com/company/team-culture-br/',ig:'https://www.instagram.com/teamculture.br/'},
+   links:{meta:'',google:'',linkedin:''}},
   {name:'YouRH',seg:'DHO',dom:'yourh.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=yourh&country=BR',google:'https://adstransparency.google.com/advertiser?query=yourh&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=YouRH'}},
+   social:{li:'https://www.linkedin.com/company/yourh/',ig:'https://www.instagram.com/yourh.br/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=304821343223801',
+          google:'https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=yourh&countries=BR'}},
   {name:'SmartLeader',seg:'DHO',dom:'smartleader.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=smartleader&country=BR',google:'https://adstransparency.google.com/advertiser?query=smartleader&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=SmartLeader'}},
+   social:{li:'https://www.linkedin.com/company/smartleader-br/',ig:'https://www.instagram.com/smartleader.br/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=225609054273681',
+          google:'https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR',
+          linkedin:''}},
   {name:'Afferolab',seg:'DHO',dom:'afferolab.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=afferolab&country=BR',google:'https://adstransparency.google.com/advertiser?query=afferolab&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Afferolab'}},
+   social:{li:'https://www.linkedin.com/company/afferolab/',ig:'https://www.instagram.com/afferolab/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=546856885363202',
+          google:'https://adstransparency.google.com/?region=BR&domain=afferolab.com.br',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=Afferolab&countries=BR'}},
   {name:'Convênia',seg:'DHO',dom:'convenia.com.br',
-   links:{meta:'https://www.facebook.com/ads/library/?q=convenia&country=BR',google:'https://adstransparency.google.com/advertiser?query=convenia&region=BR',linkedin:'https://www.linkedin.com/ad-library/?query=Convenia'}}
+   social:{li:'https://www.linkedin.com/company/convenia/',ig:'https://www.instagram.com/convenia/'},
+   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=298180803629043',
+          google:'https://adstransparency.google.com/?region=BR&domain=convenia.com.br',
+          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=convenia&countries=BR'}}
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -498,12 +539,16 @@ function pModal(name,mes){
   var d=getData(mes); var p=d.players.find(function(x){return x.name===name;}); if(!p) return;
   var ads=getAds(mes); var pa=ads[name]||{meta:0,google:0,linkedin:0,obs:''};
   var pl=PLAYERS.find(function(x){return x.name===name;});
+  var liLink=pl?pl.social.li:''; var igLink=pl?pl.social.ig:'';
   openM(name+' — '+MES[mes],
     '<div class="msec"><div class="mlbl">Segmento</div><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
     +'<div class="msec"><div class="mlbl">Posicionamento</div><div class="mtxt">'+p.pos+'</div></div>'
     +'<div class="msec"><div class="mlbl">Tom de voz</div><div class="mtxt">'+p.tom+'</div></div>'
     +'<div class="msec"><div class="mlbl">Público-alvo</div><div class="mtxt">'+p.pu+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Posts em '+MES[mes]+'</div><div class="mtxt"><span style="color:#0A66C2;font-weight:600">LinkedIn: '+p.li+'</span> &nbsp;·&nbsp; <span style="color:#E1306C;font-weight:600">Instagram: '+p.ig+'</span></div></div>'
+    +'<div class="msec"><div class="mlbl">Posts em '+MES[mes]+'</div><div class="mtxt" style="display:flex;align-items:center;gap:10px">'
+      +(liLink?'<a href="'+liLink+'" target="_blank" style="color:#0A66C2;font-weight:600;text-decoration:none">LinkedIn: '+p.li+' posts ↗</a>':'<span style="color:#0A66C2;font-weight:600">LinkedIn: '+p.li+'</span>')
+      +(igLink?'<a href="'+igLink+'" target="_blank" style="color:#E1306C;font-weight:600;text-decoration:none">Instagram: '+p.ig+' posts ↗</a>':'<span style="color:#E1306C;font-weight:600">Instagram: '+p.ig+'</span>')
+    +'</div></div>'
     +'<div class="msec"><div class="mlbl">Temas</div><div class="mtags">'+p.temas.map(function(t){return '<span class="tag tp">'+t+'</span>';}).join('')+'</div></div>'
     +'<div class="msec"><div class="mlbl">Insights</div><div class="mtxt">'+p.insights+'</div></div>'
     +'<div class="msec"><div class="mlbl">E-mail marketing</div><div class="mtxt">'+p.email_det+'</div></div>'
@@ -513,7 +558,7 @@ function pModal(name,mes){
       +'<span style="color:#1565C0;font-weight:600">LinkedIn: '+pa.linkedin+'</span>'
       +(pa.obs?'<br><span style="color:var(--txm);font-size:11px">'+pa.obs+'</span>':'')
     +'</div></div>'
-    +(pl?'<div class="msec"><div class="mlbl">Bibliotecas de anúncios</div><div style="display:flex;gap:6px;margin-top:4px"><a href="'+pl.links.meta+'" target="_blank" class="tag" style="background:#FFF0F5;color:#C2185B;text-decoration:none">Meta Ads</a><a href="'+pl.links.google+'" target="_blank" class="tag" style="background:#E8F5E9;color:#2E7D32;text-decoration:none">Google</a><a href="'+pl.links.linkedin+'" target="_blank" class="tag" style="background:#E3F2FD;color:#1565C0;text-decoration:none">LinkedIn</a></div></div>':'')
+    +(pl&&(pl.links.meta||pl.links.google||pl.links.linkedin)?'<div class="msec"><div class="mlbl">Bibliotecas de anúncios</div><div style="display:flex;gap:6px;margin-top:4px">'+(pl.links.meta?'<a href="'+pl.links.meta+'" target="_blank" class="tag" style="background:#FFF0F5;color:#C2185B;text-decoration:none">Meta Ads ↗</a>':'')+(pl.links.google?'<a href="'+pl.links.google+'" target="_blank" class="tag" style="background:#E8F5E9;color:#2E7D32;text-decoration:none">Google ↗</a>':'')+(pl.links.linkedin?'<a href="'+pl.links.linkedin+'" target="_blank" class="tag" style="background:#E3F2FD;color:#1565C0;text-decoration:none">LinkedIn ↗</a>':'')+'</div></div>':'')
   );
 }
 
@@ -701,17 +746,33 @@ function buildEntradaSocial(){
   if(sec==='social'){
     body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Redes Sociais — '+MES[mes]+(isFev?'<span class="pbadge" style="margin-left:6px">Fev/26 carregado</span>':'')+'</div>'
       +d.players.map(function(p){
-        return '<div class="pblock"><div class="phdr"><span class="pname">'+p.name+'</span><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
-          +'<div class="pform"><div class="grid3">'
-            +'<div class="fwrap"><label class="flb">LinkedIn (posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-li" value="'+p.li+'"></div>'
-            +'<div class="fwrap"><label class="flb">Instagram (posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-ig" value="'+p.ig+'"></div>'
-            +'<div class="fwrap"><label class="flb">Temas (separados por vírgula)</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-temas" value="'+p.temas.join(', ')+'"></div>'
+        var pl=PLAYERS.find(function(x){return x.name===p.name;})||{social:{li:'',ig:''}};
+        // get stored social links or defaults
+        var liLink = (STORE[mes]&&STORE[mes].socialLinks&&STORE[mes].socialLinks[p.name]&&STORE[mes].socialLinks[p.name].li)||pl.social.li||'';
+        var igLink = (STORE[mes]&&STORE[mes].socialLinks&&STORE[mes].socialLinks[p.name]&&STORE[mes].socialLinks[p.name].ig)||pl.social.ig||'';
+        return '<div class="pblock"><div class="phdr">'
+          +'<div style="display:flex;align-items:center;gap:8px"><span class="pname">'+p.name+'</span><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
+          +'<div style="display:flex;gap:6px">'
+            +(liLink?'<a href="'+liLink+'" target="_blank" class="ll lk">Ver LinkedIn</a>':'')
+            +(igLink?'<a href="'+igLink+'" target="_blank" class="ll lm" style="background:#FFF0F5;color:#C2185B;border-color:#F8BBD9">Ver Instagram</a>':'')
           +'</div>'
-          +'<div class="grid2" style="margin-top:0">'
-            +'<div class="fwrap"><label class="flb">Insights / observações</label><textarea class="fi" id="ss-'+mes+'-'+p.name+'-ins">'+p.insights+'</textarea></div>'
-            +'<div class="fwrap"><label class="flb">Tom de voz</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-tom" value="'+p.tom+'"></div>'
+        +'</div>'
+        +'<div class="pform"><div class="grid3">'
+          +'<div class="fwrap"><label class="flb">LinkedIn (nº de posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-li" value="'+p.li+'"></div>'
+          +'<div class="fwrap"><label class="flb">Instagram (nº de posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-ig" value="'+p.ig+'"></div>'
+          +'<div class="fwrap"><label class="flb">Temas (separados por vírgula)</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-temas" value="'+p.temas.join(', ')+'"></div>'
+        +'</div>'
+        +'<div class="grid2" style="margin-top:0">'
+          +'<div class="fwrap"><label class="flb">Insights / observações</label><textarea class="fi" id="ss-'+mes+'-'+p.name+'-ins">'+p.insights+'</textarea></div>'
+          +'<div class="fwrap"><label class="flb">Tom de voz</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-tom" value="'+p.tom+'"></div>'
+        +'</div>'
+        +'<details style="margin:0 14px 8px"><summary style="font-size:10px;color:var(--txm);cursor:pointer;font-weight:600">Editar links dos perfis sociais</summary>'
+          +'<div class="grid2" style="margin-top:8px">'
+            +'<div class="fwrap"><label class="flb">Link LinkedIn</label><input class="fi" type="url" id="ss-'+mes+'-'+p.name+'-lilink" value="'+liLink+'" placeholder="https://linkedin.com/company/..."></div>'
+            +'<div class="fwrap"><label class="flb">Link Instagram</label><input class="fi" type="url" id="ss-'+mes+'-'+p.name+'-iglink" value="'+igLink+'" placeholder="https://instagram.com/..."></div>'
           +'</div>'
-          +'<div style="display:flex;align-items:center;gap:8px;margin-top:8px"><button class="sbtn" onclick="saveSocial(\''+mes+'\',\''+p.name+'\')">Salvar</button><span class="sok" id="ssok-'+mes+'-'+p.name+'">Salvo!</span></div>'
+        +'</details>'
+        +'<div style="display:flex;align-items:center;gap:8px;padding:0 14px 12px"><button class="sbtn" onclick="saveSocial(\''+mes+'\',\''+p.name+'\')">Salvar</button><span class="sok" id="ssok-'+mes+'-'+p.name+'">Salvo!</span></div>'
         +'</div></div>';
       }).join('')+'</div>';
   } else if(sec==='nl'){
@@ -761,12 +822,27 @@ function saveSocial(mes,name){
   ensureStore(mes);
   if(!STORE[mes].players) STORE[mes].players=JSON.parse(JSON.stringify(BASE.fev2026.players));
   var pp=STORE[mes].players.find(function(x){return x.name===name;});
-  if(!pp){pp=JSON.parse(JSON.stringify(BASE.fev2026.players.find(function(x){return x.name===name;}))||{name:name,seg:'LMS',li:0,ig:0,temas:[],tom:'',pu:'',pos:'',insights:'',email:0,email_det:'',busca:{org:0,pago:0,canal:'',obs:''}});STORE[mes].players.push(pp);}
+  if(!pp){var base=BASE.fev2026.players.find(function(x){return x.name===name;});pp=base?JSON.parse(JSON.stringify(base)):{name:name,seg:'LMS',li:0,ig:0,temas:[],tom:'',pu:'',pos:'',insights:'',email:0,email_det:'',busca:{org:0,pago:0,canal:'',obs:''}};STORE[mes].players.push(pp);}
   pp.li=+(document.getElementById('ss-'+mes+'-'+name+'-li').value)||0;
   pp.ig=+(document.getElementById('ss-'+mes+'-'+name+'-ig').value)||0;
   pp.temas=document.getElementById('ss-'+mes+'-'+name+'-temas').value.split(',').map(function(t){return t.trim();}).filter(Boolean);
   pp.insights=document.getElementById('ss-'+mes+'-'+name+'-ins').value;
   pp.tom=document.getElementById('ss-'+mes+'-'+name+'-tom').value;
+  // save social profile links
+  var liLinkEl=document.getElementById('ss-'+mes+'-'+name+'-lilink');
+  var igLinkEl=document.getElementById('ss-'+mes+'-'+name+'-iglink');
+  if(liLinkEl||igLinkEl){
+    if(!STORE[mes].socialLinks) STORE[mes].socialLinks={};
+    if(!STORE[mes].socialLinks[name]) STORE[mes].socialLinks[name]={};
+    if(liLinkEl) STORE[mes].socialLinks[name].li=liLinkEl.value.trim();
+    if(igLinkEl) STORE[mes].socialLinks[name].ig=igLinkEl.value.trim();
+    // also update global PLAYERS entry so links persist across months
+    var pl=PLAYERS.find(function(x){return x.name===name;});
+    if(pl){
+      if(liLinkEl&&liLinkEl.value.trim()) pl.social.li=liLinkEl.value.trim();
+      if(igLinkEl&&igLinkEl.value.trim()) pl.social.ig=igLinkEl.value.trim();
+    }
+  }
   showOk('ssok-'+mes+'-'+name);
 }
 
