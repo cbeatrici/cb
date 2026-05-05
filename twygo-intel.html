@@ -10,1070 +10,577 @@
   --p:#6B4EFF;--pl:#EDE9FF;--pm:#A594FF;--pd:#4A35CC;
   --g50:#F8F7FF;--g100:#F0EEF9;--g200:#E2DEFF;
   --tx:#1A1535;--txm:#6B6490;
-  --gn:#16A34A;--gnb:#DCFCE7;--rd:#DC2626;--rdb:#FEE2E2;--am:#D97706;--amb:#FEF3C7
+  --gn:#16A34A;--gnb:#DCFCE7;--rd:#DC2626;--rdb:#FEE2E2;--am:#D97706;--amb:#FEF3C7;
+  --bl:#2563EB;--blb:#DBEAFE;
 }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--g50);color:var(--tx);font-size:13px}
 .dash{padding:16px;position:relative}
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-.logo{display:flex;align-items:center;gap:8px}
+.topbar{background:#fff;border-bottom:2px solid var(--g200);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px #0000000d}
+.brand{display:flex;align-items:center;gap:8px}
 .lmark{width:30px;height:30px;background:var(--p);border-radius:7px;display:flex;align-items:center;justify-content:center}
 .lmark svg{width:18px;height:18px;fill:white}
-.ltxt{font-size:16px;font-weight:700;color:var(--tx);letter-spacing:-.3px}
-.lsub{font-size:11px;color:var(--txm)}
-.tabs{display:flex;gap:3px;background:var(--g100);border-radius:8px;padding:3px;flex-wrap:wrap}
-.tab{padding:5px 11px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;color:var(--txm);border:none;background:transparent;transition:all .15s;white-space:nowrap}
-.tab.active{background:var(--p);color:white}
-.page{display:none}.page.active{display:block}
-.panel{background:white;border:1px solid var(--g200);border-radius:10px;padding:14px;margin-bottom:12px}
-.ptitle{font-size:12px;font-weight:600;color:var(--tx);margin-bottom:10px;display:flex;align-items:center;gap:5px}
-.pdot{width:7px;height:7px;border-radius:50%;background:var(--p);flex-shrink:0}
-.fbar{display:flex;align-items:center;gap:8px;margin-bottom:12px;background:white;border:1px solid var(--g200);border-radius:10px;padding:8px 12px;flex-wrap:wrap}
-.flbl{font-size:11px;color:var(--txm);font-weight:500;white-space:nowrap}
-.fsel{border:1px solid var(--g200);border-radius:6px;padding:4px 8px;font-size:11px;color:var(--tx);background:var(--g50);cursor:pointer;outline:none}
-.fsel:focus{border-color:var(--p)}
-.fdiv{width:1px;height:16px;background:var(--g200)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
-.kpi{background:white;border:1px solid var(--g200);border-radius:10px;padding:12px 14px}
-.klbl{font-size:10px;color:var(--txm);margin-bottom:3px;font-weight:500}
-.kval{font-size:20px;font-weight:700;color:var(--tx);line-height:1.1}
-.ksub{font-size:10px;color:var(--txm);margin-top:2px}
-.tag{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:600}
-.tp{background:var(--pl);color:var(--pd)}.tg{background:var(--gnb);color:var(--gn)}.ta{background:var(--amb);color:var(--am)}.tr{background:var(--rdb);color:var(--rd)}.tgr{background:var(--g100);color:var(--txm)}
-.tbl{width:100%;border-collapse:collapse;font-size:11px}
-.tbl th{text-align:left;font-size:10px;font-weight:600;color:var(--txm);text-transform:uppercase;padding:5px 7px;border-bottom:1px solid var(--g200)}
-.tbl td{padding:7px;border-bottom:1px solid var(--g100);vertical-align:middle}
-.tbl tr:last-child td{border-bottom:none}
-.tbl tr:hover td{background:var(--g50)}
-.bw{display:flex;align-items:center;gap:6px;margin:4px 0}
-.blbl{font-size:10px;color:var(--txm);width:82px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bbg{flex:1;height:5px;background:var(--g100);border-radius:3px}
-.bf{height:5px;border-radius:3px;background:var(--p);transition:width .4s}
-.bf.gn{background:var(--gn)}.bf.meta{background:#C2185B}.bf.goog{background:#2E7D32}.bf.lkdn{background:#1565C0}
-.bval{font-size:10px;font-weight:600;color:var(--tx);min-width:28px}
-.trg{padding:7px 9px;border-left:3px solid var(--pm);background:var(--g50);border-radius:0 6px 6px 0;margin-bottom:5px}
-.trgp{font-size:10px;font-weight:700;color:var(--p);margin-bottom:2px}
-.trgt{font-size:11px;color:var(--tx)}
-.pos-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.pos-q{border:1px solid var(--g200);border-radius:7px;padding:9px 10px;background:var(--g50)}
-.pos-ql{font-size:10px;font-weight:600;color:var(--txm);margin-bottom:5px}
-.pos-p{font-size:11px;padding:1px 0}
-.pos-p.tw{color:var(--p);font-weight:700}
-.note{font-size:11px;color:var(--pd);margin-bottom:10px;background:var(--pl);border-radius:6px;padding:7px 11px}
-.alert-it{display:flex;gap:8px;padding:7px 9px;border-radius:7px;margin-bottom:5px;font-size:11px}
-.ahi{background:#FFF0F0;border-left:3px solid var(--rd)}.ame{background:var(--amb);border-left:3px solid var(--am)}.alo{background:var(--pl);border-left:3px solid var(--pm)}
-.aplr{font-weight:700;color:var(--p)}
-/* modal */
-.mbg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,21,53,.5);z-index:100;align-items:flex-start;justify-content:center;padding-top:40px}
-.mbg.open{display:flex}
-.mbox{background:white;border-radius:12px;padding:18px;width:580px;max-width:95%;border:1px solid var(--g200);position:relative;max-height:80vh;overflow-y:auto}
-.mclose{position:absolute;top:10px;right:12px;font-size:18px;cursor:pointer;color:var(--txm);border:none;background:none}
-.mtitle{font-size:14px;font-weight:700;color:var(--p);margin-bottom:12px}
-.msec{margin-bottom:10px}
-.mlbl{font-size:10px;font-weight:700;color:var(--txm);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
-.mtxt{font-size:12px;color:var(--tx);line-height:1.6}
-.mtags{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
-/* clickable rows */
-.crow{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--g100);cursor:pointer}
-.crow:last-child{border-bottom:none}
-.crow:hover{background:var(--g50);margin:0 -4px;padding:7px 4px;border-radius:4px}
-.crow-name{font-weight:600;font-size:11px}
-.crow-sub{font-size:10px;color:var(--txm);margin-top:1px}
-.crow-right{display:flex;align-items:center;gap:6px}
-.hint{font-size:9px;color:var(--pm)}
-/* entrada player block */
-.pblock{border:1px solid var(--g200);border-radius:10px;overflow:hidden;margin-bottom:10px;background:white}
-.phdr{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--g50);border-bottom:1px solid var(--g200);flex-wrap:wrap;gap:6px}
-.pname{font-size:13px;font-weight:700;color:var(--tx)}
-.liblinks{display:flex;gap:5px;flex-wrap:wrap}
-.ll{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;text-decoration:none;border:1px solid}
-.lm{background:#FFF0F5;color:#C2185B;border-color:#F8BBD9}
-.lg{background:#E8F5E9;color:#2E7D32;border-color:#A5D6A7}
-.lk{background:#E3F2FD;color:#1565C0;border-color:#90CAF9}
-.ll:hover{opacity:.8}
-.pform{padding:12px 14px}
-.fwrap{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
-.flb{font-size:10px;color:var(--txm);font-weight:600}
-.fi{border:1px solid var(--g200);border-radius:6px;padding:5px 8px;font-size:11px;color:var(--tx);outline:none;background:white;width:100%;font-family:inherit}
-.fi:focus{border-color:var(--p)}
-textarea.fi{resize:none;height:52px;line-height:1.4}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sbtn{background:var(--p);color:white;border:none;border-radius:6px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
-.sbtn:hover{background:var(--pd)}
-.sbtn.sec{background:white;color:var(--p);border:1px solid var(--p)}
-.sok{display:none;font-size:11px;color:var(--gn);font-weight:600;margin-left:6px}
-.pbadge{font-size:9px;font-weight:700;background:var(--gnb);color:var(--gn);padding:2px 6px;border-radius:10px;margin-left:6px}
-/* hist */
-.hpblock{border:1px solid var(--g200);border-radius:10px;overflow:hidden;margin-bottom:12px}
-.hphdr{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--p)}
-.hpname{font-size:12px;font-weight:700;color:white}
-.hlks{display:flex;gap:4px}
-.hlk{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;text-decoration:none;background:rgba(255,255,255,.2);color:white}
-.hlk:hover{background:rgba(255,255,255,.35)}
-.hchdr{display:grid;gap:6px;padding:5px 14px;background:var(--g50);border-bottom:1px solid var(--g200)}
-.hchdr span{font-size:10px;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:.04em}
-.hrow{display:grid;gap:6px;align-items:start;padding:8px 14px;border-bottom:1px solid var(--g100);font-size:11px;background:white}
-.hrow:last-child{border-bottom:none}
-.hrow:hover{background:var(--g50)}
-.hmes{font-weight:700;color:var(--p);font-size:11px}
-.hpc{display:flex;align-items:center;gap:4px}
-.hdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.hm{background:#C2185B}.hg{background:#2E7D32}.hl{background:#1565C0}
-.hobs{font-size:10px;color:var(--txm);font-style:italic}
-.dup2{color:var(--gn);font-size:9px;font-weight:700}.ddn2{color:var(--rd);font-size:9px;font-weight:700}
-.empty{text-align:center;padding:20px;color:var(--txm);font-size:12px}
-/* busca */
-.busca-row{display:grid;grid-template-columns:130px 80px 80px 80px 1fr;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--g100);font-size:11px}
-.busca-row:last-child{border-bottom:none}
-.busca-hdr{display:grid;grid-template-columns:130px 80px 80px 80px 1fr;gap:8px;padding:5px 0;font-size:10px;font-weight:600;color:var(--txm);text-transform:uppercase;border-bottom:1px solid var(--g200);margin-bottom:4px}
+.brand-txt{font-weight:700;font-size:14px;color:var(--tx)}
+.brand-sub{font-size:11px;color:var(--txm)}
+.tabs{display:flex;gap:4px}
+.tab{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--txm);cursor:pointer;border:none;background:transparent;transition:all .15s}
+.tab:hover{background:var(--g100);color:var(--tx)}
+.tab.active{background:var(--p);color:#fff}
+.filters{display:flex;align-items:center;gap:12px;margin:12px 0}
+.filter-label{font-size:12px;color:var(--txm);font-weight:500}
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:600}
+.badge-alto{background:var(--rdb);color:var(--rd)}
+.badge-medio{background:var(--amb);color:var(--am)}
+.badge-baixo{background:var(--gnb);color:var(--gn)}
+.badge-novo{background:var(--blb);color:var(--bl)}
+.card{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:14px;margin-bottom:10px}
+.card-title{font-weight:700;font-size:13px;color:var(--tx);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txm);margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.alert-card{border-left:4px solid;padding:12px 14px;border-radius:0 8px 8px 0;margin-bottom:8px}
+.alert-alto{border-color:var(--rd);background:var(--rdb)}
+.alert-medio{border-color:var(--am);background:var(--amb)}
+.alert-baixo{border-color:var(--gn);background:var(--gnb)}
+.alert-title{font-weight:700;font-size:12px;margin-bottom:4px}
+.alert-desc{font-size:12px;color:var(--tx);line-height:1.5}
+.player-card{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:14px;cursor:pointer;transition:all .15s}
+.player-card:hover{border-color:var(--pm);box-shadow:0 2px 8px #6b4eff18}
+.player-card.active{border-color:var(--p);box-shadow:0 2px 8px #6b4eff30}
+.player-name{font-weight:700;font-size:13px;margin-bottom:4px}
+.player-seg{font-size:10px;color:var(--txm);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.ads-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.ad-chip{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
+.ad-gads{background:#FEE2E2;color:#991B1B}
+.ad-meta{background:#DBEAFE;color:#1E40AF}
+.ad-li{background:#D1FAE5;color:#065F46}
+.ad-none{background:#F3F4F6;color:#6B7280}
+.detail-panel{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:16px;margin-top:10px;display:none}
+.detail-panel.show{display:block}
+.kv{display:flex;gap:8px;margin-bottom:6px;font-size:12px}
+.kv-key{font-weight:600;color:var(--txm);min-width:120px;flex-shrink:0}
+.kv-val{color:var(--tx);line-height:1.5}
+.criativo{background:var(--g50);border-left:3px solid var(--pm);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;margin-bottom:6px;line-height:1.5;font-style:italic}
+.temas-grid{display:flex;flex-wrap:wrap;gap:6px}
+.tema-tag{background:var(--pl);color:var(--pd);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.matrix-table{width:100%;border-collapse:collapse;font-size:11px}
+.matrix-table th{background:var(--g100);padding:6px 8px;text-align:left;font-weight:600;color:var(--txm);border-bottom:1px solid var(--g200)}
+.matrix-table td{padding:6px 8px;border-bottom:1px solid var(--g200);vertical-align:top}
+.matrix-table tr:last-child td{border-bottom:none}
+.matrix-table tr:hover td{background:var(--g50)}
+.dot-alto{width:8px;height:8px;background:var(--rd);border-radius:50%;display:inline-block;margin-right:4px}
+.dot-medio{width:8px;height:8px;background:var(--am);border-radius:50%;display:inline-block;margin-right:4px}
+.dot-baixo{width:8px;height:8px;background:var(--gn);border-radius:50%;display:inline-block;margin-right:4px}
+.num-big{font-size:22px;font-weight:700;color:var(--p)}
+.num-label{font-size:10px;color:var(--txm);font-weight:500}
+.insight-box{background:var(--pl);border:1px solid var(--pm);border-radius:8px;padding:12px;margin-bottom:8px}
+.insight-title{font-weight:700;font-size:12px;color:var(--pd);margin-bottom:4px}
+.insight-txt{font-size:12px;color:var(--tx);line-height:1.5}
+.tag-ia{background:#F0FDF4;color:#166534;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700}
+.tag-noai{background:#F9FAFB;color:#6B7280;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
+.last-update{font-size:11px;color:var(--txm);text-align:right;margin-top:4px}
+.divider{height:1px;background:var(--g200);margin:12px 0}
+.view-pane{display:none}
+.view-pane.active{display:block}
 </style>
 </head>
 <body>
-<div class="dash">
-<div class="mbg" id="mbg" onclick="closeMod(event)">
-  <div class="mbox" onclick="event.stopPropagation()">
-    <button class="mclose" onclick="closeMod()">×</button>
-    <div class="mtitle" id="mtitle"></div>
-    <div id="mbody"></div>
-  </div>
-</div>
-
 <div class="topbar">
-  <div class="logo">
-    <div class="lmark"><svg viewBox="0 0 20 20"><path d="M10 2L2 7v6l8 5 8-5V7L10 2z"/></svg></div>
-    <div><div class="ltxt">Twygo IC</div><div class="lsub">Inteligência Competitiva</div></div>
+  <div class="brand">
+    <div class="lmark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <div><div class="brand-txt">Twygo IC</div><div class="brand-sub">Inteligência Competitiva</div></div>
   </div>
   <div class="tabs">
-    <button class="tab active" onclick="go('geral',this)">Visão Geral</button>
-    <button class="tab" onclick="go('social',this)">Redes Sociais</button>
-    <button class="tab" onclick="go('nl',this)">Newsletter</button>
-    <button class="tab" onclick="go('ads',this)">Anúncios</button>
-    <button class="tab" onclick="go('busca',this)">Busca Orgânica</button>
-    <button class="tab" onclick="go('entrada-ads',this)">+ Anúncios</button>
-    <button class="tab" onclick="go('entrada-social',this)">+ Social / NL</button>
-    <button class="tab" onclick="go('historico',this)">Histórico Anúncios</button>
+    <button class="tab active" onclick="showView('visao')">Visão Geral</button>
+    <button class="tab" onclick="showView('alertas')">Alertas</button>
+    <button class="tab" onclick="showView('players')">Players</button>
+    <button class="tab" onclick="showView('ads')">Anúncios</button>
+    <button class="tab" onclick="showView('insights')">Insights PMM</button>
+    <button class="tab" onclick="showView('matriz')">Matriz</button>
   </div>
 </div>
 
-<!-- VISÃO GERAL -->
-<div class="page active" id="pg-geral">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="g-mes" onchange="renderGeral()">
-      <option value="fev2026" selected>Fevereiro 2026</option>
-      <option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option>
-      <option value="mai2026">Maio 2026</option>
-      <option value="jun2026">Junho 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Segmento:</span>
-    <select class="fsel" id="g-seg" onchange="renderGeral()"><option value="todos">Todos</option><option value="LMS">LMS/LXP</option><option value="DHO">DHO</option></select>
+<div class="dash">
+<p class="last-update">Coleta: 05/05/2026 &nbsp;|&nbsp; Cobertura: 12 players &nbsp;|&nbsp; Fontes: Sites, Google Ads, Meta Ads Library, LinkedIn Ad Library</p>
+<div class="divider"></div>
+
+<!-- ===== VISÃO GERAL ===== -->
+<div id="view-visao" class="view-pane active">
+  <div class="grid4" style="margin-bottom:10px">
+    <div class="card" style="text-align:center"><div class="num-big">3</div><div class="num-label">Alertas ALTO</div></div>
+    <div class="card" style="text-align:center"><div class="num-big">4</div><div class="num-label">Alertas MÉDIO</div></div>
+    <div class="card" style="text-align:center"><div class="num-big" style="color:#16A34A">~200</div><div class="num-label">Google Ads Qulture</div></div>
+    <div class="card" style="text-align:center"><div class="num-big">76</div><div class="num-label">LinkedIn Ads Scaffold</div></div>
   </div>
-  <div class="g2">
-    <div class="panel">
-      <div class="ptitle"><span class="pdot"></span>Posicionamento por segmento</div>
-      <div class="pos-grid">
-        <div class="pos-q"><div class="pos-ql">LMS/LXP</div><div class="pos-p tw">● Twygo</div><div class="pos-p">● Mobiliza · Ludos Pro · Engage</div><div class="pos-p">● Next LMS · Woli · Revvo</div><div class="pos-p">● Scaffold · EduSense · Kubo</div></div>
-        <div class="pos-q"><div class="pos-ql">DHO</div><div class="pos-p">● Qulture Rocks</div><div class="pos-p">● Team Culture · YouRH</div><div class="pos-p">● SmartLeader · Afferolab</div><div class="pos-p">● Convênia</div></div>
+
+  <div class="grid2">
+    <div>
+      <div class="card">
+        <div class="section-label">Segmento LMS/LXP</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--p);color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">● Twygo</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Mobiliza</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Ludos Pro</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Engage</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Woli</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Revvo</span>
+          <span style="background:var(--rdb);color:var(--rd);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">⚠ Scaffold</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Edusense</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Kubo LXP</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-label">Segmento DHO (Radar 2026)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="background:var(--rdb);color:var(--rd);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">⚠ Qulture (UOL EdTech)</span>
+          <span style="background:var(--amb);color:var(--am);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">YourH</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">SmartLeader</span>
+          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">TeamCulture</span>
+        </div>
       </div>
     </div>
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Temas dominantes</div><div id="g-temas"></div></div>
-  </div>
-  <div class="panel">
-    <div class="ptitle"><span class="pdot"></span>Alertas estratégicos — <span id="g-mes-label" style="color:var(--p)"></span></div>
-    <div id="g-alerts"></div>
-  </div>
-  <div class="panel">
-    <div class="ptitle"><span class="pdot"></span>Players — clique para detalhes</div>
-    <div id="g-players"></div>
-  </div>
-</div>
-
-<!-- REDES SOCIAIS -->
-<div class="page" id="pg-social">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="s-mes" onchange="renderSocial()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Segmento:</span>
-    <select class="fsel" id="s-seg" onchange="renderSocial()"><option value="todos">Todos</option><option value="LMS">LMS/LXP</option><option value="DHO">DHO</option></select>
-    <div class="fdiv"></div>
-    <span class="flbl">Rede:</span>
-    <select class="fsel" id="s-rede" onchange="renderSocial()"><option value="todas">Todas</option><option value="li">LinkedIn</option><option value="ig">Instagram</option></select>
-  </div>
-  <div class="note">Dados inseridos manualmente na aba "+ Social / NL". Clique em qualquer player para ver análise completa.</div>
-  <div class="g2">
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Posts por player</div><div id="s-posts-bars"></div></div>
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Temas mais abordados</div><div id="s-temas-bars"></div></div>
-  </div>
-  <div class="panel"><div class="ptitle"><span class="pdot"></span>Players — clique para detalhes</div><div id="s-list"></div></div>
-</div>
-
-<!-- NEWSLETTER -->
-<div class="page" id="pg-nl">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="n-mes" onchange="renderNL()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Segmento:</span>
-    <select class="fsel" id="n-seg" onchange="renderNL()"><option value="todos">Todos</option><option value="LMS">LMS/LXP</option><option value="DHO">DHO</option></select>
-  </div>
-  <div class="note">Clique em qualquer player para ver conteúdo e assunto do e-mail mapeado.</div>
-  <div class="panel"><div class="ptitle"><span class="pdot"></span>E-mail marketing por player</div><div id="n-list"></div></div>
-</div>
-
-<!-- ANÚNCIOS -->
-<div class="page" id="pg-ads">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="a-mes" onchange="renderAds()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Plataforma:</span>
-    <select class="fsel" id="a-plat" onchange="renderAds()"><option value="todas">Todas</option><option value="meta">Meta</option><option value="google">Google</option><option value="linkedin">LinkedIn</option></select>
-    <div class="fdiv"></div>
-    <span class="flbl">Segmento:</span>
-    <select class="fsel" id="a-seg" onchange="renderAds()"><option value="todos">Todos</option><option value="LMS">LMS/LXP</option><option value="DHO">DHO</option></select>
-  </div>
-  <div class="note">Clique em qualquer card para ver análise completa e abrir a biblioteca de anúncios.</div>
-  <div id="ads-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px"></div>
-  <div class="g2">
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Total por plataforma</div><div id="a-sov"></div></div>
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Ranking por total</div><div id="a-rank"></div></div>
-  </div>
-</div>
-
-<!-- BUSCA ORGÂNICA -->
-<div class="page" id="pg-busca">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="b-mes" onchange="renderBusca()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Segmento:</span>
-    <select class="fsel" id="b-seg" onchange="renderBusca()"><option value="todos">Todos</option><option value="LMS">LMS/LXP</option><option value="DHO">DHO</option></select>
-  </div>
-  <div class="note">Dados inseridos via aba "+ Social / NL" seção Busca Orgânica. Fonte recomendada: <strong>SimilarWeb</strong> (similarweb.com/website/[dominio]) e <strong>SEMrush</strong>. Os dados abaixo são reais apenas quando preenchidos manualmente.</div>
-  <div class="g2">
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Visitas orgânicas estimadas/mês</div><div id="b-org-bars"></div></div>
-    <div class="panel"><div class="ptitle"><span class="pdot"></span>Visitas pagas estimadas/mês</div><div id="b-pago-bars"></div></div>
-  </div>
-  <div class="panel">
-    <div class="ptitle"><span class="pdot"></span>Detalhamento por player</div>
-    <div class="busca-hdr"><span>Player</span><span>Org/mês</span><span>Pago/mês</span><span>Canal princ.</span><span>Observações</span></div>
-    <div id="b-detail"></div>
-  </div>
-</div>
-
-<!-- ENTRADA ANÚNCIOS -->
-<div class="page" id="pg-entrada-ads">
-  <div class="fbar">
-    <span class="flbl">Registrando mês:</span>
-    <select class="fsel" id="ea-mes" onchange="buildEntradaAds()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <button class="sbtn" onclick="showApiConfig()" style="background:var(--gn)">⚡ Atualizar via Meta API</button>
-    <span style="font-size:11px;color:var(--txm);margin-left:4px">ou preencha manualmente abaixo</span>
-  </div>
-
-  <!-- Painel de configuração da API -->
-  <div id="api-config-panel" style="display:none;background:white;border:1px solid var(--g200);border-radius:10px;padding:14px;margin-bottom:12px">
-    <div class="ptitle"><span class="pdot"></span>Configuração Meta Ad Library API</div>
-    <div style="font-size:11px;color:var(--txm);margin-bottom:10px">Cole seu token de acesso abaixo. Ele fica salvo apenas no seu browser, nunca é enviado a nenhum servidor externo além da Meta.</div>
-    <div style="display:flex;gap:8px;align-items:flex-end;margin-bottom:10px">
-      <div class="fwrap" style="flex:1"><label class="flb">Token de acesso Meta</label><input class="fi" type="password" id="meta-token" placeholder="EAAf..." style="font-family:monospace"></div>
-      <button class="sbtn" onclick="saveToken()">Salvar token</button>
-      <span class="sok" id="token-ok">Salvo!</span>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button class="sbtn" onclick="fetchAllMeta()" id="fetch-btn">Buscar anúncios ativos de todos os players</button>
-      <span id="fetch-status" style="font-size:11px;color:var(--txm)"></span>
-    </div>
-    <div id="fetch-results" style="margin-top:10px"></div>
-  </div>
-
-  <div id="ea-blocks"></div>
-</div>
-
-<!-- ENTRADA SOCIAL + NL + BUSCA -->
-<div class="page" id="pg-entrada-social">
-  <div class="fbar">
-    <span class="flbl">Mês:</span>
-    <select class="fsel" id="es-mes" onchange="buildEntradaSocial()">
-      <option value="fev2026" selected>Fevereiro 2026</option><option value="mar2026">Março 2026</option>
-      <option value="abr2026">Abril 2026</option><option value="mai2026">Maio 2026</option>
-    </select>
-    <div class="fdiv"></div>
-    <div style="display:flex;gap:3px;background:var(--g100);border-radius:8px;padding:3px">
-      <button class="tab active" id="es-tab-social" onclick="switchEsTab('social',this)">Redes Sociais</button>
-      <button class="tab" id="es-tab-nl" onclick="switchEsTab('nl',this)">Newsletter</button>
-      <button class="tab" id="es-tab-busca" onclick="switchEsTab('busca',this)">Busca Orgânica</button>
-      <button class="tab" id="es-tab-alertas" onclick="switchEsTab('alertas',this)">Alertas</button>
+    <div class="card">
+      <div class="section-label">Temas dominantes no mercado (semana)</div>
+      <div class="temas-grid">
+        <span class="tema-tag">IA para RH analítico</span>
+        <span class="tema-tag">Gamificação LMS</span>
+        <span class="tema-tag">ABM + InMail LinkedIn</span>
+        <span class="tema-tag">Ecossistema DHO+LMS</span>
+        <span class="tema-tag">ROI de capacitação</span>
+        <span class="tema-tag">Roadshows presenciais</span>
+        <span class="tema-tag">Conteúdo gratuito IA T&D</span>
+        <span class="tema-tag">Varejo + alta rotatividade</span>
+        <span class="tema-tag">Logística + operações</span>
+        <span class="tema-tag">Certificação IA RH</span>
+        <span class="tema-tag">Desenvolvimento de cultura</span>
+        <span class="tema-tag">Avaliação de desempenho</span>
+      </div>
+      <div class="divider"></div>
+      <div class="section-label">Gap Twygo — ausente nos temas acima</div>
+      <div class="temas-grid">
+        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">IA que CRIA conteúdo</span>
+        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">Webinars integrados (Connect)</span>
+        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">LMS completo + facilidade</span>
+      </div>
     </div>
   </div>
-  <div id="es-body"></div>
-</div>
 
-<!-- HISTÓRICO ANÚNCIOS -->
-<div class="page" id="pg-historico">
-  <div class="fbar">
-    <span class="flbl">Player:</span>
-    <select class="fsel" id="h-player" onchange="renderHist()">
-      <option value="todos">Todos</option>
-      <option>Mobiliza</option><option>Ludos Pro</option><option>Engage</option><option>Woli</option>
-      <option>Revvo</option><option>Scaffold</option><option>Kubo</option><option>EduSense</option>
-      <option>Qulture Rocks</option><option>YouRH</option><option>SmartLeader</option>
-      <option>Afferolab</option><option>Convênia</option><option>Team Culture</option>
-    </select>
-    <div class="fdiv"></div>
-    <span class="flbl">Plataforma:</span>
-    <select class="fsel" id="h-plat" onchange="renderHist()"><option value="todas">Todas</option><option value="meta">Meta</option><option value="google">Google</option><option value="linkedin">LinkedIn</option></select>
+  <div class="card">
+    <div class="section-label">Top 3 Alertas Esta Semana</div>
+    <div class="alert-card alert-alto">
+      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; Qulture (UOL EdTech) — Fusão DHO+LMS + ~200 Google Ads + 67 Meta Ads + 52 LinkedIn Ads</div>
+      <div class="alert-desc">Qulture Rocks uniu Learning Rocks e Ciatech em ecossistema "mais completo de performance e aprendizagem do Brasil". Invadem o espaço LMS com IA e maior orçamento de mídia do mercado. <strong>Ação: criar campanha "IA que cria treinamentos, não só analisa dados".</strong></div>
+    </div>
+    <div class="alert-card alert-alto">
+      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; Scaffold Education — 76 LinkedIn InMail Ads + ABM por verticais + Roadshows presenciais</div>
+      <div class="alert-desc">Scaffold tem a operação GTM mais sofisticada do segmento LMS puro: InMail personalizado com nome do diretor, eventos presenciais como hook, segmentação por logística/varejo/operações. <strong>Ação: escalar LinkedIn InMail com gancho de evento próprio.</strong></div>
+    </div>
+    <div class="alert-card alert-alto">
+      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; YourH — 46 Google Ads ativos (incl. vídeo) no segmento DHO</div>
+      <div class="alert-desc">YourH é o 2º maior investidor em Google Ads no segmento DHO. Se Twygo planeja expansão DHO em 2026, YourH já está estabelecida com orçamento vídeo expressivo. <strong>Ação: mapear keywords YourH antes de expansão.</strong></div>
+    </div>
   </div>
-  <div class="note">Evolução mês a mês por plataforma. Links das bibliotecas no cabeçalho de cada player.</div>
-  <div id="hist-area"></div>
 </div>
+<!-- ===== ALERTAS ===== -->
+<div id="view-alertas" class="view-pane">
+  <div class="alert-card alert-alto">
+    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; QULTURE ROCKS — Fusão UOL EdTech: ecossistema LMS+DHO com maior volume de ads do mercado</div>
+    <div class="alert-desc"><strong>Player:</strong> Qulture Rocks (QULTURE INFORMATICA S.A.) via UOL EdTech, fusão com Learning Rocks e Ciatech<br><strong>Evidências:</strong> ~200 Google Ads | 67 Meta Ads (desde mar/2026) | 52 LinkedIn Ads | Headline: "O ecossistema mais completo de performance e aprendizagem do Brasil" | 1.500+ clientes (Nubank, Cacau Show, Ipiranga, Tigre, Alelo)<br><strong>Criativos-chave:</strong> "O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a IA para ganhar escala" / "Certificação em IA para RH" / "A Qulture.Rocks automatiza esse ciclo inteiro e usa inteligência artificial e dados"<br><strong>Gap Twygo explorar:</strong> Qulture = IA para RH analítico. Twygo = IA para T&D operacional (CRIA conteúdo). Comunicar: "Sophia cria cursos em minutos — Qulture analisa dados de pessoas"<br><strong>Ação imediata:</strong> Landing page comparativa Twygo vs Qulture. Campanha "IA que cria treinamentos, não só analisa dados"</div>
+  </div>
+  <div class="alert-card alert-alto">
+    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; SCAFFOLD EDUCATION — 76 LinkedIn InMail + Roadshows presenciais + ABM por vertical</div>
+    <div class="alert-desc"><strong>Player:</strong> Scaffold Education<br><strong>Evidências:</strong> 76 LinkedIn Ads | 11 Meta Ads (desde jan/2026) | Google Ads com UTMs estruturados | InMails de Vagner Santana (Diretor de Negócios) e Marcos Braga | Eventos presenciais: Roadshow Curitiba (18/03), Campinas | Verticais: logística, varejo, operações<br><strong>Criativos-chave:</strong> "Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão" / Segmento logística: "baixa aderência, retrabalho, falhas operacionais" / Pop culture hook: #ODiaboVestePrada<br><strong>Gap Twygo explorar:</strong> Scaffold tem ROI/métricas mas IA de conteúdo não é foco. Twygo = "Sophia cria o curso antes de você precisar das métricas". Scaffold não tem Twygo Connect (webinars).<br><strong>Ação imediata:</strong> Escalar InMail LinkedIn com gancho de evento/webinar. Criar sequência por vertical.</div>
+  </div>
+  <div class="alert-card alert-alto">
+    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; YOURH — 46 Google Ads ativos (vídeo+display) no espaço DHO pré-Twygo</div>
+    <div class="alert-desc"><strong>Player:</strong> YourH (YOURH LTDA)<br><strong>Evidências:</strong> 46 Google Ads verificados | múltiplos criativos vídeo | LinkedIn Ads confirmados<br><strong>Risco:</strong> Se Twygo expande para DHO em 2026, YourH já tem brand awareness estabelecida via vídeo<br><strong>Ação:</strong> Mapear keywords de YourH. Monitorar site yourh.com.br. Reservar budget para termos DHO antes de expansão.</div>
+  </div>
+  <div class="alert-card alert-medio">
+    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; LUDOS PRO — 34 LinkedIn Ads + 41 Google Ads + 13 Meta Ads com gancho gamificação</div>
+    <div class="alert-desc"><strong>Player:</strong> Ludos Pro (LUDOS PRO TECNOLOGIA E APRENDIZAGEM LTDA)<br><strong>Evidências:</strong> 41 Google Ads | ~13 Meta Ads (último: 28/04/2026, impressões baixas) | 34 LinkedIn Ads | Criativo dominante: "🎯 Aumente engajamento e retenção ✅ missões, pontos, recompensas ✅ +1,5M pessoas treinadas"<br><strong>Gap Twygo:</strong> Ludos usa "IA" no headline mas não explica como funciona. Twygo pode atacar com especificidade: "Sophia cria curso completo em minutos" vs "IA" genérica.<br><strong>Ação:</strong> Criar conteúdo comparativo sobre IA real vs IA marketing. Monitorar volume de impressões (crescendo ou estagnado).</div>
+  </div>
+  <div class="alert-card alert-medio">
+    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; WOLI — Lança T&DX (freemium IA no T&D) como lead gen para profissionais de RH/T&D</div>
+    <div class="alert-desc"><strong>Player:</strong> Woli Tecnologia<br><strong>Evidências:</strong> 2 Meta Ads ativos desde 30/04/2026 | Plataforma T&DX com cursos gratuitos sobre IA no T&D | "Aprenda tudo sobre IA aplicado no T&D para não ficar para trás na carreira ✅ Acesso gratuito"<br><strong>Estratégia:</strong> Freemium de educação para capturar profissionais T&D como leads — estratégia de top-of-funnel interessante<br><strong>Ação:</strong> Twygo deve criar conteúdo educativo sobre IA na criação de treinamentos (blog, YouTube, LinkedIn) para capturar esse público antes da Woli converter.</div>
+  </div>
+  <div class="alert-card alert-medio">
+    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; REVVO — 10 LinkedIn Ads (varejo) + 22 Google Ads + Meta Ads lançados 05/05/2026</div>
+    <div class="alert-desc"><strong>Player:</strong> Revvo (LEO EDUCACAO E PARTICIPACOES EIRELI)<br><strong>Evidências:</strong> 22 Google Ads | ~4 Meta Ads | 10 LinkedIn Ads | Meta Ad lançado HOJE (05/05/2026) — novo teste de criativo | LinkedIn InMail: "Como seria seu dia se 60% do time nas lojas fosse novo" — Learn 360 com 500+ títulos<br><strong>Gap Twygo:</strong> Revvo tem biblioteca própria de conteúdo (LearningFlix, 800h+). Twygo não tem biblioteca — mas Sophia resolve a dor de forma diferente. Comunicar: "Em vez de biblioteca pronta, crie conteúdo personalizado em minutos".<br><strong>Ação:</strong> Monitorar novo criativo Meta de hoje. Criar conteúdo "Conteúdo pronto vs Conteúdo personalizado com IA".</div>
+  </div>
+  <div class="alert-card alert-baixo">
+    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; MOBILIZA — 6 Google Ads, zero Meta, zero LinkedIn. Player em desinvestimento de aquisição.</div>
+    <div class="alert-desc">Sem IA no messaging. Foca em Cursos Prontos + Customizados como serviço. Sem movimentos novos identificados.</div>
+  </div>
+  <div class="alert-card alert-baixo">
+    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; ENGAGE — 4 Google Ads. Claim "#1 do Brasil" mas zero LinkedIn. Sem IA.</div>
+    <div class="alert-desc">Gamificação como diferencial. Atividade publicitária mínima. Sem movimentos novos.</div>
+  </div>
+  <div class="alert-card alert-baixo">
+    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; KUBO LXP — 10 Google Ads + 5 LinkedIn Ads (1 desatualizado de 2025). Sem IA.</div>
+    <div class="alert-desc">Anúncio de CONARH 2025 ainda ativo = desinvestimento em gestão de mídia. Sem movimentos novos.</div>
+  </div>
+  <div class="alert-card alert-baixo">
+    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; SMARTLEADER — Zero Google Ads ativos. Sem atividade detectada.</div>
+    <div class="alert-desc">Anunciante verificado no Google Ads Transparency mas sem criativos ativos. Baixa ameaça de aquisição direta.</div>
+  </div>
+</div>
+<!-- ===== PLAYERS ===== -->
+<div id="view-players" class="view-pane">
+<div style="margin-bottom:8px;font-size:12px;color:var(--txm)">Clique em um player para ver detalhes completos</div>
+<div class="grid3" id="players-grid"></div>
+<div id="player-detail" class="detail-panel"></div>
 </div>
 
+<!-- ===== ANÚNCIOS ===== -->
+<div id="view-ads" class="view-pane">
+  <div class="card">
+    <div class="section-label">Volume de Anúncios Ativos por Player e Canal (05/mai/2026)</div>
+    <table class="matrix-table">
+      <thead><tr><th>Player</th><th>Segmento</th><th>Google Ads</th><th>Meta Ads</th><th>LinkedIn Ads</th><th>Total</th><th>Intensidade</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Qulture Rocks</strong></td><td>DHO</td><td style="color:var(--rd);font-weight:700">~200</td><td style="color:var(--bl);font-weight:700">67</td><td style="color:var(--gn);font-weight:700">52</td><td><strong>~319</strong></td><td><span class="badge badge-alto">MÁXIMA</span></td></tr>
+        <tr><td><strong>Scaffold Education</strong></td><td>LMS</td><td>confirmado (UTM)</td><td>11</td><td style="color:var(--gn);font-weight:700">76</td><td><strong>87+</strong></td><td><span class="badge badge-alto">MUITO ALTA</span></td></tr>
+        <tr><td><strong>YourH</strong></td><td>DHO</td><td style="color:var(--rd);font-weight:700">46</td><td>n/v</td><td>confirmado</td><td><strong>46+</strong></td><td><span class="badge badge-alto">ALTA</span></td></tr>
+        <tr><td>Ludos Pro</td><td>LMS</td><td>41</td><td>13</td><td>34</td><td><strong>88</strong></td><td><span class="badge badge-medio">ALTA</span></td></tr>
+        <tr><td>Revvo</td><td>LMS</td><td>22</td><td>4</td><td>10</td><td><strong>36</strong></td><td><span class="badge badge-medio">MÉDIA</span></td></tr>
+        <tr><td>Kubo LXP</td><td>LXP</td><td>10</td><td>0</td><td>5</td><td><strong>15</strong></td><td><span class="badge badge-baixo">BAIXA</span></td></tr>
+        <tr><td>Mobiliza</td><td>LMS</td><td>6</td><td>0</td><td>0</td><td><strong>6</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
+        <tr><td>Engage</td><td>LMS</td><td>4</td><td>n/v</td><td>0</td><td><strong>4+</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
+        <tr><td>Woli</td><td>LMS</td><td>n/v</td><td>2</td><td>n/v</td><td><strong>2+</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
+        <tr><td>TeamCulture</td><td>DHO</td><td>n/v</td><td>n/v</td><td>n/v</td><td>—</td><td>n/v</td></tr>
+        <tr><td>Edusense</td><td>LXP</td><td>n/v</td><td>n/v</td><td>n/v</td><td>—</td><td>n/v</td></tr>
+        <tr><td>SmartLeader</td><td>DHO</td><td>0</td><td>n/v</td><td>n/v</td><td><strong>0</strong></td><td><span class="badge badge-baixo">ZERO</span></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:8px;font-size:11px;color:var(--txm)">n/v = não verificado nesta coleta | confirmado = presença confirmada sem contagem exata</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="section-label">Criativos Meta Ads — Top Performers (por data + volume)</div>
+      <div class="criativo"><strong>Qulture (mar/2026):</strong> "A transformação não começa na resposta. Começa na pergunta que a gente decide fazer. O Q é esse começo."</div>
+      <div class="criativo"><strong>Qulture (abr/2026):</strong> "O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a IA para ganhar escala, profundidade e precisão."</div>
+      <div class="criativo"><strong>Scaffold (jan/2026):</strong> "Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão dos times."</div>
+      <div class="criativo"><strong>Scaffold (mar/2026):</strong> "Sua operação logística exige precisão, velocidade e padrão. Mas o desenvolvimento do time acompanha essa complexidade?"</div>
+      <div class="criativo"><strong>Ludos Pro (mar/2026):</strong> "🎯 Aumente o engajamento e a retenção de conteúdo de sua equipe! ✅ missões, pontos e recompensas ✅ Líder em gamificação ✅ +1,5M pessoas"</div>
+      <div class="criativo"><strong>Woli (abr/2026):</strong> "Atualize agora suas competências com os cursos gratuitos na plataforma T&DX. Aprenda tudo sobre IA aplicado no T&D. ✅ Acesso gratuito"</div>
+      <div class="criativo"><strong>Revvo (mai/2026):</strong> [Novo criativo lançado hoje — vídeo, sem copy visível na biblioteca]</div>
+    </div>
+    <div class="card">
+      <div class="section-label">Criativos LinkedIn InMail — Top Performers</div>
+      <div class="criativo"><strong>Scaffold (Vagner Santana):</strong> "Olá %FIRSTNAME%, Você foi selecionado para receber este convite: o Scaffold Roadshow, dia 18 de março, em Curitiba. Uma imersão com líderes e especialistas sobre multipotencialidade e capacidade organizacional real."</div>
+      <div class="criativo"><strong>Scaffold (Marcos Braga):</strong> "Estou organizando um evento presencial em Campinas com um grupo seleto de executivos para debater: Como transformar [competências] em resultados."</div>
+      <div class="criativo"><strong>Revvo (Vanessa Malta):</strong> "Oi %FIRSTNAME%, Como seria seu dia se 60% do time nas lojas fosse novo? Criamos o Learn 360: catálogo com 500+ títulos. Webséries, videocasts e pílulas rápidas. Uso direto na plataforma ou no seu LMS."</div>
+      <div class="criativo"><strong>Ludos Pro:</strong> "🎯 Aumente o engajamento e retenção! ✅ missões, pontos e recompensas ✅ Líder em treinamentos gamificados ✅ +1,5M pessoas treinadas"</div>
+      <div class="criativo"><strong>Qulture:</strong> "Avaliar desempenho ainda é um caos na sua empresa? Planilhas soltas, feedbacks genéricos e colaboradores desmotivados?"</div>
+    </div>
+  </div>
+</div>
+<!-- ===== INSIGHTS PMM ===== -->
+<div id="view-insights" class="view-pane">
+  <div class="grid2">
+    <div>
+      <div class="insight-box">
+        <div class="insight-title">💡 Gap #1 — IA de CRIAÇÃO vs IA de ANÁLISE</div>
+        <div class="insight-txt">Todos os concorrentes que mencionam IA (Qulture, Ludos Pro, Scaffold, Edusense) usam IA para ANALISAR dados, RECOMENDAR conteúdo ou AUTOMATIZAR processos de RH. Nenhum comunica IA como motor de CRIAÇÃO DE CONTEÚDO. Twygo Sophia é única neste posicionamento. <strong>Oportunidade: campanha "A IA que cria o treinamento — não só analisa quem fez".</strong></div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">💡 Gap #2 — Completude vs Especialização</div>
+        <div class="insight-txt">O mercado está fragmentando: Ludos Pro = gamificação; Revvo = conteúdo proprietário; Scaffold = ROI operacional; Qulture = DHO+LMS. Nenhum comunica COMPLETUDE como Twygo. Benchmark interno FIN-013 (+119% com gancho IA) confirma que o posicionamento "LMS completo + IA" ressoa. <strong>Oportunidade: reforçar "único que combina plataforma completa com criação de conteúdo por IA".</strong></div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">💡 Gap #3 — LinkedIn InMail como canal subutilizado pela Twygo</div>
+        <div class="insight-txt">Scaffold tem 76 anúncios LinkedIn InMail com personalização ABM (nome do diretor, evento como hook). Twygo tem benchmark FIN-008 de +24% com InMail. Mas o volume de Scaffold é ordens de magnitude maior. <strong>Oportunidade: escalar InMail com criativo de evento (webinar Twygo Connect como hook) e segmentar por vertical (RH/T&D, varejo, logística).</strong></div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">💡 Gap #4 — Woli e a captura de profissionais T&D com conteúdo gratuito</div>
+        <div class="insight-txt">Woli lança T&DX como plataforma freemium de cursos sobre IA no T&D para capturar profissionais de RH. Esta é uma estratégia de top-of-funnel que Twygo não executa. O risco: Woli educando o ICP de Twygo sobre IA, criando preferência de marca antes da decisão de compra. <strong>Oportunidade: criar série de conteúdo educativo "IA na Criação de Treinamentos" (blog + LinkedIn + YouTube) antes que Woli estabeleça autoridade.</strong></div>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box">
+        <div class="insight-title">⚡ Ação imediata #1 — Contra-narrativa Qulture</div>
+        <div class="insight-txt"><strong>Contexto:</strong> Qulture está investindo pesado em "IA para RH" com ~200 Google Ads e 67 Meta Ads. Risco de confusão de mercado entre "IA para DHO" e "IA para T&D operacional".<br><br><strong>Ação:</strong> Criar landing page específica posicionando Twygo vs Qulture com foco em: (1) Twygo = LMS-first com IA de criação; (2) Qulture = DHO-first com IA de análise. Capturar tráfego de termos como "plataforma aprendizagem corporativa IA". Custo/MQL meta: R$93.</div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">⚡ Ação imediata #2 — Benchmark de mídia vs concorrentes</div>
+        <div class="insight-txt"><strong>Contexto:</strong> Qulture (~319 ads), Ludos Pro (88 ads), Scaffold (87+ ads). Twygo precisa avaliar se seu volume está competitivo.<br><br><strong>Ação:</strong> Benchmark interno do volume de ads ativos. Prioridade para Google Ads Search (onde FIN-013 gerou +119%) e LinkedIn InMail (FIN-008 +24%). Dor operacional -35% CPL (FIN-012) reforça foco em Search com gancho de dor.</div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">⚡ Ação imediata #3 — Verticais não ocupadas</div>
+        <div class="insight-txt"><strong>Gap identificado:</strong> Scaffold domina logística/operações e varejo no LinkedIn. Revvo domina varejo com Learn 360. Qulture domina enterprises de RH.<br><br><strong>Oportunidade para Twygo:</strong> Segmentos não atacados de forma específica: (1) Franquias/redes (padronização de treinamento), (2) Saúde/hospitais (compliance + treinamento), (3) Financeiro (regulatório). Criar campanhas verticais com landing pages específicas.</div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-title">⚡ Ação imediata #4 — Defender o claim de IA antes que concorrentes estabeleçam</div>
+        <div class="insight-txt"><strong>Risco:</strong> Múltiplos players usando "IA" sem especificidade (Ludos Pro, Edusense, Scaffold, Qulture). O mercado pode desenvolver "IA fatigue" e desvalorizar o diferencial.<br><br><strong>Ação:</strong> Ser o MAIS ESPECÍFICO sobre IA: "Sophia cria um curso completo de 1 hora em menos de 10 minutos" — número concreto. Usar benchmarks reais de velocidade de criação em todos os materiais de marketing. Evitar "IA integrada" genérico.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== MATRIZ ===== -->
+<div id="view-matriz" class="view-pane">
+  <div class="card">
+    <div class="section-label">Matriz Competitiva — Posicionamento e Diferenciais (05/mai/2026)</div>
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Player</th><th>Segmento</th><th>Headline Principal</th><th>IA?</th><th>Diferencial Central</th><th>ICP</th><th>Ameaça Twygo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--p)">TWYGO</strong></td><td>LMS</td>
+          <td>LMS completo + IA Sophia para criação de conteúdo</td>
+          <td><span class="tag-ia">IA CRIAÇÃO</span></td>
+          <td>Sophia (criação rápida de cursos), completude, Twygo Connect (webinars)</td>
+          <td>RH/T&D empresas médio/grande porte</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>Qulture Rocks</strong></td><td>DHO→LMS</td>
+          <td>Ecossistema mais completo de performance e aprendizagem do Brasil</td>
+          <td><span class="tag-ia">IA ANÁLISE</span></td>
+          <td>DHO+LMS integrado, 1500+ clientes, backing UOL EdTech</td>
+          <td>RH estratégico enterprise</td>
+          <td><span class="badge badge-alto">ALTO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Scaffold Education</strong></td><td>LMS</td>
+          <td>Reduza capacitação em 85%, adesão +125%, custos -97%</td>
+          <td><span class="tag-ia">IA BUILDER</span></td>
+          <td>ROI quantificado, ABM presencial por vertical, BI integrado</td>
+          <td>Operações/logística/varejo</td>
+          <td><span class="badge badge-alto">ALTO</span></td>
+        </tr>
+        <tr>
+          <td>YourH</td><td>DHO</td>
+          <td>n/v</td>
+          <td><span class="tag-noai">n/v</span></td>
+          <td>DHO com alto investimento em Google Ads vídeo</td>
+          <td>RH estratégico</td>
+          <td><span class="badge badge-alto">ALTO (DHO)</span></td>
+        </tr>
+        <tr>
+          <td>Ludos Pro</td><td>LMS</td>
+          <td>Plataforma Gamificada com IA</td>
+          <td><span class="tag-ia">IA (vago)</span></td>
+          <td>Gamificação, +1,5M pessoas treinadas</td>
+          <td>T&D engajamento</td>
+          <td><span class="badge badge-medio">MÉDIO</span></td>
+        </tr>
+        <tr>
+          <td>Revvo</td><td>LMS/LXP</td>
+          <td>A Revvolução da Aprendizagem</td>
+          <td><span class="tag-ia">IA PLATAFORMA</span></td>
+          <td>LearningFlix (plataforma + 800h conteúdo proprietário), varejo ABM</td>
+          <td>Varejo, alta rotatividade</td>
+          <td><span class="badge badge-medio">MÉDIO</span></td>
+        </tr>
+        <tr>
+          <td>Woli</td><td>LMS</td>
+          <td>T&DX — IA aplicada ao T&D</td>
+          <td><span class="tag-ia">IA TEMA</span></td>
+          <td>Freemium educação para profissionais T&D (conteúdo sobre IA)</td>
+          <td>Profissionais T&D</td>
+          <td><span class="badge badge-medio">MÉDIO</span></td>
+        </tr>
+        <tr>
+          <td>TeamCulture</td><td>DHO</td>
+          <td>Potencialize sua gestão de pessoas</td>
+          <td><span class="tag-ia">IA AXEL</span></td>
+          <td>Engajamento+Performance+Talentos integrados, 150+ clientes, Grupo Boticário</td>
+          <td>RH gestão de pessoas 100-10k+</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+        <tr>
+          <td>Edusense</td><td>LXP</td>
+          <td>Plataforma de Gestão de Habilidades</td>
+          <td><span class="tag-ia">IA SKILLS</span></td>
+          <td>Social learning, recomendação por habilidades, chatbot de jornada</td>
+          <td>T&D skills-focused</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+        <tr>
+          <td>Engage</td><td>LMS</td>
+          <td>LMS #1 do Brasil</td>
+          <td><span class="tag-noai">SEM IA</span></td>
+          <td>Gamificação, claim de liderança de mercado, 3M pessoas/600+ empresas</td>
+          <td>T&D engajamento</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+        <tr>
+          <td>Mobiliza</td><td>LMS</td>
+          <td>Cursos Prontos + LMS personalizado</td>
+          <td><span class="tag-noai">SEM IA</span></td>
+          <td>Biblioteca de cursos prontos + customizados, app white-label</td>
+          <td>T&D conteúdo</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+        <tr>
+          <td>Kubo LXP</td><td>LXP</td>
+          <td>Plataforma LXP para gestão da educação corporativa</td>
+          <td><span class="tag-noai">SEM IA</span></td>
+          <td>Centralização de gestão, automação, NDD TECH LTDA</td>
+          <td>T&D gestão</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+        <tr>
+          <td>SmartLeader</td><td>DHO</td>
+          <td>n/v</td>
+          <td><span class="tag-noai">n/v</span></td>
+          <td>Zero Google Ads ativos — baixa presença digital</td>
+          <td>DHO liderança</td>
+          <td><span class="badge badge-baixo">BAIXO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /dash -->
 <script>
-// ═══════════════════════════════════════════════════════════════════
-// DADOS BASE — adicione novos meses no objeto BASE abaixo
-// ═══════════════════════════════════════════════════════════════════
-var MES = {
-  fev2026:'Fevereiro 2026', mar2026:'Março 2026',
-  abr2026:'Abril 2026', mai2026:'Maio 2026', jun2026:'Junho 2026'
-};
-
-// Links de biblioteca de anúncios extraídos do relatório de fevereiro
-// Links sociais: preencha/corrija via aba "+ Social / NL" > Redes Sociais
-var PLAYERS = [
-  {name:'Mobiliza',seg:'LMS',dom:'mobiliza.com.br',
-   social:{li:'https://www.linkedin.com/company/mobilizaead/',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=205967299421126',
-          google:'https://adstransparency.google.com/?region=BR&domain=mobiliza.com.br',
-          linkedin:''}},
-  {name:'Ludos Pro',seg:'LMS',dom:'ludospro.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=119800505385425',
-          google:'https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=ludos+pro&countries=BR'}},
-  {name:'Engage',seg:'LMS',dom:'engage.bz',
-   social:{li:'',ig:''},
-   links:{meta:'',
-          google:'https://adstransparency.google.com/?region=BR&domain=engage.bz',
-          linkedin:''}},
-  {name:'Next LMS',seg:'LMS',dom:'nextlms.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'',google:'',linkedin:''}},
-  {name:'Woli',seg:'LMS',dom:'woli.app',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=1470440886550691',
-          google:'https://adstransparency.google.com/advertiser/AR14482849830595985409?region=BR',
-          linkedin:''}},
-  {name:'Revvo',seg:'LMS',dom:'revvo.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bdirection%5d=desc&sort_data%5bmode%5d=total_impressions&view_all_page_id=474671152723516',
-          google:'https://adstransparency.google.com/?region=BR&domain=revvo.com.br',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=revvo&countries=BR'}},
-  {name:'Scaffold',seg:'LMS',dom:'scaffoldeducation.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=166079413908756',
-          google:'https://adstransparency.google.com/?region=BR',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=scaffold&countries=BR'}},
-  {name:'EduSense',seg:'LMS',dom:'edusense.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'',google:'',linkedin:''}},
-  {name:'Kubo',seg:'LMS',dom:'kubolxp.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=102271805201087',
-          google:'https://adstransparency.google.com/?region=BR&domain=kubolxp.com.br',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=kubo+lxp&countries=BR'}},
-  {name:'Qulture Rocks',seg:'DHO',dom:'qulture.rocks',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=304821343223801',
-          google:'https://adstransparency.google.com/?region=BR&domain=qulture.rocks',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=Qulture+Rocks&countries=BR'}},
-  {name:'Team Culture',seg:'DHO',dom:'teamculture.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'',google:'',linkedin:''}},
-  {name:'YouRH',seg:'DHO',dom:'yourh.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=304821343223801',
-          google:'https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=yourh&countries=BR'}},
-  {name:'SmartLeader',seg:'DHO',dom:'smartleader.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=225609054273681',
-          google:'https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR',
-          linkedin:''}},
-  {name:'Afferolab',seg:'DHO',dom:'afferolab.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=546856885363202',
-          google:'https://adstransparency.google.com/?region=BR&domain=afferolab.com.br',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=Afferolab&countries=BR'}},
-  {name:'Convênia',seg:'DHO',dom:'convenia.com.br',
-   social:{li:'',ig:''},
-   links:{meta:'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&is_targeted_country=false&media_type=all&search_type=page&sort_data%5bmode%5d=total_impressions&sort_data%5bdirection%5d=desc&view_all_page_id=298180803629043',
-          google:'https://adstransparency.google.com/?region=BR&domain=convenia.com.br',
-          linkedin:'https://www.linkedin.com/ad-library/search?accountOwner=convenia&countries=BR'}}
+var playersData = [
+  {id:'qulture',name:'Qulture Rocks',seg:'DHO',ameaca:'alto',ia:true,gads:'~200',meta:'67',li:'52',
+   headline:'O ecossistema mais completo de performance e aprendizagem do Brasil',
+   dif:'Fusao Qulture+Learning Rocks+Ciatech (UOL EdTech). DHO+LMS integrado. 1500+ clientes: Nubank, Cacau Show, Ipiranga, Tigre, Alelo.',
+   icp:'RH estratégico enterprise',
+   msgIA:'IA para automação de ciclos de gestão de desempenho, análise de dados, geração de insights — foco analítico/operacional de RH, NAO criação de conteúdo',
+   criativos:['A transformação não começa na resposta. Começa na pergunta que a gente decide fazer.','O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a Inteligência Artificial para ganhar escala','Certificação em IA para RH — a maioria ainda está usando de forma superficial','A Qulture.Rocks automatiza esse ciclo inteiro, integra todos os processos em um só lugar e usa inteligência artificial e dados','Avaliar desempenho ainda é um caos na sua empresa? Planilhas soltas, feedbacks genéricos e colaboradores desmotivados?'],
+   gap:'Qulture = IA para RH analítico. Twygo = IA para T&D operacional (CRIA conteúdo). Comunicar: Sophia cria cursos em minutos — Qulture analisa dados de pessoas.',
+   movimentos:'Fusão operacional de 3 marcas publicada no site. ~200 Google Ads e 67 Meta Ads indicam ofensiva de market share massiva em 2026. Certificação em IA para RH como produto de lead gen.'},
+  {id:'scaffold',name:'Scaffold Education',seg:'LMS',ameaca:'alto',ia:true,gads:'UTM confirmado',meta:'11',li:'76',
+   headline:'PLATAFORMA LMS, LXP E EAD — Reduza capacitação 85%, adesão +125%, custos -97%',
+   dif:'ROI quantificado em 3 métricas. ABM presencial por vertical (logística/varejo/operações). BI integrado. 600 mil pessoas impactadas. Roadshows físicos como pipeline.',
+   icp:'Operações, logística, varejo — segmentos com alta necessidade de padronização',
+   msgIA:'Construtor de Cursos com IA mencionado mas não é diferencial central — métricas de ROI dominam o messaging',
+   criativos:['Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão dos times','Sua operação logística exige precisão, velocidade e padrão. Mas o desenvolvimento do time acompanha essa complexidade?','#ODiaboVestePrada — analogia para desenvolvimento e sustentação de performance','InMail Vagner Santana: Scaffold Roadshow Curitiba 18/03/2026 — imersão com líderes e especialistas (GRATUITO, poucas vagas)','InMail Marcos Braga: Evento presencial Campinas — grupo seleto de executivos'],
+   gap:'Scaffold forte em ROI/métricas mas IA de conteúdo não é foco central. Twygo: Sophia cria o curso ANTES de você precisar das métricas. Scaffold não tem webinars (Twygo Connect).',
+   movimentos:'Volume LinkedIn acima de 75 anúncios = campanha ABM nacional. Roadshow como produto de marketing sofisticado. Blog ativo com conteúdo de liderança e IA.'},
+  {id:'yourh',name:'YourH',seg:'DHO',ameaca:'alto',ia:false,gads:'46',meta:'n/v',li:'confirmado',
+   headline:'(site não acessível nesta coleta)',
+   dif:'Alto investimento em Google Ads vídeo + display no segmento DHO. Segundo maior investidor Google Ads do radar DHO.',
+   icp:'RH estratégico',
+   msgIA:'Não verificado',
+   criativos:['Criativos não acessíveis — somente contagem confirmada (46 Google Ads, inclui vídeo)'],
+   gap:'Se Twygo planeja expansão DHO em 2026, YourH já está estabelecida com orçamento substancial. Mapear keywords antes de entrar no segmento.',
+   movimentos:'46 anúncios Google com vídeo = awareness play expressivo. Necessita monitoramento aprofundado.'},
+  {id:'ludospro',name:'Ludos Pro',seg:'LMS',ameaca:'medio',ia:true,gads:'41',meta:'~13',li:'34',
+   headline:'Plataforma Gamificada com IA para treinamento e desenvolvimento',
+   dif:'Gamificação (missões, pontos, recompensas) como diferencial principal. +1,5 milhão de pessoas treinadas. IA mencionada mas não explicada.',
+   icp:'T&D focado em engajamento',
+   msgIA:'IA no headline mas gamificação é o verdadeiro diferencial. IA não especificada.',
+   criativos:['🎯 Aumente o engajamento e a retenção de conteúdo de sua equipe!','✅ Plataforma intuitiva com missões, pontos e recompensas','✅ Líder no mercado como plataforma de treinamentos gamificados','✅ +1,5 milhão de pessoas treinadas','Conheça a melhor plataforma gamificada!'],
+   gap:'Ludos usa IA no headline mas não explica. Twygo pode atacar com especificidade: Sophia cria curso completo em minutos — vs IA genérica de Ludos.',
+   movimentos:'Novo Meta Ad lançado 28/04/2026 com volume baixo — possível teste de criativo. LinkedIn com 34 anúncios indica expansão de canal.'},
+  {id:'revvo',name:'Revvo',seg:'LMS/LXP',ameaca:'medio',ia:true,gads:'22',meta:'~4',li:'10',
+   headline:'A Revvolução da Aprendizagem — LearningFlix + Experiências de Aprendizagem',
+   dif:'LearningFlix (plataforma + 800h+ conteúdo proprietário + 500+ títulos). IA integrada. Forte posição em varejo (alta rotatividade). Learn 360 como produto de conteúdo.',
+   icp:'Varejo, empresas com alta rotatividade de equipe',
+   msgIA:'IA como componente do LearningFlix — não diferencial principal comunicado',
+   criativos:['InMail Vanessa Malta: Como seria seu dia se 60% do time nas lojas fosse novo?','Learn 360: catálogo 500+ títulos prontos, webséries, videocasts, pílulas — uso na plataforma ou no seu LMS','O maior benchmarking de aprendizagem [campanha LinkedIn]','Anúncio vídeo Meta lançado HOJE 05/05/2026 — novo criativo em teste'],
+   gap:'Revvo tem forte biblioteca de conteúdo proprietário — gap real da Twygo. Mas Sophia resolve a dor de forma diferente: criar conteúdo personalizado vs biblioteca pronta.',
+   movimentos:'Meta Ad lançado hoje (05/05/2026) com 4h de veiculação — possível nova campanha. LinkedIn InMail com foco em varejo.'},
+  {id:'woli',name:'Woli',seg:'LMS',ameaca:'medio',ia:true,gads:'n/v',meta:'2',li:'n/v',
+   headline:'T&DX — Aprenda IA aplicada ao T&D (cursos gratuitos)',
+   dif:'Plataforma T&DX com cursos gratuitos sobre IA no T&D para profissionais de RH — modelo freemium para top-of-funnel.',
+   icp:'Profissionais de T&D e RH (lead gen)',
+   msgIA:'IA como TEMA de treinamento (treinar profissionais SOBRE IA) vs IA como ferramenta da plataforma',
+   criativos:['Atualize agora suas competências com os cursos gratuitos na plataforma T&DX','Aprenda tudo sobre IA aplicado no T&D para não ficar para trás na carreira','✅ Acesso gratuito ✅ Conteúdo atual'],
+   gap:'Woli educando o ICP de Twygo sobre IA antes da decisão de compra. Twygo deve criar conteúdo similar para capturar o mesmo público.',
+   movimentos:'Lançamento T&DX em 30/04/2026 como produto freemium — nova estratégia de top-of-funnel.'},
+  {id:'teamculture',name:'TeamCulture',seg:'DHO',ameaca:'baixo',ia:true,gads:'n/v',meta:'n/v',li:'n/v',
+   headline:'Potencialize sua gestão de pessoas — Hub com IA Axel',
+   dif:'Módulos integrados: Engajamento (10 Pilares), Performance (OKRs), Gestão de Talentos (360/PDI), Pesquisas. IA Axel para insights. 150+ clientes em 37 países: Grupo Boticário (+17pp engajamento), AMBEV Tech (6o GPTW), Meta.',
+   icp:'RH gestão de pessoas empresas 100-10k+ colaboradores',
+   msgIA:'IA Axel para diagnóstico mensal, alertas preditivos de desengajamento, recomendações personalizadas, Score de Liderança',
+   criativos:['Quanto custa não investir em gestão de pessoas?','NR-1: prazo para adequação aos riscos psicossociais se aproxima (banner de urgência)','Dados que conversam entre si — pesquisa de engajamento alimenta o PDI'],
+   gap:'TeamCulture é DHO puro — não compete diretamente com LMS. Possível cross-sell para clientes Twygo que precisam de DHO.',
+   movimentos:'Banner de urgência NR-1 em toda a homepage — aproveitando prazo regulatório como gatilho de conversão.'},
+  {id:'edusense',name:'Edusense',seg:'LXP',ameaca:'baixo',ia:true,gads:'n/v',meta:'n/v',li:'n/v',
+   headline:'Plataforma de Gestão de Habilidades — LXP com IA, Gamificação e Integrações',
+   dif:'Social Learning, chatbot de acompanhamento de jornada, recomendação automática de conteúdo por skills/desempenho, API omnichannel.',
+   icp:'T&D focado em gestão de competências e habilidades',
+   msgIA:'IA para recomendação de conteúdo e gestão de habilidades — foco em skills framework',
+   criativos:['Conteúdo de site: plataforma flexível adaptada às necessidades e estratégia de desenvolvimento'],
+   gap:'Edusense foca em skills management — nicho mais técnico que Twygo. Baixa sobreposição direta.',
+   movimentos:'Sem movimentos de mídia identificados nesta coleta.'},
+  {id:'engage',name:'Engage',seg:'LMS',ameaca:'baixo',ia:false,gads:'4',meta:'n/v',li:'0',
+   headline:'LMS #1 do Brasil — transforme treinamentos com gamificação',
+   dif:'Claim de liderança de mercado. Gamificação automatizada. 3 milhões de pessoas em 600+ empresas.',
+   icp:'T&D engajamento generalista',
+   msgIA:'Sem IA comunicada',
+   criativos:['LMS para empresas que precisam capacitar colaboradores','Transforme seus treinamentos com a Gamificação'],
+   gap:'Claim #1 Brasil é defensável — Twygo pode criar comparativo sobre completude de features. Engage não comunica facilidade de uso nem IA.',
+   movimentos:'Atividade publicitária mínima. Player aparentemente em consolidação.'},
+  {id:'mobiliza',name:'Mobiliza',seg:'LMS',ameaca:'baixo',ia:false,gads:'6',meta:'0',li:'0',
+   headline:'Acelere o lançamento com Cursos Prontos — LMS + Cursos Customizados',
+   dif:'Cursos Prontos (biblioteca), Cursos Customizados (serviço humano), LMS plataforma, App white-label.',
+   icp:'T&D que precisa de conteúdo pronto rapidamente',
+   msgIA:'Sem IA comunicada em nenhum canal',
+   criativos:['Cursos Prontos — Deixe com nosso time a criação de seus Cursos Customizados'],
+   gap:'Mobiliza não comunica IA. Foco em serviço de conteúdo humano. Twygo pode destacar Sophia como alternativa mais rápida e barata vs serviço humano de Mobiliza.',
+   movimentos:'Zero Meta Ads, zero LinkedIn. Desinvestimento em aquisição paga.'},
+  {id:'kubo',name:'Kubo LXP',seg:'LXP',ameaca:'baixo',ia:false,gads:'10',meta:'0',li:'5',
+   headline:'Plataforma LXP para gestão da educação corporativa',
+   dif:'Centralização de gestão de treinamentos, automação, aprendizado fora do horário comercial. Tecnologia via NDD TECH LTDA.',
+   icp:'T&D gestão centralizada',
+   msgIA:'Sem IA comunicada',
+   criativos:['Você já preparou um conteúdo incrível e viu o engajamento despencar?','Se sua equipe só pode aprender das 9h às 18h, você está limitando o crescimento','Kubo no CONARH 2025 [anúncio desatualizado ainda ativo]'],
+   gap:'Kubo sem IA. Anúncio CONARH 2025 desatualizado = baixa maturidade de mídia. Oportunidade de ataque no tema de engajamento de conteúdo.',
+   movimentos:'Volume estagnado. Anúncio de evento de 2025 ainda ativo = desinvestimento.'},
+  {id:'smartleader',name:'SmartLeader',seg:'DHO',ameaca:'baixo',ia:false,gads:'0',meta:'n/v',li:'n/v',
+   headline:'(site não acessível nesta coleta)',
+   dif:'Zero atividade publicitária paga detectada. SMARTLEADER DESENVOLVIMENTO ORGANIZACIONAL LTDA verificado mas sem anúncios.',
+   icp:'DHO liderança',
+   msgIA:'Não verificado',
+   criativos:['Nenhum criativo encontrado'],
+   gap:'Baixa ameaça de aquisição direta.',
+   movimentos:'Nenhum movimento identificado.'}
 ];
 
-// ═══════════════════════════════════════════════════════════════════
-// BASE DE DADOS — Fev/2026 real + Mar/2026 e Abr/2026 com alertas confirmados
-// Adicione novos meses copiando a estrutura abaixo
-// ═══════════════════════════════════════════════════════════════════
-var BASE = {
-  fev2026: {
-    alertas:[
-      {n:'alto',t:'<b>Qulture Rocks</b> lançou Sapiência (streaming de conteúdos). Oferta fundo de funil em 25/02: tabela preços 2025 + ingresso evento abril + trial do Sapiência.'},
-      {n:'alto',t:'<b>Scaffold Education</b> RoadShow Curitiba confirmado para 18/03 no Hard Rock Café — tema: Multipotencialidade como Vantagem Competitiva.'},
-      {n:'medio',t:'<b>EduSense</b> criou Learning Awards com 4 categorias premiando clientes — gera cases e materiais orgânicos.'},
-      {n:'medio',t:'<b>Engage</b> apagou todos os posts do Instagram e não publicou no LinkedIn. Sinal de reestruturação.'},
-      {n:'baixo',t:'<b>Ludos Pro</b> apareceu em matéria em mídia e ganhou Edtech no Ranking 100 Open Startups.'}
-    ],
-    temas:['NR-1 e saúde mental','Gamificação e engajamento','IA aplicada a T&D','Eventos e RoadShows','ROI de treinamentos'],
-    players:[
-      {name:'Mobiliza',seg:'LMS',li:9,ig:9,temas:['Conteúdos Prontos','Desafios de gestor T&D','Material rico'],tom:'Profissional, direto, focado em resultados',pu:'Empresas médio a grande porte, gestores de RH e L&D',pos:'LMS focado em educação corporativa com automação e escalabilidade.',insights:'Concentra esforços em Search no Google Ads. Clientes receberam selos de engajamento.',email:6,email_det:'6 envios com os mesmos conteúdos das redes sociais, mas com outra identidade visual.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Ludos Pro',seg:'LMS',li:7,ig:8,temas:['Gamificação','Onboarding','Salário Emocional'],tom:'Descontraído, inovador, focado em engajamento',pu:'Empresas que buscam engajamento, startups e tech',pos:'LMS gamificado. Diferencial: aprendizado lúdico para combater baixa adesão.',insights:'Apareceu em matéria em mídia. Ganhou Edtech no Ranking 100 Open Startups.',email:4,email_det:'3 newsletters com conteúdos do LinkedIn + 1 e-mail de produto sobre IA e Gamificação.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Engage',seg:'LMS',li:0,ig:0,temas:['Nenhuma ação identificada'],tom:'Moderno, focado em cultura, humanizado',pu:'RH, comunicação interna, empresas que valorizam cultura',pos:'Ferramenta de engajamento e comunicação interna.',insights:'Instagram apagou todos os posts. LinkedIn: zero posts em fevereiro. Sinal de reestruturação.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Next LMS',seg:'LMS',li:1,ig:2,temas:['IA - Tutoria de IA','Convite para conhecer a plataforma'],tom:'Focado em solução',pu:'Empresas que buscam IA em T&D',pos:'Comunicação focada em solução e IA.',insights:'Focam na solução e não na dor do cliente.',email:1,email_det:'1 case: 90% de engajamento em cliente.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Woli',seg:'LMS',li:4,ig:4,temas:['T&D com IA','Unificação de funcionalidades','Webinar liderança'],tom:'Reforço da palavra IA, comunicação de eventos',pu:'Empresas que buscam LMS mobile',pos:'LMS com gamificação e mobilidade. Só Search no Google.',insights:'Live gratuita sobre liderança. Não comunicam o Estúdio de Criação.',email:1,email_det:'Divulgação da Live sobre Primeira Liderança de Março.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Revvo',seg:'LMS',li:7,ig:6,temas:['Eventos','Expansão América Latina','Podcast RevvoCast'],tom:'Inovador, transformador, linguagem jovem',pu:'Grandes empresas, Diretores de RH e T&D',pos:'LMS/LXP + LearningFlix (800h+) + Consultoria. 10+ anos.',insights:'RevvoCast lançado. HR Mind Move 26-28/02.',email:1,email_det:'Newsletter com complemento dos posts.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Scaffold',seg:'LMS',li:25,ig:20,temas:['Estratégia de negócio por pessoas e tecnologia','RoadShow Curitiba 18/03'],tom:'Técnico, educativo, consultivo',pu:'Gestores de T&D que buscam design instrucional',pos:'Plataforma LMS + consultoria educacional. Foco em trilhas e design instrucional.',insights:'RoadShow 18/03 Curitiba Hard Rock Café. Post "All her fault" com 13k curtidas.',email:0,email_det:'Não trabalham com mailing.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'EduSense',seg:'LMS',li:6,ig:6,temas:['IA aplicada a Educação','NR-1','Skills','Learning Awards'],tom:'Educativo, cases e validação social',pu:'Empresas que buscam mentoria e aprendizado personalizado',pos:'Cases quinzenais e validação social. Learning Awards com 4 categorias.',insights:'Sem anúncios. Learning Awards: jantar como prêmio. Gera cases orgânicos.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Kubo',seg:'LMS',li:15,ig:15,temas:['T&D como retenção de talentos','NR-1','Franqueadores'],tom:'Inovador, centrado no usuário, tecnológico',pu:'Empresas que buscam modernizar T&D com foco em UX',pos:'LXP centrada no colaborador. Personalização e engajamento.',insights:'Presença digital intensa. Webinars sobre dia-a-dia do RH. Identidade visual renovada.',email:2,email_det:'Fluxo quinzenal para conversão em eventos e vendas.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Qulture Rocks',seg:'DHO',li:15,ig:15,temas:['Gestão de desempenho','OKRs','Sapiência'],tom:'Autoritativo, educativo, moderno',pu:'RHs estratégicos, gestores de pessoas, empresas de tecnologia',pos:'Líder em Gestão de Desempenho e Cultura na América Latina. Inbound agressivo + Founder-Led.',insights:'Oferta fundo de funil 25/02: preço 2025 + ingresso evento + trial Sapiência. Site reestruturado.',email:1,email_det:'Oferta fundo de funil: tabela preços + evento abril + trial Sapiência.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Team Culture',seg:'DHO',li:8,ig:2,temas:['IA para RH','ROI de Treinamentos','Live com CEO'],tom:'Informativo, foco em IA e ROI',pu:'RH que busca cultura organizacional',pos:'Live com CEO sobre ROI em Gestão de Pessoas.',insights:'Canais não são priorizados. Baixo engajamento. Sem anúncios.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'YouRH',seg:'DHO',li:6,ig:12,temas:['Liderança','Feedback','Turnover','Humanização nos vídeos'],tom:'Funcional, direto, processual',pu:'PMEs, gestores de DP/RH operacionais',pos:'Software de RH para PMEs. Instagram com dobro de representatividade.',insights:'Aumento de 50% posts no Instagram vs mês anterior.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'SmartLeader',seg:'DHO',li:0,ig:13,temas:['Estruturas organizacionais','HR4Results','Vídeos com IA'],tom:'Profissional, focado em crescimento',pu:'Gestores de RH focados em T&D',pos:'Especialista em liderança e PDI. Instagram como canal principal.',insights:'13 posts Instagram. Zero no LinkedIn. Publicações sem conexão com público.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Afferolab',seg:'DHO',li:14,ig:14,temas:['Lives com empreendedores','Cases e clientes','Tendências T&D'],tom:'Sofisticado, líder de mercado, visionário',pu:'C-Level, Diretores de RH, Grandes Empresas',pos:'Maior ecossistema de aprendizagem do Brasil. LMS+LXP+Consultoria+Franquias.',insights:'35% das publicações com Cases ou clientes. Live com CFO. Lab Partners em expansão.',email:0,email_det:'Não identificado.',busca:{org:0,pago:0,canal:'',obs:''}},
-      {name:'Convênia',seg:'DHO',li:6,ig:12,temas:['Amplitude da plataforma','Atualizações trabalhistas','Eventos com IA'],tom:'Prático, eficiente, resolutivo',pu:'Analistas de DP, gestores de RH de PMEs',pos:'Gestão de DP e RH para PMEs. Automação e burocracia zero.',insights:'3 publicações semanais. Instagram com dobro de publicações vs LinkedIn.',email:1,email_det:'Apresentação da ferramenta e CTA para PQL.',busca:{org:0,pago:0,canal:'',obs:''}}
-    ],
-    ads:{
-      Mobiliza:{meta:0,google:1,linkedin:0,status:'Reduzido',obs:'Apenas Search. Campanhas de Search ativas.'},
-      'Ludos Pro':{meta:3,google:46,linkedin:13,status:'Ativo',obs:'Gamificação, prova social, criação de cursos com IA.'},
-      Engage:{meta:0,google:9,linkedin:0,status:'Reduzido',obs:'Só Google: comunicação interna e engajamento corporativo.'},
-      'Next LMS':{meta:0,google:0,linkedin:0,status:'Inativo',obs:'Sem campanhas ativas.'},
-      Woli:{meta:0,google:20,linkedin:0,status:'Reduzido',obs:'Só Search: LMS mobile e aprendizado flexível.'},
-      Revvo:{meta:0,google:54,linkedin:9,status:'Ativo',obs:'Google: captura de demanda. LinkedIn: decisores B2B.'},
-      Scaffold:{meta:7,google:52,linkedin:53,status:'Ativo',obs:'Meta: e-books e webinars. Google: T&D técnico. LinkedIn: InMail para roadshows.'},
-      EduSense:{meta:0,google:0,linkedin:0,status:'Inativo',obs:'Sem anúncios ativos.'},
-      Kubo:{meta:0,google:9,linkedin:6,status:'Ativo',obs:'LXP e experiência do colaborador.'},
-      'Qulture Rocks':{meta:38,google:200,linkedin:62,status:'Ativo',obs:'Materiais ricos, webinars, OKRs, gestão de desempenho.'},
-      'Team Culture':{meta:0,google:0,linkedin:0,status:'Inativo',obs:'Sem anúncios.'},
-      YouRH:{meta:0,google:52,linkedin:4,status:'Ativo',obs:'Google: software RH. LinkedIn: material rico para RH.'},
-      SmartLeader:{meta:0,google:40,linkedin:0,status:'Reduzido',obs:'Só Google: avaliação de desempenho e PDI.'},
-      Afferolab:{meta:8,google:26,linkedin:378,status:'Ativo',obs:'Meta: tendências T&D. LinkedIn: maior volume — liderança de pensamento.'},
-      'Convênia':{meta:6,google:200,linkedin:42,status:'Ativo',obs:'Meta: admissão digital. Google: sistema RH. LinkedIn: gestores de RH.'}
-    }
-  },
-  mar2026: {
-    // DADOS CONFIRMADOS VIA WEB SEARCH — posts/NL/busca em aberto para preenchimento manual
-    alertas:[
-      {n:'alto',t:'<b>Scaffold Education</b> realizou RoadShow Curitiba em 18/03 no Hard Rock Café com tema "Multipotencialidade como Vantagem Competitiva". Painelistas: CEO da Mobi7, Michelin, VendaMais, BBM Logística.'},
-      {n:'alto',t:'<b>Scaffold</b> confirmou próximo RoadShow em São Paulo para 22/04. Estratégia de expansão de eventos contínua.'},
-      {n:'medio',t:'<b>Qulture Rocks</b> lançou curso gratuito de Gestão de Desempenho em março — mentoria do fundador Kiko + CPOs de OLX, Neoway e C&A. Disponível por tempo limitado.'},
-      {n:'medio',t:'<b>Afferolab</b> publicou estudo Skill-Based Brasil 2025 + conteúdo sobre tendências T&D 2026. Lab Partners (franquias) em expansão ativa.'},
-      {n:'baixo',t:'<b>Revvo</b> com RevvoCast em pleno funcionamento — episódios toda terça-feira nas principais plataformas de streaming.'}
-    ],
-    temas:['Multipotencialidade e vantagem competitiva','Curso gratuito Gestão de Desempenho','Skill-based e IA','Eventos e roadshows','RevvoCast e podcasts T&D'],
-    players:null, // null = herda estrutura de fev2026, dados de social/NL/busca a preencher
-    ads:{} // a preencher via aba "+ Anúncios"
-  },
-  abr2026: {
-    alertas:[
-      {n:'alto',t:'<b>Scaffold Education</b> realizará RoadShow São Paulo em 22/04 — continuação da série de eventos itinerantes.'},
-      {n:'medio',t:'<b>Qulture Rocks</b> com evento presencial em abril — mencionado na oferta fundo de funil de fevereiro como destino de leads qualificados.'},
-      {n:'baixo',t:'<b>Afferolab</b> continua publicando sobre skill-based e desafios organizacionais 2026 — posicionamento de liderança de pensamento.'}
-    ],
-    temas:['Eventos presenciais','Skill-based e gestão de pessoas','Tendências T&D 2026'],
-    players:null,
-    ads:{}
-  }
-};
-
-// Store para dados inseridos manualmente
-var STORE = {};
-
-function getBase(mes){ return BASE[mes] || STORE[mes]; }
-function getData(mes){
-  var b=getBase(mes);
-  if(!b) return {alertas:[],temas:[],players:getPlayers(mes),ads:{}};
-  return {
-    alertas:b.alertas||[],
-    temas:b.temas||[],
-    players:b.players||getPlayers(mes),
-    ads:b.ads||{}
-  };
-}
-function getPlayers(mes){
-  // herda estrutura de fev2026 mas zera dados mensais para meses sem base própria
-  var isBase=!!BASE[mes]&&!!BASE[mes].players;
-  var base=JSON.parse(JSON.stringify(BASE.fev2026.players));
-  // para meses que não têm players próprios na BASE, zera campos que variam por mês
-  if(!isBase){
-    base=base.map(function(p){
-      return Object.assign(p,{li:0,ig:0,email:0,email_det:'Não identificado.',insights:'',busca:{org:0,pago:0,canal:'',obs:''}});
-    });
-  }
-  // mescla com STORE se existir (dados salvos manualmente)
-  var s=STORE[mes]&&STORE[mes].players;
-  if(!s) return base;
-  return base.map(function(p){
-    var sv=s.find(function(x){return x.name===p.name;});
-    return sv?Object.assign(p,sv):p;
-  });
-}
-function getAds(mes){
-  var b=getBase(mes);
-  var ba=(b&&b.ads)||{};
-  var sa=(STORE[mes]&&STORE[mes].ads)||{};
-  return Object.assign({},ba,sa);
-}
-function ensureStore(mes){
-  if(!STORE[mes]) STORE[mes]={alertas:[],temas:[],players:null,ads:{}};
+function showView(v) {
+  document.querySelectorAll('.view-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
 }
 
-// MODAL
-function openM(t,h){ document.getElementById('mtitle').textContent=t; document.getElementById('mbody').innerHTML=h; document.getElementById('mbg').classList.add('open'); }
-function closeMod(e){ if(!e||e.target===document.getElementById('mbg')) document.getElementById('mbg').classList.remove('open'); }
-function showOk(id){ var el=document.getElementById(id); if(el){el.style.display='inline';setTimeout(function(){el.style.display='none';},2000);}}
-
-function pModal(name,mes){
-  var d=getData(mes); var p=d.players.find(function(x){return x.name===name;}); if(!p) return;
-  var ads=getAds(mes); var pa=ads[name]||{meta:0,google:0,linkedin:0,obs:''};
-  var pl=PLAYERS.find(function(x){return x.name===name;});
-  var liLink=pl?pl.social.li:''; var igLink=pl?pl.social.ig:'';
-  openM(name+' — '+MES[mes],
-    '<div class="msec"><div class="mlbl">Segmento</div><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
-    +'<div class="msec"><div class="mlbl">Posicionamento</div><div class="mtxt">'+p.pos+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Tom de voz</div><div class="mtxt">'+p.tom+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Público-alvo</div><div class="mtxt">'+p.pu+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Posts em '+MES[mes]+'</div><div class="mtxt" style="display:flex;align-items:center;gap:10px">'
-      +(liLink?'<a href="'+liLink+'" target="_blank" style="color:#0A66C2;font-weight:600;text-decoration:none">LinkedIn: '+p.li+' posts ↗</a>':'<span style="color:#0A66C2;font-weight:600">LinkedIn: '+p.li+'</span>')
-      +(igLink?'<a href="'+igLink+'" target="_blank" style="color:#E1306C;font-weight:600;text-decoration:none">Instagram: '+p.ig+' posts ↗</a>':'<span style="color:#E1306C;font-weight:600">Instagram: '+p.ig+'</span>')
-    +'</div></div>'
-    +'<div class="msec"><div class="mlbl">Temas</div><div class="mtags">'+p.temas.map(function(t){return '<span class="tag tp">'+t+'</span>';}).join('')+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Insights</div><div class="mtxt">'+p.insights+'</div></div>'
-    +'<div class="msec"><div class="mlbl">E-mail marketing</div><div class="mtxt">'+p.email_det+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Anúncios ativos</div><div class="mtxt">'
-      +'<span style="color:#C2185B;font-weight:600">Meta: '+pa.meta+'</span> · '
-      +'<span style="color:#2E7D32;font-weight:600">Google: '+pa.google+'</span> · '
-      +'<span style="color:#1565C0;font-weight:600">LinkedIn: '+pa.linkedin+'</span>'
-      +(pa.obs?'<br><span style="color:var(--txm);font-size:11px">'+pa.obs+'</span>':'')
-    +'</div></div>'
-    +(pl&&(pl.links.meta||pl.links.google||pl.links.linkedin)?'<div class="msec"><div class="mlbl">Bibliotecas de anúncios</div><div style="display:flex;gap:6px;margin-top:4px">'+(pl.links.meta?'<a href="'+pl.links.meta+'" target="_blank" class="tag" style="background:#FFF0F5;color:#C2185B;text-decoration:none">Meta Ads ↗</a>':'')+(pl.links.google?'<a href="'+pl.links.google+'" target="_blank" class="tag" style="background:#E8F5E9;color:#2E7D32;text-decoration:none">Google ↗</a>':'')+(pl.links.linkedin?'<a href="'+pl.links.linkedin+'" target="_blank" class="tag" style="background:#E3F2FD;color:#1565C0;text-decoration:none">LinkedIn ↗</a>':'')+'</div></div>':'')
-  );
-}
-
-function adModal(name,mes){
-  var ads=getAds(mes); var pa=ads[name]||{meta:0,google:0,linkedin:0,obs:''};
-  var pl=PLAYERS.find(function(x){return x.name===name;});
-  if(!pl) return;
-  var d=getData(mes); var p=d.players.find(function(x){return x.name===name;})||{pos:''};
-  openM(name+' — Anúncios '+MES[mes],
-    '<div class="msec"><div class="mlbl">Posicionamento</div><div class="mtxt">'+p.pos+'</div></div>'
-    +['meta','google','linkedin'].map(function(k){
-      var q=pa[k]||0; var lbl=k==='meta'?'Meta Ads':k==='google'?'Google Ads':'LinkedIn Ads';
-      var col=k==='meta'?'#C2185B':k==='google'?'#2E7D32':'#1565C0';
-      return '<div style="border:1px solid var(--g200);border-radius:8px;padding:10px;margin-bottom:8px">'
-        +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">'
-          +'<span style="font-weight:700;color:'+col+';font-size:11px">'+lbl+'</span>'
-          +(q>0?'<span style="font-weight:700;font-size:13px;color:var(--tx)">'+q+' anúncios</span>':'<span class="tag tgr">Sem dados</span>')
-        +'</div>'
-        +(pa.obs&&k==='google'?'<div style="font-size:11px;color:var(--txm);margin-bottom:6px">'+pa.obs+'</div>':'')
-        +(pl.links[k]?'<a href="'+pl.links[k]+'" target="_blank" style="font-size:10px;font-weight:700;color:'+col+';text-decoration:none;padding:3px 10px;border-radius:20px;border:1px solid '+col+';background:white">Abrir biblioteca ↗</a>':'<span style="font-size:10px;color:var(--txm)">Link não cadastrado</span>')
-      +'</div>';
-    }).join('')
-  );
-}
-
-// RENDER GERAL
-function renderGeral(){
-  var mes=document.getElementById('g-mes').value,seg=document.getElementById('g-seg').value;
-  var d=getData(mes);
-  document.getElementById('g-mes-label').textContent=MES[mes];
-  document.getElementById('g-temas').innerHTML=(d.temas&&d.temas.length)?d.temas.map(function(t){return '<div class="trg"><div class="trgt">'+t+'</div></div>';}).join(''):'<div class="empty">Sem dados. Use "+ Social / NL" &gt; Alertas.</div>';
-  document.getElementById('g-alerts').innerHTML=(d.alertas&&d.alertas.length)?d.alertas.map(function(a){return '<div class="alert-it '+(a.n==='alto'?'ahi':a.n==='medio'?'ame':'alo')+'"><div>'+a.t+'</div></div>';}).join(''):'<div class="empty">Sem alertas para '+MES[mes]+'</div>';
-  var ps=d.players.filter(function(p){return seg==='todos'||p.seg===seg;});
-  document.getElementById('g-players').innerHTML=ps.map(function(p){
-    return '<div class="crow" onclick="pModal(\''+p.name+'\',\''+mes+'\')"><div><div class="crow-name">'+p.name+' <span class="tag '+(p.seg==='LMS'?'tp':'ta')+'" style="font-size:9px">'+p.seg+'</span></div><div class="crow-sub">'+p.temas.slice(0,2).join(' · ')+'</div></div><div class="crow-right"><span style="font-size:10px;color:var(--txm)"><span style="color:#0A66C2">LK:'+p.li+'</span> <span style="color:#E1306C">IG:'+p.ig+'</span></span><span class="hint">ver detalhes ›</span></div></div>';
-  }).join('')||'<div class="empty">Sem dados</div>';
-}
-
-// RENDER SOCIAL
-function renderSocial(){
-  var mes=document.getElementById('s-mes').value,seg=document.getElementById('s-seg').value,rede=document.getElementById('s-rede').value;
-  var d=getData(mes); var ps=d.players.filter(function(p){return seg==='todos'||p.seg===seg;});
-  var maxV=Math.max.apply(null,ps.map(function(p){return rede==='li'?p.li:rede==='ig'?p.ig:p.li+p.ig;}))||1;
-  document.getElementById('s-posts-bars').innerHTML=ps.length?ps.map(function(p){
-    var v=rede==='li'?p.li:rede==='ig'?p.ig:p.li+p.ig;
-    return '<div class="bw" style="cursor:pointer" onclick="pModal(\''+p.name+'\',\''+mes+'\')"><span class="blbl">'+p.name+'</span><div class="bbg"><div class="bf" style="width:'+Math.round(v/maxV*93)+'%"></div></div>'
-      +(rede==='todas'?'<span class="bval" style="min-width:96px;font-size:10px"><span style="color:#0A66C2">LK:'+p.li+'</span> <span style="color:#E1306C">IG:'+p.ig+'</span></span>':'<span class="bval">'+v+'</span>')+'</div>';
-  }).join(''):'<div class="empty">Sem dados</div>';
-  var tMap={};ps.forEach(function(p){p.temas.forEach(function(t){tMap[t]=(tMap[t]||0)+1;});});
-  var tArr=Object.entries(tMap).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
-  var maxT=tArr.length?tArr[0][1]:1;
-  document.getElementById('s-temas-bars').innerHTML=tArr.length?tArr.map(function(e){return '<div class="bw"><span class="blbl">'+e[0]+'</span><div class="bbg"><div class="bf gn" style="width:'+Math.round(e[1]/maxT*93)+'%"></div></div><span class="bval">'+e[1]+'</span></div>';}).join(''):'<div class="empty">Sem dados</div>';
-  document.getElementById('s-list').innerHTML=ps.map(function(p){
-    return '<div class="crow" onclick="pModal(\''+p.name+'\',\''+mes+'\')"><div><div class="crow-name">'+p.name+' <span class="tag '+(p.seg==='LMS'?'tp':'ta')+'" style="font-size:9px">'+p.seg+'</span></div><div class="crow-sub"><span style="color:#0A66C2;font-weight:600">LinkedIn: '+p.li+'</span> · <span style="color:#E1306C;font-weight:600">Instagram: '+p.ig+'</span> · '+p.temas[0]+'</div></div><div class="crow-right"><span class="hint">ver detalhes ›</span></div></div>';
-  }).join('')||'<div class="empty">Sem dados</div>';
-}
-
-// RENDER NL
-function renderNL(){
-  var mes=document.getElementById('n-mes').value,seg=document.getElementById('n-seg').value;
-  var d=getData(mes); var ps=d.players.filter(function(p){return seg==='todos'||p.seg===seg;});
-  document.getElementById('n-list').innerHTML=ps.map(function(p){
-    var has=p.email>0;
-    return '<div class="crow" onclick="nlModal(\''+p.name+'\',\''+mes+'\')"><div><div class="crow-name">'+p.name+' <span class="tag '+(p.seg==='LMS'?'tp':'ta')+'" style="font-size:9px">'+p.seg+'</span></div><div class="crow-sub">'+(has?p.email+' envios · '+p.email_det.substring(0,70)+'…':'Não identificado')+'</div></div><div class="crow-right"><span class="tag '+(has?'tg':'tgr')+'">'+(has?'Ativo':'Inativo')+'</span><span class="hint">ver detalhes ›</span></div></div>';
-  }).join('')||'<div class="empty">Sem dados</div>';
-}
-function nlModal(name,mes){
-  var d=getData(mes); var p=d.players.find(function(x){return x.name===name;}); if(!p) return;
-  openM(name+' — Newsletter '+MES[mes],
-    '<div class="msec"><div class="mlbl">E-mail marketing</div><div class="mtxt">'+p.email_det+'</div></div>'
-    +'<div class="msec"><div class="mlbl">Envios identificados</div><div class="mtxt"><strong>'+p.email+'</strong></div></div>'
-    +'<div class="msec"><div class="mlbl">Temas</div><div class="mtags">'+p.temas.map(function(t){return '<span class="tag tp">'+t+'</span>';}).join('')+'</div></div>');
-}
-
-// RENDER ADS
-function renderAds(){
-  var mes=document.getElementById('a-mes').value,platF=document.getElementById('a-plat').value,segF=document.getElementById('a-seg').value;
-  var ads=getAds(mes); var d=getData(mes);
-  var ps=d.players.filter(function(p){
-    if(segF!=='todos'&&p.seg!==segF) return false;
-    var pa=ads[p.name]||{meta:0,google:0,linkedin:0};
-    if(platF==='meta') return pa.meta>0;
-    if(platF==='google') return pa.google>0;
-    if(platF==='linkedin') return pa.linkedin>0;
-    return (pa.meta+pa.google+pa.linkedin)>0;
-  });
-  document.getElementById('ads-grid').innerHTML=ps.length?ps.map(function(p){
-    var pa=ads[p.name]||{meta:0,google:0,linkedin:0}; var tot=pa.meta+pa.google+pa.linkedin;
-    return '<div style="border:1px solid var(--g200);border-radius:10px;padding:12px;background:white;cursor:pointer" onclick="adModal(\''+p.name+'\',\''+mes+'\')">'
-      +'<div style="font-size:10px;font-weight:700;color:var(--txm);margin-bottom:3px">'+p.name+' <span class="tag '+(p.seg==='LMS'?'tp':'ta')+'" style="font-size:9px">'+p.seg+'</span></div>'
-      +'<div style="font-size:18px;font-weight:700;color:var(--tx)">'+tot+' <span style="font-size:10px;color:var(--txm);font-weight:400">anúncios</span></div>'
-      +'<div style="display:flex;gap:6px;margin-top:5px;font-size:11px;flex-wrap:wrap">'
-        +(pa.meta>0?'<span style="color:#C2185B;font-weight:600">Meta:'+pa.meta+'</span>':'<span style="color:var(--txm)">Meta:—</span>')+' '
-        +(pa.google>0?'<span style="color:#2E7D32;font-weight:600">Google:'+pa.google+'</span>':'<span style="color:var(--txm)">Google:—</span>')+' '
-        +(pa.linkedin>0?'<span style="color:#1565C0;font-weight:600">LinkedIn:'+pa.linkedin+'</span>':'<span style="color:var(--txm)">LinkedIn:—</span>')
-      +'</div><div style="margin-top:5px;font-size:10px;color:var(--pm)">ver análise e bibliotecas ›</div>'
-    +'</div>';
-  }).join(''):'<div style="grid-column:1/-1" class="empty">Sem dados de anúncios para este filtro. Use "+ Anúncios".</div>';
-  // SOV e ranking
-  var totM=0,totG=0,totL=0;
-  d.players.forEach(function(p){var pa=ads[p.name]||{meta:0,google:0,linkedin:0};totM+=pa.meta;totG+=pa.google;totL+=pa.linkedin;});
-  var maxP=Math.max(totM,totG,totL)||1;
-  document.getElementById('a-sov').innerHTML=
-    '<div class="bw"><span class="blbl">Meta Ads</span><div class="bbg"><div class="bf meta" style="width:'+Math.round(totM/maxP*93)+'%"></div></div><span class="bval">'+totM+'</span></div>'
-    +'<div class="bw"><span class="blbl">Google Ads</span><div class="bbg"><div class="bf goog" style="width:'+Math.round(totG/maxP*93)+'%"></div></div><span class="bval">'+totG+'</span></div>'
-    +'<div class="bw"><span class="blbl">LinkedIn Ads</span><div class="bbg"><div class="bf lkdn" style="width:'+Math.round(totL/maxP*93)+'%"></div></div><span class="bval">'+totL+'</span></div>';
-  var rank=d.players.map(function(p){var pa=ads[p.name]||{meta:0,google:0,linkedin:0};return{n:p.name,t:pa.meta+pa.google+pa.linkedin};}).filter(function(x){return x.t>0;}).sort(function(a,b){return b.t-a.t;}).slice(0,6);
-  var maxR=rank[0]?rank[0].t:1;
-  document.getElementById('a-rank').innerHTML=rank.length?rank.map(function(r){return '<div class="bw"><span class="blbl">'+r.n+'</span><div class="bbg"><div class="bf" style="width:'+Math.round(r.t/maxR*93)+'%"></div></div><span class="bval">'+r.t+'</span></div>';}).join(''):'<div class="empty">Sem dados</div>';
-}
-
-// RENDER BUSCA
-function renderBusca(){
-  var mes=document.getElementById('b-mes').value,seg=document.getElementById('b-seg').value;
-  var d=getData(mes);
-  var ps=d.players.filter(function(p){return (seg==='todos'||p.seg===seg)&&(p.busca.org>0||p.busca.pago>0);});
-  if(!ps.length){
-    document.getElementById('b-org-bars').innerHTML='<div class="empty">Sem dados. Preencha na aba "+ Social / NL" &gt; Busca Orgânica.<br><small>Fonte recomendada: similarweb.com/website/[dominio]</small></div>';
-    document.getElementById('b-pago-bars').innerHTML='';
-    document.getElementById('b-detail').innerHTML='';
-    return;
-  }
-  var maxO=Math.max.apply(null,ps.map(function(p){return p.busca.org;}))||1;
-  var maxP=Math.max.apply(null,ps.map(function(p){return p.busca.pago;}))||1;
-  document.getElementById('b-org-bars').innerHTML=ps.filter(function(p){return p.busca.org>0;}).map(function(p){return '<div class="bw"><span class="blbl">'+p.name+'</span><div class="bbg"><div class="bf" style="width:'+Math.round(p.busca.org/maxO*93)+'%"></div></div><span class="bval">'+p.busca.org+'K</span></div>';}).join('');
-  document.getElementById('b-pago-bars').innerHTML=ps.filter(function(p){return p.busca.pago>0;}).map(function(p){return '<div class="bw"><span class="blbl">'+p.name+'</span><div class="bbg"><div class="bf gn" style="width:'+Math.round(p.busca.pago/maxP*93)+'%"></div></div><span class="bval">'+p.busca.pago+'K</span></div>';}).join('');
-  document.getElementById('b-detail').innerHTML=d.players.filter(function(p){return seg==='todos'||p.seg===seg;}).map(function(p){
-    return '<div class="busca-row"><span style="font-weight:600">'+p.name+'</span><span>'+(p.busca.org||'—')+'K</span><span>'+(p.busca.pago||'—')+'K</span><span>'+(p.busca.canal||'—')+'</span><span style="color:var(--txm);font-size:10px">'+(p.busca.obs||'—')+'</span></div>';
+function renderPlayers() {
+  var grid = document.getElementById('players-grid');
+  if (!grid) return;
+  grid.innerHTML = playersData.map(function(p) {
+    var aClr = p.ameaca === 'alto' ? 'badge-alto' : p.ameaca === 'medio' ? 'badge-medio' : 'badge-baixo';
+    var aLbl = p.ameaca === 'alto' ? 'ALTO' : p.ameaca === 'medio' ? 'MÉDIO' : 'BAIXO';
+    return '<div class="player-card" onclick="showPlayer(\'' + p.id + '\')" id="pc-' + p.id + '"><div class="player-name">' + p.name + '</div><div class="player-seg">' + p.seg + '</div><span class="badge ' + aClr + '">' + aLbl + '</span>' + (p.ia ? ' <span class="tag-ia">IA</span>' : ' <span class="tag-noai">SEM IA</span>') + '<div class="ads-row"><span class="ad-chip ad-gads">G: ' + p.gads + '</span><span class="ad-chip ad-meta">M: ' + p.meta + '</span><span class="ad-chip ad-li">LI: ' + p.li + '</span></div></div>';
   }).join('');
 }
 
-// BUILD ENTRADA ADS
-function buildEntradaAds(){
-  var mes=document.getElementById('ea-mes').value;
-  var ads=getAds(mes); var isFev=(mes==='fev2026');
-  var html=PLAYERS.map(function(pl){
-    var pa=ads[pl.name]||{meta:0,google:0,linkedin:0,status:'Inativo',obs:''};
-    var hasFev=isFev||(BASE.fev2026.ads&&BASE.fev2026.ads[pl.name]);
-    var p=getData('fev2026').players.find(function(x){return x.name===pl.name;})||{seg:'LMS'};
-    return '<div class="pblock">'
-      +'<div class="phdr">'
-        +'<div style="display:flex;align-items:center;gap:6px"><span class="pname">'+pl.name+'</span><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span>'+(isFev&&BASE.fev2026.ads[pl.name]?'<span class="pbadge">Fev/26 carregado</span>':'')+'</div>'
-        +'<div class="liblinks">'+(pl.links.meta?'<a class="ll lm" href="'+pl.links.meta+'" target="_blank">Meta Ads</a>':'<span class="ll" style="opacity:.4;cursor:default;background:var(--g100);color:var(--txm);border-color:var(--g200)">Meta —</span>')+(pl.links.google?'<a class="ll lg" href="'+pl.links.google+'" target="_blank">Google Ads</a>':'<span class="ll" style="opacity:.4;cursor:default;background:var(--g100);color:var(--txm);border-color:var(--g200)">Google —</span>')+(pl.links.linkedin?'<a class="ll lk" href="'+pl.links.linkedin+'" target="_blank">LinkedIn Ads</a>':'<span class="ll" style="opacity:.4;cursor:default;background:var(--g100);color:var(--txm);border-color:var(--g200)">LinkedIn —</span>')+'</div>'
-      +'</div>'
-      +'<div class="pform"><div class="grid4">'
-        +'<div class="fwrap"><label class="flb">Meta — qtd</label><input class="fi" type="number" min="0" id="ea-'+mes+'-'+pl.name+'-meta" value="'+pa.meta+'"></div>'
-        +'<div class="fwrap"><label class="flb">Google — qtd</label><input class="fi" type="number" min="0" id="ea-'+mes+'-'+pl.name+'-google" value="'+pa.google+'"></div>'
-        +'<div class="fwrap"><label class="flb">LinkedIn — qtd</label><input class="fi" type="number" min="0" id="ea-'+mes+'-'+pl.name+'-linkedin" value="'+pa.linkedin+'"></div>'
-        +'<div class="fwrap"><label class="flb">Status</label><select class="fi" id="ea-'+mes+'-'+pl.name+'-status"><option'+(pa.status==='Ativo'?' selected':'')+'>Ativo</option><option'+(pa.status==='Reduzido'?' selected':'')+'>Reduzido</option><option'+(pa.status==='Inativo'?' selected':'')+'>Inativo</option></select></div>'
-      +'</div>'
-      +'<div class="fwrap"><label class="flb">Observações / gancho principal</label><textarea class="fi" id="ea-'+mes+'-'+pl.name+'-obs">'+pa.obs+'</textarea></div>'
-      +'<div style="display:flex;align-items:center;gap:8px"><button class="sbtn" onclick="saveAd(\''+mes+'\',\''+pl.name+'\')">Salvar '+pl.name+'</button><span class="sok" id="eaok-'+mes+'-'+pl.name+'">Salvo!</span></div>'
-      +'</div></div>';
-  }).join('');
-  document.getElementById('ea-blocks').innerHTML=html;
+function showPlayer(id) {
+  document.querySelectorAll('.player-card').forEach(function(c) { c.classList.remove('active'); });
+  var card = document.getElementById('pc-' + id);
+  if (card) card.classList.add('active');
+  var p = playersData.find(function(x) { return x.id === id; });
+  if (!p) return;
+  var detail = document.getElementById('player-detail');
+  detail.classList.add('show');
+  var aClr = p.ameaca === 'alto' ? 'badge-alto' : p.ameaca === 'medio' ? 'badge-medio' : 'badge-baixo';
+  var aLbl = p.ameaca === 'alto' ? 'ALTO' : p.ameaca === 'medio' ? 'MÉDIO' : 'BAIXO';
+  detail.innerHTML = '<div class="card-title">' + p.name + ' <span class="badge ' + aClr + '">' + aLbl + '</span>' + (p.ia ? ' <span class="tag-ia">IA</span>' : '') + '</div>' +
+    '<div class="kv"><div class="kv-key">Segmento</div><div class="kv-val">' + p.seg + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Headline site</div><div class="kv-val"><em>' + p.headline + '</em></div></div>' +
+    '<div class="kv"><div class="kv-key">ICP</div><div class="kv-val">' + p.icp + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Diferencial</div><div class="kv-val">' + p.dif + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Messaging IA</div><div class="kv-val">' + p.msgIA + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Ads</div><div class="kv-val">Google: ' + p.gads + ' &nbsp;|&nbsp; Meta: ' + p.meta + ' &nbsp;|&nbsp; LinkedIn: ' + p.li + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Criativos ativos</div><div class="kv-val">' + p.criativos.map(function(c) { return '<div class="criativo">' + c + '</div>'; }).join('') + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Gap Twygo</div><div class="kv-val" style="color:var(--pd);font-weight:600">' + p.gap + '</div></div>' +
+    '<div class="kv"><div class="kv-key">Movimentos novos</div><div class="kv-val">' + p.movimentos + '</div></div>';
 }
 
-function saveAd(mes,name){
-  ensureStore(mes);
-  if(!STORE[mes].ads) STORE[mes].ads={};
-  STORE[mes].ads[name]={
-    meta:+(document.getElementById('ea-'+mes+'-'+name+'-meta').value)||0,
-    google:+(document.getElementById('ea-'+mes+'-'+name+'-google').value)||0,
-    linkedin:+(document.getElementById('ea-'+mes+'-'+name+'-linkedin').value)||0,
-    status:document.getElementById('ea-'+mes+'-'+name+'-status').value,
-    obs:document.getElementById('ea-'+mes+'-'+name+'-obs').value.trim()
-  };
-  showOk('eaok-'+mes+'-'+name);
-  renderAds(); renderHist();
-}
-
-var _esCurrentTab = 'social';
-
-function switchEsTab(tab, btn){
-  _esCurrentTab = tab;
-  document.querySelectorAll('[id^="es-tab-"]').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  buildEntradaSocial();
-}
-
-// BUILD ENTRADA SOCIAL + NL + BUSCA + ALERTAS
-function buildEntradaSocial(){
-  var sec=_esCurrentTab, mes=document.getElementById('es-mes').value;
-  var d=getData(mes); var isFev=(mes==='fev2026'); var body='';
-  if(sec==='social'){
-    body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Redes Sociais — '+MES[mes]+(isFev?'<span class="pbadge" style="margin-left:6px">Fev/26 carregado</span>':'')+'</div>'
-      +d.players.map(function(p){
-        var pl=PLAYERS.find(function(x){return x.name===p.name;})||{social:{li:'',ig:''}};
-        // get stored social links or defaults
-        var liLink = (STORE[mes]&&STORE[mes].socialLinks&&STORE[mes].socialLinks[p.name]&&STORE[mes].socialLinks[p.name].li)||pl.social.li||'';
-        var igLink = (STORE[mes]&&STORE[mes].socialLinks&&STORE[mes].socialLinks[p.name]&&STORE[mes].socialLinks[p.name].ig)||pl.social.ig||'';
-        return '<div class="pblock"><div class="phdr">'
-          +'<div style="display:flex;align-items:center;gap:8px"><span class="pname">'+p.name+'</span><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
-          +'<div style="display:flex;gap:6px">'
-            +(liLink?'<a href="'+liLink+'" target="_blank" class="ll lk">Ver LinkedIn</a>':'')
-            +(igLink?'<a href="'+igLink+'" target="_blank" class="ll lm" style="background:#FFF0F5;color:#C2185B;border-color:#F8BBD9">Ver Instagram</a>':'')
-          +'</div>'
-        +'</div>'
-        +'<div class="pform"><div class="grid3">'
-          +'<div class="fwrap"><label class="flb">LinkedIn (nº de posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-li" value="'+p.li+'"></div>'
-          +'<div class="fwrap"><label class="flb">Instagram (nº de posts)</label><input class="fi" type="number" min="0" id="ss-'+mes+'-'+p.name+'-ig" value="'+p.ig+'"></div>'
-          +'<div class="fwrap"><label class="flb">Temas (separados por vírgula)</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-temas" value="'+p.temas.join(', ')+'"></div>'
-        +'</div>'
-        +'<div class="grid2" style="margin-top:0">'
-          +'<div class="fwrap"><label class="flb">Insights / observações</label><textarea class="fi" id="ss-'+mes+'-'+p.name+'-ins">'+p.insights+'</textarea></div>'
-          +'<div class="fwrap"><label class="flb">Tom de voz</label><input class="fi" type="text" id="ss-'+mes+'-'+p.name+'-tom" value="'+p.tom+'"></div>'
-        +'</div>'
-        +'<div class="grid2" style="padding:0 14px 8px">'
-          +'<div class="fwrap"><label class="flb" style="color:var(--p)">Link LinkedIn (cole a URL do perfil)</label><input class="fi" type="url" id="ss-'+mes+'-'+p.name+'-lilink" value="'+liLink+'" placeholder="https://linkedin.com/company/..."></div>'
-          +'<div class="fwrap"><label class="flb" style="color:#E1306C">Link Instagram (cole a URL do perfil)</label><input class="fi" type="url" id="ss-'+mes+'-'+p.name+'-iglink" value="'+igLink+'" placeholder="https://instagram.com/..."></div>'
-        +'</div>'
-        +'<div style="display:flex;align-items:center;gap:8px;padding:0 14px 12px"><button class="sbtn" onclick="saveSocial(\''+mes+'\',\''+p.name+'\')">Salvar</button><span class="sok" id="ssok-'+mes+'-'+p.name+'">Salvo!</span></div>'
-        +'</div></div>';
-      }).join('')+'</div>';
-  } else if(sec==='nl'){
-    body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Newsletter — '+MES[mes]+'</div>'
-      +d.players.map(function(p){
-        return '<div class="pblock"><div class="phdr"><span class="pname">'+p.name+'</span><span class="tag '+(p.seg==='LMS'?'tp':'ta')+'">'+p.seg+'</span></div>'
-          +'<div class="pform"><div class="grid2">'
-            +'<div class="fwrap"><label class="flb">Qtd de envios</label><input class="fi" type="number" min="0" id="nl-'+mes+'-'+p.name+'-q" value="'+p.email+'"></div>'
-            +'<div class="fwrap"><label class="flb">Conteúdo / assunto do e-mail</label><input class="fi" type="text" id="nl-'+mes+'-'+p.name+'-det" value="'+p.email_det.replace(/"/g,"'")+'"></div>'
-          +'</div>'
-          +'<div style="display:flex;align-items:center;gap:8px;margin-top:0"><button class="sbtn" onclick="saveNL(\''+mes+'\',\''+p.name+'\')">Salvar</button><span class="sok" id="nlok-'+mes+'-'+p.name+'">Salvo!</span></div>'
-        +'</div></div>';
-      }).join('')+'</div>';
-  } else if(sec==='busca'){
-    body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Busca Orgânica — '+MES[mes]+'</div>'
-      +'<div class="note">Fonte: <strong>SimilarWeb</strong> → similarweb.com/website/[dominio] (Traffic Overview). Ou SEMrush → semrush.com/analytics/overview. Preencha visitas orgânicas e pagas em milhares (ex: 14 = 14K).</div>'
-      +d.players.map(function(p){
-        var b=p.busca||{org:0,pago:0,canal:'',obs:''};
-        return '<div class="pblock"><div class="phdr">'
-          +'<span class="pname">'+p.name+'</span>'
-          +'<a href="https://www.similarweb.com/website/'+PLAYERS.find(function(x){return x.name===p.name;})||{dom:''}&&PLAYERS.find(function(x){return x.name===p.name;}).dom+'/" target="_blank" class="ll lg" style="font-size:10px">Abrir SimilarWeb</a>'
-        +'</div>'
-          +'<div class="pform"><div class="grid4">'
-            +'<div class="fwrap"><label class="flb">Orgânico (K/mês)</label><input class="fi" type="number" min="0" id="bk-'+mes+'-'+p.name+'-org" value="'+b.org+'"></div>'
-            +'<div class="fwrap"><label class="flb">Pago (K/mês)</label><input class="fi" type="number" min="0" id="bk-'+mes+'-'+p.name+'-pago" value="'+b.pago+'"></div>'
-            +'<div class="fwrap"><label class="flb">Canal dominante</label><input class="fi" type="text" id="bk-'+mes+'-'+p.name+'-canal" placeholder="Ex: Orgânico, Direto, Pago" value="'+b.canal+'"></div>'
-            +'<div class="fwrap"><label class="flb">Observações</label><input class="fi" type="text" id="bk-'+mes+'-'+p.name+'-obs" placeholder="Ex: crescimento MoM" value="'+b.obs+'"></div>'
-          +'</div>'
-          +'<div style="display:flex;align-items:center;gap:8px;margin-top:0"><button class="sbtn" onclick="saveBusca(\''+mes+'\',\''+p.name+'\')">Salvar</button><span class="sok" id="bkok-'+mes+'-'+p.name+'">Salvo!</span></div>'
-        +'</div></div>';
-      }).join('')+'</div>';
-  } else if(sec==='alertas'){
-    var als=(getData(mes).alertas||[]);
-    body='<div class="panel"><div class="ptitle"><span class="pdot"></span>Alertas / Destaques — '+MES[mes]+'</div>'
-      +'<div style="display:flex;gap:8px;margin-bottom:10px;align-items:flex-end;flex-wrap:wrap">'
-        +'<div class="fwrap"><label class="flb">Nível</label><select class="fi" id="al-nivel" style="width:110px"><option value="alto">Alto</option><option value="medio">Médio</option><option value="baixo">Baixo</option></select></div>'
-        +'<div class="fwrap" style="flex:1"><label class="flb">Texto (use &lt;b&gt;Nome&lt;/b&gt; para destacar o player)</label><input class="fi" type="text" id="al-txt" placeholder="Descreva o movimento estratégico..."></div>'
-        +'<button class="sbtn" onclick="addAlerta(\''+mes+'\')">Adicionar</button><span class="sok" id="alok">Adicionado!</span>'
-      +'</div>'
-      +'<div>'+als.map(function(a,i){return '<div class="alert-it '+(a.n==='alto'?'ahi':a.n==='medio'?'ame':'alo')+'" style="justify-content:space-between"><div>'+a.t+'</div><button onclick="removeAlerta(\''+mes+'\','+i+')" style="border:none;background:none;color:var(--rd);cursor:pointer;font-size:16px;flex-shrink:0">×</button></div>';}).join('')+(als.length===0?'<div class="empty">Nenhum alerta registrado</div>':'')+'</div>'
-    +'</div>';
-  }
-  document.getElementById('es-body').innerHTML=body;
-}
-
-function saveSocial(mes,name){
-  ensureStore(mes);
-  if(!STORE[mes].players) STORE[mes].players=JSON.parse(JSON.stringify(BASE.fev2026.players));
-  var pp=STORE[mes].players.find(function(x){return x.name===name;});
-  if(!pp){var base=BASE.fev2026.players.find(function(x){return x.name===name;});pp=base?JSON.parse(JSON.stringify(base)):{name:name,seg:'LMS',li:0,ig:0,temas:[],tom:'',pu:'',pos:'',insights:'',email:0,email_det:'',busca:{org:0,pago:0,canal:'',obs:''}};STORE[mes].players.push(pp);}
-  pp.li=+(document.getElementById('ss-'+mes+'-'+name+'-li').value)||0;
-  pp.ig=+(document.getElementById('ss-'+mes+'-'+name+'-ig').value)||0;
-  pp.temas=document.getElementById('ss-'+mes+'-'+name+'-temas').value.split(',').map(function(t){return t.trim();}).filter(Boolean);
-  pp.insights=document.getElementById('ss-'+mes+'-'+name+'-ins').value;
-  pp.tom=document.getElementById('ss-'+mes+'-'+name+'-tom').value;
-  // save social profile links
-  var liLinkEl=document.getElementById('ss-'+mes+'-'+name+'-lilink');
-  var igLinkEl=document.getElementById('ss-'+mes+'-'+name+'-iglink');
-  if(liLinkEl||igLinkEl){
-    if(!STORE[mes].socialLinks) STORE[mes].socialLinks={};
-    if(!STORE[mes].socialLinks[name]) STORE[mes].socialLinks[name]={};
-    if(liLinkEl) STORE[mes].socialLinks[name].li=liLinkEl.value.trim();
-    if(igLinkEl) STORE[mes].socialLinks[name].ig=igLinkEl.value.trim();
-    // also update global PLAYERS entry so links persist across months
-    var pl=PLAYERS.find(function(x){return x.name===name;});
-    if(pl){
-      if(liLinkEl&&liLinkEl.value.trim()) pl.social.li=liLinkEl.value.trim();
-      if(igLinkEl&&igLinkEl.value.trim()) pl.social.ig=igLinkEl.value.trim();
-    }
-  }
-  showOk('ssok-'+mes+'-'+name);
-}
-
-function saveNL(mes,name){
-  ensureStore(mes);
-  if(!STORE[mes].players) STORE[mes].players=JSON.parse(JSON.stringify(BASE.fev2026.players));
-  var pp=STORE[mes].players.find(function(x){return x.name===name;});
-  if(!pp){pp=JSON.parse(JSON.stringify(BASE.fev2026.players.find(function(x){return x.name===name;}))||{});STORE[mes].players.push(pp);}
-  pp.email=+(document.getElementById('nl-'+mes+'-'+name+'-q').value)||0;
-  pp.email_det=document.getElementById('nl-'+mes+'-'+name+'-det').value;
-  showOk('nlok-'+mes+'-'+name);
-}
-
-function saveBusca(mes,name){
-  ensureStore(mes);
-  if(!STORE[mes].players) STORE[mes].players=JSON.parse(JSON.stringify(BASE.fev2026.players));
-  var pp=STORE[mes].players.find(function(x){return x.name===name;});
-  if(!pp){pp=JSON.parse(JSON.stringify(BASE.fev2026.players.find(function(x){return x.name===name;}))||{});STORE[mes].players.push(pp);}
-  if(!pp.busca) pp.busca={org:0,pago:0,canal:'',obs:''};
-  pp.busca.org=+(document.getElementById('bk-'+mes+'-'+name+'-org').value)||0;
-  pp.busca.pago=+(document.getElementById('bk-'+mes+'-'+name+'-pago').value)||0;
-  pp.busca.canal=document.getElementById('bk-'+mes+'-'+name+'-canal').value;
-  pp.busca.obs=document.getElementById('bk-'+mes+'-'+name+'-obs').value;
-  showOk('bkok-'+mes+'-'+name);
-  renderBusca();
-}
-
-function addAlerta(mes){
-  var txt=document.getElementById('al-txt').value.trim(); if(!txt) return;
-  ensureStore(mes);
-  if(!STORE[mes].alertas) STORE[mes].alertas=[];
-  // merge with BASE alertas
-  if(!BASE[mes]) BASE[mes]={alertas:[],temas:[],players:null,ads:{}};
-  BASE[mes].alertas.push({n:document.getElementById('al-nivel').value,t:txt});
-  document.getElementById('al-txt').value='';
-  showOk('alok'); buildEntradaSocial();
-}
-
-function removeAlerta(mes,i){
-  if(BASE[mes]&&BASE[mes].alertas) BASE[mes].alertas.splice(i,1);
-  buildEntradaSocial(); renderGeral();
-}
-
-// HISTÓRICO
-function renderHist(){
-  var hpF=document.getElementById('h-player').value,hplatF=document.getElementById('h-plat').value;
-  var meses=Object.keys(MES);
-  var players=hpF==='todos'?PLAYERS.map(function(p){return p.name;}):[hpF];
-  var html='';
-  players.forEach(function(pname){
-    var pl=PLAYERS.find(function(x){return x.name===pname;}); if(!pl) return;
-    var showM=hplatF==='todas'||hplatF==='meta',showG=hplatF==='todas'||hplatF==='google',showL=hplatF==='todas'||hplatF==='linkedin';
-    var cols='90px'+(showM?' 65px':'')+(showG?' 75px':'')+(showL?' 80px':'')+' 1fr';
-    var hasSome=meses.some(function(mes){var ads=getAds(mes);var pa=ads[pname];return pa&&(pa.meta+pa.google+pa.linkedin)>0;});
-    if(!hasSome&&hpF==='todos') return; // skip players with no data at all when showing all
-    html+='<div class="hpblock"><div class="hphdr"><span class="hpname">'+pname+'</span><div class="hlks">'
-      +(showM?'<a class="hlk" href="'+pl.links.meta+'" target="_blank">Meta</a>':'')
-      +(showG?'<a class="hlk" href="'+pl.links.google+'" target="_blank">Google</a>':'')
-      +(showL?'<a class="hlk" href="'+pl.links.linkedin+'" target="_blank">LinkedIn</a>':'')
-    +'</div></div>'
-    +'<div class="hchdr" style="grid-template-columns:'+cols+'"><span>Mês</span>'+(showM?'<span style="color:#C2185B">Meta</span>':'')+(showG?'<span style="color:#2E7D32">Google</span>':'')+(showL?'<span style="color:#1565C0">LinkedIn</span>':'')+'<span>Observações</span></div>';
-    var prev=null;
-    meses.forEach(function(mes){
-      var ads=getAds(mes); var pa=ads[pname];
-      if(!pa){ html+='<div class="hrow" style="grid-template-columns:'+cols+'"><span class="hmes">'+MES[mes].replace(' 2026','')+'</span>'+(showM?'<span style="color:var(--txm)">—</span>':'')+(showG?'<span style="color:var(--txm)">—</span>':'')+(showL?'<span style="color:var(--txm)">—</span>':'')+'<span class="hobs">Sem dados</span></div>'; return; }
-      function delt(c,pv){ if(pv===undefined||pv===null) return ''; var d2=c-pv; return d2>0?'<span class="dup2">+'+d2+'</span>':d2<0?'<span class="ddn2">'+d2+'</span>':''; }
-      html+='<div class="hrow" style="grid-template-columns:'+cols+'"><span class="hmes">'+MES[mes].replace(' 2026','')+'</span>'
-        +(showM?'<span class="hpc"><span class="hdot hm"></span><b>'+pa.meta+'</b>'+(prev?delt(pa.meta,prev.meta):'')+'</span>':'')
-        +(showG?'<span class="hpc"><span class="hdot hg"></span><b>'+pa.google+'</b>'+(prev?delt(pa.google,prev.google):'')+'</span>':'')
-        +(showL?'<span class="hpc"><span class="hdot hl"></span><b>'+pa.linkedin+'</b>'+(prev?delt(pa.linkedin,prev.linkedin):'')+'</span>':'')
-        +'<span class="hobs">'+(pa.obs||'—')+'</span>'
-      +'</div>';
-      prev=pa;
-    });
-    html+='</div>';
-  });
-  document.getElementById('hist-area').innerHTML=html||'<div class="empty">Sem dados de anúncios registrados ainda.</div>';
-}
-
-function go(id,btn){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  document.getElementById('pg-'+id).classList.add('active');
-  btn.classList.add('active');
-  if(id==='entrada-ads') buildEntradaAds();
-  if(id==='entrada-social') buildEntradaSocial();
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// META AD LIBRARY API INTEGRATION
-// ═══════════════════════════════════════════════════════════════════
-
-// Page IDs extraídos do relatório de fevereiro
-var META_PAGE_IDS = {
-  'Mobiliza':      '205967299421126',
-  'Ludos Pro':     '119800505385425',
-  'Woli':          '1470440886550691',
-  'Revvo':         '474671152723516',
-  'Scaffold':      '166079413908756',
-  'Kubo':          '102271805201087',
-  'Qulture Rocks': '304821343223801',
-  'YouRH':         '304821343223801', // confirmar
-  'SmartLeader':   '225609054273681',
-  'Afferolab':     '546856885363202',
-  'Convênia':      '298180803629043'
-};
-
-var _metaToken = '';
-
-function showApiConfig(){
-  var panel = document.getElementById('api-config-panel');
-  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-  if(_metaToken) document.getElementById('meta-token').value = _metaToken;
-}
-
-function saveToken(){
-  _metaToken = document.getElementById('meta-token').value.trim();
-  showOk('token-ok');
-}
-
-async function fetchAllMeta(){
-  var token = document.getElementById('meta-token').value.trim() || _metaToken;
-  if(!token){ alert('Cole o token de acesso primeiro.'); return; }
-  _metaToken = token;
-
-  var btn = document.getElementById('fetch-btn');
-  var status = document.getElementById('fetch-status');
-  var results = document.getElementById('fetch-results');
-  btn.disabled = true;
-  btn.textContent = 'Buscando...';
-  results.innerHTML = '';
-
-  var mes = document.getElementById('ea-mes').value;
-  var players = Object.keys(META_PAGE_IDS);
-  var html = '<table style="width:100%;border-collapse:collapse;font-size:11px"><thead><tr style="background:var(--g50)"><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Player</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Anúncios ativos</th><th style="padding:6px 8px;text-align:left;border-bottom:1px solid var(--g200)">Exemplo de gancho</th><th style="padding:6px 8px;border-bottom:1px solid var(--g200)">Ação</th></tr></thead><tbody>';
-
-  for(var i=0; i<players.length; i++){
-    var name = players[i];
-    var pageId = META_PAGE_IDS[name];
-    status.textContent = 'Buscando ' + name + '... (' + (i+1) + '/' + players.length + ')';
-
-    try {
-      var url = 'https://graph.facebook.com/v19.0/ads_archive'
-        + '?access_token=' + encodeURIComponent(token)
-        + '&ad_reached_countries=BR'
-        + '&search_page_ids=' + pageId
-        + '&ad_active_status=ACTIVE'
-        + '&fields=ad_creative_bodies,ad_creative_link_titles,ad_delivery_start_time,page_name'
-        + '&limit=50';
-
-      var resp = await fetch(url);
-      var data = await resp.json();
-
-      if(data.error){
-        html += '<tr><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td><td colspan="3" style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--rd)">Erro: '+data.error.message+'</td></tr>';
-        continue;
-      }
-
-      var ads = data.data || [];
-      var count = ads.length;
-      // try to get next pages count
-      var afterCursor = data.paging && data.paging.cursors && data.paging.cursors.after;
-      var hasMore = data.paging && data.paging.next;
-
-      // Extract first creative body as example
-      var example = '';
-      for(var j=0; j<ads.length; j++){
-        var bodies = ads[j].ad_creative_bodies;
-        if(bodies && bodies.length > 0){ example = bodies[0].substring(0,80)+'…'; break; }
-        var titles = ads[j].ad_creative_link_titles;
-        if(titles && titles.length > 0){ example = titles[0].substring(0,80)+'…'; break; }
-      }
-
-      var safeN = name.replace(/'/g,"\\'");
-      html += '<tr style="background:white"><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td>'
-        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><span style="font-size:14px;font-weight:700;color:var(--p)">'+count+'</span>'+(hasMore?' <span style="font-size:10px;color:var(--txm)">(pode ter mais)</span>':'')+'</td>'
-        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--txm);font-style:italic;max-width:200px">'+(example||'—')+'</td>'
-        +'<td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><button class="sbtn" style="padding:3px 10px;font-size:10px" onclick="applyMetaCount(\''+safeN+'\','+count+')">Aplicar</button></td>'
-      +'</tr>';
-
-    } catch(e){
-      html += '<tr><td style="padding:6px 8px;border-bottom:1px solid var(--g100)"><strong>'+name+'</strong></td><td colspan="3" style="padding:6px 8px;border-bottom:1px solid var(--g100);color:var(--rd)">Falha na requisição</td></tr>';
-    }
-
-    // Small delay to avoid rate limiting
-    await new Promise(function(r){ setTimeout(r, 300); });
-  }
-
-  html += '</tbody></table>';
-  results.innerHTML = html;
-  status.textContent = 'Concluído! Clique em "Aplicar" para salvar os dados de cada player.';
-  btn.disabled = false;
-  btn.textContent = 'Buscar anúncios ativos de todos os players';
-}
-
-function applyMetaCount(name, count){
-  var mes = document.getElementById('ea-mes').value;
-  // Update the input field in the form
-  var input = document.getElementById('ea-'+mes+'-'+name+'-meta');
-  if(input){
-    input.value = count;
-    input.style.background = '#DCFCE7';
-    setTimeout(function(){ input.style.background = ''; }, 2000);
-  }
-  // Also save directly to store
-  ensureStore(mes);
-  if(!STORE[mes].ads) STORE[mes].ads = {};
-  if(!STORE[mes].ads[name]) STORE[mes].ads[name] = {meta:0,google:0,linkedin:0,status:'Inativo',obs:''};
-  STORE[mes].ads[name].meta = count;
-  STORE[mes].ads[name].status = count > 0 ? 'Ativo' : 'Inativo';
-  renderAds(); renderHist();
-}
-
- renderSocial(); renderNL(); renderAds(); renderBusca(); renderHist();
+document.addEventListener('DOMContentLoaded', function() {
+  renderPlayers();
+});
+renderPlayers();
 </script>
 </body>
 </html>
