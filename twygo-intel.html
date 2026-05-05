@@ -2,585 +2,634 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Twygo IC — Inteligência Competitiva</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --p:#6B4EFF;--pl:#EDE9FF;--pm:#A594FF;--pd:#4A35CC;
-  --g50:#F8F7FF;--g100:#F0EEF9;--g200:#E2DEFF;
-  --tx:#1A1535;--txm:#6B6490;
-  --gn:#16A34A;--gnb:#DCFCE7;--rd:#DC2626;--rdb:#FEE2E2;--am:#D97706;--amb:#FEF3C7;
-  --bl:#2563EB;--blb:#DBEAFE;
-}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--g50);color:var(--tx);font-size:13px}
-.dash{padding:16px;position:relative}
-.topbar{background:#fff;border-bottom:2px solid var(--g200);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px #0000000d}
-.brand{display:flex;align-items:center;gap:8px}
-.lmark{width:30px;height:30px;background:var(--p);border-radius:7px;display:flex;align-items:center;justify-content:center}
-.lmark svg{width:18px;height:18px;fill:white}
-.brand-txt{font-weight:700;font-size:14px;color:var(--tx)}
-.brand-sub{font-size:11px;color:var(--txm)}
-.tabs{display:flex;gap:4px}
-.tab{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--txm);cursor:pointer;border:none;background:transparent;transition:all .15s}
-.tab:hover{background:var(--g100);color:var(--tx)}
-.tab.active{background:var(--p);color:#fff}
-.filters{display:flex;align-items:center;gap:12px;margin:12px 0}
-.filter-label{font-size:12px;color:var(--txm);font-weight:500}
-.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:600}
-.badge-alto{background:var(--rdb);color:var(--rd)}
-.badge-medio{background:var(--amb);color:var(--am)}
-.badge-baixo{background:var(--gnb);color:var(--gn)}
-.badge-novo{background:var(--blb);color:var(--bl)}
-.card{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:14px;margin-bottom:10px}
-.card-title{font-weight:700;font-size:13px;color:var(--tx);margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txm);margin-bottom:8px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.alert-card{border-left:4px solid;padding:12px 14px;border-radius:0 8px 8px 0;margin-bottom:8px}
-.alert-alto{border-color:var(--rd);background:var(--rdb)}
-.alert-medio{border-color:var(--am);background:var(--amb)}
-.alert-baixo{border-color:var(--gn);background:var(--gnb)}
-.alert-title{font-weight:700;font-size:12px;margin-bottom:4px}
-.alert-desc{font-size:12px;color:var(--tx);line-height:1.5}
-.player-card{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:14px;cursor:pointer;transition:all .15s}
-.player-card:hover{border-color:var(--pm);box-shadow:0 2px 8px #6b4eff18}
-.player-card.active{border-color:var(--p);box-shadow:0 2px 8px #6b4eff30}
-.player-name{font-weight:700;font-size:13px;margin-bottom:4px}
+:root{--p:#6b4eff;--p2:#8b6fff;--bg:#f7f8fc;--tx:#1a1a2e;--txm:#4a4a6a;--g50:#f0f0f8;--g200:#e0e0f0;--al:#ffeaea;--alb:#ff4444;--am:#fff8e1;--amb:#f59e0b;--gn:#e8f5e9;--gnb:#22c55e;--white:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);font-size:13px;line-height:1.5}
+header{background:var(--p);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(107,78,255,.3)}
+header h1{font-size:15px;font-weight:700}header span{font-size:11px;opacity:.8}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.15);border:none;color:#fff;padding:5px 12px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:500;transition:all .2s}
+nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:600}
+.tab-content{display:none;padding:16px 20px}
+.tab-content.active{display:block}
+.meta{text-align:center;font-size:11px;color:var(--txm);padding:8px 0 4px;border-bottom:1px solid var(--g200);margin-bottom:16px}
+/* Alertas */
+.alert-card{border-radius:8px;padding:12px 14px;margin-bottom:10px;border-left:4px solid}
+.alert-alto{border-color:#ff4444;background:#fff5f5}
+.alert-medio{border-color:#f59e0b;background:#fffbf0}
+.alert-baixo{border-color:#22c55e;background:#f0fff4}
+.alert-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-bottom:4px}
+.badge-alto{background:#ff4444;color:#fff}
+.badge-medio{background:#f59e0b;color:#fff}
+.badge-baixo{background:#22c55e;color:#fff}
+.alert-title{font-weight:600;font-size:13px;margin-bottom:3px}
+.alert-desc{font-size:12px;color:var(--txm)}
+/* Players */
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.player-card{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:14px;cursor:pointer;transition:all .2s}
+.player-card:hover{border-color:var(--p2);box-shadow:0 2px 8px rgba(107,78,255,.12)}
+.player-card.active{border-color:var(--p);box-shadow:0 2px 8px rgba(107,78,255,.2)}
+.player-name{font-weight:700;font-size:13px;margin-bottom:3px}
 .player-seg{font-size:10px;color:var(--txm);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.badge-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
+.b-alto{background:#fef2f2;color:#991b1b}
+.b-medio{background:#fffbeb;color:#92400e}
+.b-baixo{background:#f0fdf4;color:#166534}
+.b-ia{background:#ede9fe;color:#5b21b6}
+.b-sem-ia{background:#f3f4f6;color:#6b7280}
 .ads-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .ad-chip{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
-.ad-gads{background:#FEE2E2;color:#991B1B}
-.ad-meta{background:#DBEAFE;color:#1E40AF}
-.ad-li{background:#D1FAE5;color:#065F46}
-.ad-none{background:#F3F4F6;color:#6B7280}
-.detail-panel{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:16px;margin-top:10px;display:none}
+.ad-g{background:#fee2e2;color:#991b1b}
+.ad-m{background:#dbeafe;color:#1e40af}
+.ad-li{background:#d1fae5;color:#065f46}
+.ad-none{background:#f3f4f6;color:#6b7280}
+/* Detail panel */
+.detail-panel{background:#fff;border-radius:10px;border:1px solid var(--g200);padding:16px;margin-top:12px;display:none}
 .detail-panel.show{display:block}
 .kv{display:flex;gap:8px;margin-bottom:6px;font-size:12px}
-.kv-key{font-weight:600;color:var(--txm);min-width:120px;flex-shrink:0}
+.kv-key{font-weight:600;color:var(--txm);min-width:140px;flex-shrink:0}
 .kv-val{color:var(--tx);line-height:1.5}
-.criativo{background:var(--g50);border-left:3px solid var(--pm);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;margin-bottom:6px;line-height:1.5;font-style:italic}
-.temas-grid{display:flex;flex-wrap:wrap;gap:6px}
-.tema-tag{background:var(--pl);color:var(--pd);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600}
-.matrix-table{width:100%;border-collapse:collapse;font-size:11px}
-.matrix-table th{background:var(--g100);padding:6px 8px;text-align:left;font-weight:600;color:var(--txm);border-bottom:1px solid var(--g200)}
-.matrix-table td{padding:6px 8px;border-bottom:1px solid var(--g200);vertical-align:top}
-.matrix-table tr:last-child td{border-bottom:none}
-.matrix-table tr:hover td{background:var(--g50)}
-.dot-alto{width:8px;height:8px;background:var(--rd);border-radius:50%;display:inline-block;margin-right:4px}
-.dot-medio{width:8px;height:8px;background:var(--am);border-radius:50%;display:inline-block;margin-right:4px}
-.dot-baixo{width:8px;height:8px;background:var(--gn);border-radius:50%;display:inline-block;margin-right:4px}
-.num-big{font-size:22px;font-weight:700;color:var(--p)}
-.num-label{font-size:10px;color:var(--txm);font-weight:500}
-.insight-box{background:var(--pl);border:1px solid var(--pm);border-radius:8px;padding:12px;margin-bottom:8px}
-.insight-title{font-weight:700;font-size:12px;color:var(--pd);margin-bottom:4px}
-.insight-txt{font-size:12px;color:var(--tx);line-height:1.5}
-.tag-ia{background:#F0FDF4;color:#166534;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700}
-.tag-noai{background:#F9FAFB;color:#6B7280;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
-.last-update{font-size:11px;color:var(--txm);text-align:right;margin-top:4px}
-.divider{height:1px;background:var(--g200);margin:12px 0}
-.view-pane{display:none}
-.view-pane.active{display:block}
+.creative-box{background:var(--g50);border-left:3px solid var(--p);padding:8px 10px;border-radius:0 6px 6px 0;font-size:12px;margin:4px 0;font-style:italic}
+.social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:8px}
+.social-card{background:var(--g50);border-radius:8px;padding:10px;font-size:12px}
+.social-card strong{display:block;font-size:13px;margin-bottom:4px}
+.social-tag{display:inline-block;background:#fff;border:1px solid var(--g200);padding:2px 6px;border-radius:8px;font-size:10px;margin:2px}
+.section-title{font-weight:700;font-size:13px;margin:12px 0 6px;color:var(--p)}
+.link-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;background:var(--g50);border:1px solid var(--g200);color:var(--p);transition:all .2s;margin:2px}
+.link-btn:hover{background:var(--p);color:#fff;border-color:var(--p)}
+/* Anuncios tab */
+.ads-table{width:100%;border-collapse:collapse}
+.ads-table th{background:var(--g50);font-size:11px;font-weight:600;color:var(--txm);padding:8px 10px;text-align:left;border-bottom:2px solid var(--g200)}
+.ads-table td{padding:8px 10px;border-bottom:1px solid var(--g200);vertical-align:top;font-size:12px}
+.ads-table tr:hover td{background:var(--g50)}
+.lib-links{display:flex;gap:4px;flex-wrap:wrap}
+.platform-badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.p-google{background:#fee2e2;color:#991b1b}
+.p-meta{background:#dbeafe;color:#1e40af}
+.p-linkedin{background:#d1fae5;color:#065f46}
+.gatilho-list{list-style:none;padding:0}
+.gatilho-list li{padding:3px 0;font-size:11px;color:var(--txm)}
+.gatilho-list li::before{content:"▸ ";color:var(--p)}
+/* Redes Sociais tab */
+.social-table{width:100%;border-collapse:collapse}
+.social-table th{background:var(--g50);font-size:11px;font-weight:600;color:var(--txm);padding:8px 10px;text-align:left;border-bottom:2px solid var(--g200)}
+.social-table td{padding:8px 10px;border-bottom:1px solid var(--g200);vertical-align:top;font-size:12px}
+.social-table tr:hover td{background:var(--g50)}
+.post-preview{background:var(--g50);border-left:2px solid var(--p);padding:6px 8px;border-radius:0 4px 4px 0;font-size:11px;color:var(--txm);margin:3px 0;font-style:italic}
+/* Newsletter tab */
+.news-table{width:100%;border-collapse:collapse}
+.news-table th{background:var(--g50);font-size:11px;font-weight:600;color:var(--txm);padding:8px 10px;text-align:left;border-bottom:2px solid var(--g200)}
+.news-table td{padding:8px 10px;border-bottom:1px solid var(--g200);vertical-align:top;font-size:12px}
+.news-table tr:hover td{background:var(--g50)}
+.topic-chip{display:inline-block;background:#ede9fe;color:#5b21b6;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;margin:2px}
+/* Insights */
+.insight-card{background:#fff;border-radius:8px;border:1px solid var(--g200);padding:14px;margin-bottom:10px}
+.insight-card h3{font-size:13px;font-weight:700;color:var(--p);margin-bottom:6px}
+.insight-card p{font-size:12px;color:var(--txm);line-height:1.6}
+/* Matriz */
+.matrix-wrap{overflow-x:auto}
+.matrix-table{width:100%;border-collapse:collapse;min-width:700px}
+.matrix-table th{background:var(--p);color:#fff;padding:8px 10px;font-size:11px;font-weight:600;text-align:center}
+.matrix-table td{padding:8px 10px;border:1px solid var(--g200);font-size:12px;text-align:center}
+.matrix-table tr:nth-child(even) td{background:var(--g50)}
+.cell-hi{background:#fef2f2 !important;font-weight:700;color:#991b1b}
+.cell-ok{background:#f0fdf4 !important;color:#166534}
+.cell-na{background:#f9fafb !important;color:#9ca3af}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div class="brand">
-    <div class="lmark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-    <div><div class="brand-txt">Twygo IC</div><div class="brand-sub">Inteligência Competitiva</div></div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="showView('visao')">Visão Geral</button>
-    <button class="tab" onclick="showView('alertas')">Alertas</button>
-    <button class="tab" onclick="showView('players')">Players</button>
-    <button class="tab" onclick="showView('ads')">Anúncios</button>
-    <button class="tab" onclick="showView('insights')">Insights PMM</button>
-    <button class="tab" onclick="showView('matriz')">Matriz</button>
-  </div>
+<header>
+<div>
+<h1>Twygo IC — Inteligência Competitiva</h1>
+<span>Monitoramento mensal | Referência: Abril/2026 | 12 players</span>
+</div>
+<nav id="nav">
+<button class="active" onclick="showTab('visao-geral',this)">Visão Geral</button>
+<button onclick="showTab('alertas',this)">Alertas</button>
+<button onclick="showTab('players',this)">Players</button>
+<button onclick="showTab('anuncios',this)">Anúncios</button>
+<button onclick="showTab('redes',this)">Redes Sociais</button>
+<button onclick="showTab('newsletter',this)">Newsletter</button>
+<button onclick="showTab('insights',this)">Insights PMM</button>
+<button onclick="showTab('matriz',this)">Matriz</button>
+</nav>
+</header>
+<!-- VISÃO GERAL -->
+<div id="visao-geral" class="tab-content active">
+<div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026 · Cobertura: 12 players · Fontes: Sites, Google Ads, Meta Ads Library, LinkedIn Ad Library, LinkedIn Orgânico</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:16px">
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:var(--p)">12</div><div style="font-size:11px;color:var(--txm)">Players monitorados</div></div>
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#ff4444">3</div><div style="font-size:11px;color:var(--txm)">Alertas ALTO</div></div>
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#f59e0b">4</div><div style="font-size:11px;color:var(--txm)">Alertas MÉDIO</div></div>
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#22c55e">5</div><div style="font-size:11px;color:var(--txm)">Com IA declarada</div></div>
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#1e40af">~400</div><div style="font-size:11px;color:var(--txm)">Anúncios ativos (total)</div></div>
+<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#065f46">351k+</div><div style="font-size:11px;color:var(--txm)">Seguidores LinkedIn (total)</div></div>
+</div>
+<div style="background:#fff;border-radius:8px;border:1px solid var(--g200);padding:14px;margin-bottom:10px">
+<div class="section-title">🔥 Top Movimentos de Abril/2026</div>
+<div style="font-size:12px;color:var(--txm);line-height:1.8">
+<b>Qulture.Rocks</b> — Fusão com Learning Rocks + Ciatech (UOL EdTech) consolidada. ~200 Google Ads ativos + 67 Meta Ads. Maior investimento em paid do mercado.<br>
+<b>Scaffold Education</b> — ABM agressivo via LinkedIn InMail (76 ads). Roadshows presenciais como isca. Foco em ROI de T&D e "aprendizagem integrada à rotina".<br>
+<b>Woli</b> — Novo posicionamento "T&DX Platform" lançado. Meta Ad sobre IA no T&D disparado em 30/04/2026 (1 dia antes da coleta).<br>
+<b>Revvo</b> — 251k seguidores LinkedIn, novo Meta Ad em 05/05/2026. LearningFlix como diferencial. 22 Google Ads ativos.<br>
+<b>Ludos Pro</b> — 41 Google Ads + 13 Meta + 34 LinkedIn. Consistência de mensagem gamificação + "+1,5M treinados".<br>
+<b>YourH</b> — 46 Google Ads com vídeos. Único com formato vídeo em destaque no Google Ads.
+</div>
+</div>
+</div>
+<!-- ALERTAS -->
+<div id="alertas" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026</div>
+<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Qulture.Rocks — Ecossistema completo DHO + LMS (UOL EdTech)</div><div class="alert-desc">Fusão com Learning Rocks + Ciatech consolida oferta que vai de performance a LMS em uma única plataforma. ~200 Google Ads + 67 Meta Ads ativos. Posicionamento: "ecossistema mais completo de performance e aprendizagem do Brasil". Risco direto ao posicionamento Twygo como solução completa.</div></div>
+<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Scaffold Education — ABM LinkedIn agressivo (76 InMails)</div><div class="alert-desc">76 LinkedIn Ads rodando — maior volume de todos. InMail personalizado por vendedores (Vagner Santana, Marcos Braga). Isca: Roadshows presenciais. Gancho: ROI de T&D, "treinamento isolado não muda empresa". Ataque direto à base de prospects enterprise da Twygo.</div></div>
+<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Woli — Novo posicionamento "T&DX Platform" + IA lançado em 30/04/2026</div><div class="alert-desc">Meta Ad novo lançado 1 dia antes da coleta posicionando Woli como plataforma T&DX com IA integrada. Move diretamente ao posicionamento de "plataforma completa com IA" da Twygo. 11k seguidores LinkedIn, 11k Google Ads estimados.</div></div>
+<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Ludos Pro — Consistência multicanal (41G + 13M + 34LI)</div><div class="alert-desc">Maior consistência de mensagem entre todos os players: gamificação + "+1,5M treinados" em todos os canais simultâneos. Risco de ocupar o mindshare de "LMS gamificado" antes da Twygo.</div></div>
+<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Revvo — Novo Meta Ad em 05/05/2026 + 251k seguidores LinkedIn</div><div class="alert-desc">Ad novo disparado no dia da coleta. LearningFlix como diferencial único de conteúdo pronto. 251k seguidores no LinkedIn é a maior base orgânica do segmento. 22 Google Ads + 10 LinkedIn Ads ativos.</div></div>
+<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">YourH — 46 Google Ads com formato vídeo em destaque</div><div class="alert-desc">Único player com vídeo como formato prioritário no Google Ads. Sinaliza investimento em brand awareness além de performance. DHO posicionado como "ecossistema RH".</div></div>
+<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Edusense — Integração DOT Digital Group + novo foco Agile Learning</div><div class="alert-desc">Agora parte do ecossistema DOT. Banner "Agile & Lifelong Learning". Posts sobre Learning Awards e experiência de aprendizagem. 7,1k seguidores, crescimento estável.</div></div>
+<div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">SmartLeader — 0 Google Ads, sem página LinkedIn gerenciada</div><div class="alert-desc">Sem investimento detectado em mídia paga. Página LinkedIn é automática, não gerenciada. Baixa relevância competitiva em paid media.</div></div>
+<div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">Mobiliza — 6 Google Ads, foco em conteúdo de thought leadership</div><div class="alert-desc">CEO João Romão com evento online "T&D como função estratégica" (06/05). Foco em Fábrica de Conteúdos como diferencial. Sem agressividade em paid. 11k seguidores LinkedIn.</div></div>
+<div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">Kubo LXP — 10 Google Ads, IA "KIA" como tutora</div><div class="alert-desc">Novo diferencial: KIA (tutora de IA do Kubo). Posts sobre NR-01 e microlearning. 996 seguidores LinkedIn — menor base do grupo LMS/LXP.</div></div>
+</div>
+<!-- PLAYERS -->
+<div id="players" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Clique em um player para ver detalhes completos</div>
+<div class="players-grid"><div class="player-card" id="card-qulture" onclick="showDetail('qulture')"><div class="player-name">Qulture.Rocks</div><div class="player-seg">DHO</div><div class="badge-row"><span class="badge b-alto">ALTO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: ~200</span><span class="ad-chip ad-m">M: 67</span><span class="ad-chip ad-li">Li: 52</span></div></div><div class="player-card" id="card-scaffold" onclick="showDetail('scaffold')"><div class="player-name">Scaffold Education</div><div class="player-seg">LMS</div><div class="badge-row"><span class="badge b-alto">ALTO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: UTM</span><span class="ad-chip ad-m">M: 11</span><span class="ad-chip ad-li">Li: 76</span></div></div><div class="player-card" id="card-woli" onclick="showDetail('woli')"><div class="player-name">Woli</div><div class="player-seg">LMS</div><div class="badge-row"><span class="badge b-alto">ALTO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: n/v</span><span class="ad-chip ad-m">M: 2</span><span class="ad-chip ad-li">Li: n/v</span></div></div><div class="player-card" id="card-revvo" onclick="showDetail('revvo')"><div class="player-name">Revvo</div><div class="player-seg">LMS/LXP</div><div class="badge-row"><span class="badge b-medio">MÉDIO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 22</span><span class="ad-chip ad-m">M: ~4</span><span class="ad-chip ad-li">Li: 10</span></div></div><div class="player-card" id="card-ludos" onclick="showDetail('ludos')"><div class="player-name">Ludos Pro</div><div class="player-seg">LMS</div><div class="badge-row"><span class="badge b-medio">MÉDIO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 41</span><span class="ad-chip ad-m">M: ~13</span><span class="ad-chip ad-li">Li: 34</span></div></div><div class="player-card" id="card-edusense" onclick="showDetail('edusense')"><div class="player-name">Edusense</div><div class="player-seg">LXP</div><div class="badge-row"><span class="badge b-medio">MÉDIO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: n/v</span><span class="ad-chip ad-m">M: n/v</span><span class="ad-chip ad-li">Li: n/v</span></div></div><div class="player-card" id="card-yourh" onclick="showDetail('yourh')"><div class="player-name">YouRH by Umentor</div><div class="player-seg">DHO</div><div class="badge-row"><span class="badge b-medio">MÉDIO</span><span class="badge b-sem-ia">SEM IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 46</span><span class="ad-chip ad-m">M: n/v</span><span class="ad-chip ad-li">Li: conf.</span></div></div><div class="player-card" id="card-teamculture" onclick="showDetail('teamculture')"><div class="player-name">TeamCulture</div><div class="player-seg">DHO</div><div class="badge-row"><span class="badge b-baixo">BAIXO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: n/v</span><span class="ad-chip ad-m">M: n/v</span><span class="ad-chip ad-li">Li: n/v</span></div></div><div class="player-card" id="card-mobiliza" onclick="showDetail('mobiliza')"><div class="player-name">Mobiliza</div><div class="player-seg">LMS</div><div class="badge-row"><span class="badge b-baixo">BAIXO</span><span class="badge b-sem-ia">SEM IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 6</span><span class="ad-chip ad-m">M: 0</span><span class="ad-chip ad-li">Li: 0</span></div></div><div class="player-card" id="card-kubo" onclick="showDetail('kubo')"><div class="player-name">Kubo LXP</div><div class="player-seg">LXP</div><div class="badge-row"><span class="badge b-baixo">BAIXO</span><span class="badge b-ia">IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 10</span><span class="ad-chip ad-m">M: 0</span><span class="ad-chip ad-li">Li: 5</span></div></div><div class="player-card" id="card-smartleader" onclick="showDetail('smartleader')"><div class="player-name">SmartLeader</div><div class="player-seg">DHO</div><div class="badge-row"><span class="badge b-baixo">BAIXO</span><span class="badge b-sem-ia">SEM IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 0</span><span class="ad-chip ad-m">M: n/v</span><span class="ad-chip ad-li">Li: n/v</span></div></div><div class="player-card" id="card-engage" onclick="showDetail('engage')"><div class="player-name">Engage</div><div class="player-seg">LMS</div><div class="badge-row"><span class="badge b-baixo">BAIXO</span><span class="badge b-sem-ia">SEM IA</span></div><div class="ads-row"><span class="ad-chip ad-g">G: 4</span><span class="ad-chip ad-m">M: n/v</span><span class="ad-chip ad-li">Li: 0</span></div></div></div><div class="detail-panel" id="detail-qulture"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Qulture.Rocks</h2><span style="background:#ff4444;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">ALTO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"O ecossistema mais completo de performance e aprendizagem do Brasil"</span></div><div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">DHO</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">RH estratégico enterprise</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Fusão Qulture+Learning Rocks+Ciatech (UOL EdTech). 1500+ clientes: Nubank, Cacau Show, Ipiranga, Tigre, Alelo.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA para automação de ciclos de gestão de desempenho, análise de dados, geração de insights — foco analítico/operacional, NÃO criação de conteúdo</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">~200 anúncios <a class="link-btn" href="https://adstransparency.google.com/advertiser/QULTURE%20INFORMATICA?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">67 anúncios <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=304821343223801" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">52 anúncios <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Qulture+Rocks" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Performance + aprendizagem integrados</div><div class="creative-box">Curiosidade é nossa cultura</div><div class="creative-box">Decisões melhores com mais contexto e precisão</div><div class="creative-box">Ecossistema conectado: diagnóstico + desenvolvimento + educação + consultoria</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/qulturerocks/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/qulturerocks/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://qulture.rocks" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">50.627</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~12 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">IA no RH — tomada de decisão com mais contexto</div><div class="post-preview">Certificação IA Generativa para RH (Módulo 2)</div><div class="post-preview">O que muda quando performance e desenvolvimento se unem</div><div class="post-preview">Saúde mental no trabalho — nova lei a partir de 26/05/2026</div></div><div class="detail-panel" id="detail-scaffold"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Scaffold Education</h2><span style="background:#ff4444;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">ALTO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Resultados pela Aprendizagem"</span></div><div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Enterprise B2B, médio/grande porte, RH e T&D</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">ABM via LinkedIn InMail personalizado (Vagner Santana, Marcos Braga). ROI mensurável. Roadshows presenciais como isca.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA para mensuração de resultado de aprendizagem e integração ao fluxo operacional</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">UTM confirmado anúncios <a class="link-btn" href="https://adstransparency.google.com/advertiser/scaffold+education?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">11 anúncios <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=166079413908756" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">76 anúncios <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Scaffold+Education" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Treinamento isolado não muda empresa. Rotina muda.</div><div class="creative-box">Se o investimento em treinamento não aparece nos indicadores, o problema não está no conteúdo</div><div class="creative-box">Aprendizagem integrada à rotina</div><div class="creative-box">Resultados mensuráveis de T&D</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/scaffoldeducation/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/scaffold.education/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://scaffoldeducation.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">8.149</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~8 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Treinamento isolado não muda empresa — rotina muda</div><div class="post-preview">Se o investimento em treinamento não aparece nos indicadores do negócio...</div><div class="post-preview">Aprendizagem integrada à rotina (document)</div></div><div class="detail-panel" id="detail-woli"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Woli</h2><span style="background:#ff4444;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">ALTO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Tech-knowledge. Anyway. Anywhere." / T&DX Platform</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, T&D corporativo, multi-setor</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">T&DX Platform — ecossistema educação + segurança + marketing + varejo. Grupo Woli 21 anos no mercado.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA no T&D como identificador de dores e acelerador de resultado — posicionamento novo lançado 30/04/2026</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://adstransparency.google.com/advertiser/woli?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">2 <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=1470440886550691" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Woli" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Quanto do seu esforço em T&D vira resultado de verdade?</div><div class="creative-box">Engajamento baixo • Conteúdo que ninguém acha • Produção que leva semanas • Dúvidas persistentes</div><div class="creative-box">A IA pode te ajudar a identificar e resolver boa parte dos desafios do T&D</div><div class="creative-box">T&DX: educação + segurança + marketing integrados</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/woli/" target="_blank">💼 LinkedIn (11.112 seg)</a><a class="link-btn" href="https://www.instagram.com/wolicursos/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://woli.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~6 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">A IA pode te ajudar a identificar e resolver boa parte dos desafios do T&D (1 dia atrás)</div><div class="post-preview">Quanto do seu esforço em T&D vira resultado de verdade?</div><div class="post-preview">Novo posicionamento T&DX Platform</div></div><div class="detail-panel" id="detail-revvo"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Revvo</h2><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">MÉDIO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"A Revvolução da Aprendizagem" / LearningFlix</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, diversificado (varejo, saúde, industria)</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">LearningFlix: catálogo de conteúdo pronto + plataforma LMS. Maior base LinkedIn do segmento (251k).</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA para personalização de trilhas e recomendação de conteúdo</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">22 <a class="link-btn" href="https://adstransparency.google.com/advertiser/LEO%20EDUCACAO?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">~4 <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=474671152723516" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">10 <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Revvo" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">LearningFlix — conteúdo pronto para sua empresa</div><div class="creative-box">Aprenda com quem já formou milhares de profissionais</div><div class="creative-box">InMail de Vanessa Malta focado em varejo</div><div class="creative-box">Conteúdo + Plataforma em um único lugar</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/somosrevvo/" target="_blank">💼 LinkedIn (251.029 seg)</a><a class="link-btn" href="https://www.instagram.com/somosrevvo/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://revvo.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~5 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">LearningFlix — conteúdo pronto disponível</div><div class="post-preview">Novidades da plataforma Revvo</div></div><div class="detail-panel" id="detail-ludos"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Ludos Pro</h2><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">MÉDIO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Plataforma Gamificada com IA"</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, setores diversificados, T&D</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Gamificação como core. "+1,5M pessoas treinadas". Maior consistência multicanal (41G+13M+34LI).</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA para criação e personalização de conteúdo gamificado</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">41 <a class="link-btn" href="https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">~13 <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=119800505385425" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">34 <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Ludos+Pro" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Gamificação que engaja e transforma</div><div class="creative-box">Mais de 1,5 milhão de pessoas treinadas</div><div class="creative-box">O futuro do trabalho já começou e o T&D precisa acompanhar</div><div class="creative-box">Falar sobre o futuro do trabalho é também falar sobre T&D</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/ludospro/" target="_blank">💼 LinkedIn (5.343 seg)</a><a class="link-btn" href="https://www.instagram.com/ludospro/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://ludospro.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~8 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">O futuro do trabalho já começou e o T&D precisa acompanhar (4 dias atrás)</div><div class="post-preview">Conhecimento gamificado para empresas que não param</div></div><div class="detail-panel" id="detail-edusense"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Edusense</h2><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">MÉDIO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Aprendizagem Ágil e Contínua"</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, foco em gestão de habilidades</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">LMS+LXP+IA+Analytics integrados. Parte do ecossistema DOT Digital Group. Learning Awards como credencial.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA para gestão de habilidades e trilhas adaptativas</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://adstransparency.google.com/advertiser/edusense?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=edusense" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Edusense" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Aprendizagem só funciona quando a experiência faz sentido para quem usa</div><div class="creative-box">Agile & Lifelong Learning</div><div class="creative-box">Gestão de habilidades integrada à plataforma</div><div class="creative-box">Learning Awards — referência em educação corporativa</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/edusenseedtech/" target="_blank">💼 LinkedIn (7.122 seg)</a><a class="link-btn" href="https://www.instagram.com/edusenseoficial/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://edusense.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~4 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Aprendizagem só funciona quando a experiência faz sentido (post com Learning Awards/Stone)</div><div class="post-preview">Agile & Lifelong Learning — banner de posicionamento</div></div><div class="detail-panel" id="detail-yourh"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">YouRH by Umentor</h2><span style="background:#f59e0b;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">MÉDIO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Sistema de RH para performance e desempenho" / +500k usuários</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, RH generalista, multi-setor</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">500k+ usuários. Único com formato vídeo em destaque no Google Ads (46 anúncios).</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">Sem IA declarada como diferencial competitivo</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">46 <a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=yourh" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">confirmado <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=YouRH" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">500k+ usuários confiam no YouRH</div><div class="creative-box">Performance e desempenho da sua equipe em um só lugar</div><div class="creative-box">Tudo que seu RH precisa em um só lugar</div><div class="creative-box">Gestão de RH simplificada</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/yourhoficial/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/yourhoficial/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://yourh.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">6.962</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~5 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Posts sobre RH estratégico</div><div class="post-preview">Dicas de gestão de pessoas</div><div class="post-preview">Cases de uso da plataforma</div></div><div class="detail-panel" id="detail-teamculture"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">TeamCulture</h2><span style="background:#22c55e;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">BAIXO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Plataforma Completa de Gestão de Pessoas"</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, RH e cultura organizacional</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">4 módulos integrados: Clima, Reconhecimento, OKR, Feedback. IA Axel. 150+ clientes.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">IA Axel para análise de clima organizacional e feedback contínuo</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://adstransparency.google.com/advertiser/teamculture?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=teamculture" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=TeamCulture" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Gestão de pessoas que transforma ambientes de trabalho</div><div class="creative-box">IA Axel analisa e age no clima da sua empresa</div><div class="creative-box">4 módulos integrados para RH completo</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/teamculture/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/teamcultureapp/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://teamculture.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">10.621</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~6 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Conteúdo sobre gestão de cultura organizacional</div><div class="post-preview">Cases de implementação de OKR</div><div class="post-preview">Dicas de reconhecimento e engajamento</div></div><div class="detail-panel" id="detail-mobiliza"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Mobiliza</h2><span style="background:#22c55e;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">BAIXO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Cursos Prontos + LMS personalizado" / Transformamos a gestão do aprendizado</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, T&D enxuto, foco em conteúdo e-learning</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Fábrica de Conteúdos para equipes de T&D enxutas. Ferramenta de autoria integrada. Thought leadership (CEO João Romão).</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">Sem IA como diferencial — foco em autoria e gestão de conteúdo</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">6 <a class="link-btn" href="https://adstransparency.google.com/advertiser/MOBILIZA%20TECNOLOGIA?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">0 <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=205967299421126" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">0 <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Mobiliza" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Equipes de T&D enxutas merecem ferramentas que entregam autonomia</div><div class="creative-box">Fábrica de Conteúdos resolve o gargalo entre conhecimento e aprendizagem estruturada</div><div class="creative-box">Materiais dispersos, plataforma desatualizada — a fila só cresce</div><div class="creative-box">T&D como função estratégica (evento 06/05)</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/mobilizaead/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/mobilizaead/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://mobiliza.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">11.070</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~7 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Equipes de T&D enxutas carregam um gargalo silencioso (post com vídeo, 5h atrás)</div><div class="post-preview">T&D como função estratégica — evento online 06/05 com CEO João Romão</div><div class="post-preview">Existe um padrão silencioso nas áreas de T&D que entregam muito e não são reconhecidas</div></div><div class="detail-panel" id="detail-kubo"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Kubo LXP</h2><span style="background:#22c55e;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">BAIXO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Descomplicando a educação corporativa"</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">PME e médio porte, foco em compliance e microlearning</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">KIA — tutora de IA do Kubo. NR-01 compliance. Microlearning como especialidade.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">KIA: tutora de IA para aprendizado personalizado, orientação e trilhas dinâmicas</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">10 <a class="link-btn" href="https://adstransparency.google.com/advertiser/NDD%20TECH?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">0 <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=102271805201087" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">5 <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Kubo+LXP" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">KIA: aprendizado dinâmico, personalizado e contínuo</div><div class="creative-box">Colaboradores que aprendem no próprio ritmo</div><div class="creative-box">NR-01 — como a tecnologia torna a implementação viável</div><div class="creative-box">Microlearning: práticas que aumentam o engajamento em T&D</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/kubolxp/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/kubolxp/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://kubolxp.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">996</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~4 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">KIA — tutora de IA do Kubo transforma o aprendizado (1 semana atrás)</div><div class="post-preview">Medo ou segurança: o que está guiando sua liderança? (artigo Kubo em Rede)</div></div><div class="detail-panel" id="detail-smartleader"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">SmartLeader</h2><span style="background:#22c55e;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">BAIXO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">Desenvolvimento Organizacional</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">PME/Médio porte</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Sem investimento detectado em paid media. Página LinkedIn não gerenciada pela empresa.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">Sem IA declarada</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">0 <a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=smartleader" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">n/d <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=SmartLeader" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">Sem anúncios ativos identificados</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/smartleader/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/smartleader_oficial/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://smartleader.com.br" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">n/d</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~0 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Sem atividade identificada em Abril/2026</div></div><div class="detail-panel" id="detail-engage"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Engage</h2><span style="background:#22c55e;color:#fff;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700">BAIXO</span></div><div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"LMS #1 do Brasil" / Gamificação</span></div><div class="kv"><span class="kv-key">ICP</span><span class="kv-val">PME/Médio porte</span></div><div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Gamificação como diferencial core. 4 Google Ads ativos.</span></div><div class="kv"><span class="kv-key">Messaging IA</span><span class="kv-val">Sem IA declarada como diferencial</span></div><div class="section-title">📢 Anúncios Ativos</div><div class="kv"><span class="kv-key">Google Ads</span><span class="kv-val">4 <a class="link-btn" href="https://adstransparency.google.com/advertiser/ENGAGE%20SERVICOS%20DE%20INFORMATICA?region=BR" target="_blank">🔍 Ver no Google Ads</a></span></div><div class="kv"><span class="kv-key">Meta Ads</span><span class="kv-val">n/v <a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=engage+lms" target="_blank">📘 Ver no Meta</a></span></div><div class="kv"><span class="kv-key">LinkedIn Ads</span><span class="kv-val">0 <a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Engage+LMS" target="_blank">💼 Ver no LinkedIn</a></span></div><div class="section-title">🎯 Principais Gatilhos dos Anúncios</div><div class="creative-box">LMS #1 do Brasil</div><div class="creative-box">Gamificação que engaja e transforma o aprendizado corporativo</div><div class="creative-box">Treinamentos que as pessoas querem fazer</div><div class="section-title">📱 Redes Sociais — Abril/2026</div><div style="margin-bottom:8px"><a class="link-btn" href="https://www.linkedin.com/company/engageapp/" target="_blank">💼 LinkedIn</a><a class="link-btn" href="https://www.instagram.com/engagebz/" target="_blank">📸 Instagram</a><a class="link-btn" href="https://engage.bz" target="_blank">🌐 Site</a></div><div class="kv"><span class="kv-key">Seguidores LinkedIn</span><span class="kv-val">n/d</span></div><div class="kv"><span class="kv-key">Posts em Abril</span><span class="kv-val">~3 posts identificados</span></div><div class="section-title">📝 Principais Temas dos Posts (Abril)</div><div class="post-preview">Conteúdo sobre gamificação corporativa</div><div class="post-preview">Dicas de engajamento em T&D</div></div></div>
+<!-- ANÚNCIOS -->
+<div id="anuncios" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026 · Clique nos links para ver a biblioteca completa de anúncios</div>
+<div style="overflow-x:auto">
+<table class="ads-table">
+<thead><tr>
+<th>Player</th><th>Google Ads</th><th>Meta Ads</th><th>LinkedIn Ads</th><th>Principais Gatilhos & Mensagens</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Qulture.Rocks</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
+<td><span class="platform-badge p-google">~200</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/QULTURE%20INFORMATICA?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">67</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=304821343223801" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">52</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Qulture+Rocks" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Ecossistema mais completo de performance e aprendizagem</li><li>Transformação começa na pergunta que se decide fazer</li><li>IA para decisões melhores com mais contexto e precisão</li><li>Certificação em IA Generativa para RH</li><li>Performance + desenvolvimento integrados — não separados</li></ul></td>
+</tr>
+<tr>
+<td><strong>Scaffold Education</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
+<td><span class="platform-badge p-google">UTM ativo</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/scaffold+education?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">11</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=166079413908756" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">76 🏆</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Scaffold+Education" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Treinamento isolado NÃO muda empresa — rotina muda</li><li>Se o investimento em T&D não aparece nos indicadores, o problema não está no conteúdo</li><li>Aprendizagem integrada à rotina (document 7 páginas)</li><li>InMail ABM personalizado por vendedor/empresa do prospect</li><li>Roadshow presencial como isca de geração de leads</li></ul></td>
+</tr>
+<tr>
+<td><strong>Ludos Pro</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
+<td><span class="platform-badge p-google">41</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">~13</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=119800505385425" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">34</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Ludos+Pro" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Gamificação que engaja e transforma o treinamento corporativo</li><li>+1,5 milhão de pessoas treinadas</li><li>Plataforma gamificada com IA integrada</li><li>O futuro do trabalho já começou — T&D precisa acompanhar</li></ul></td>
+</tr>
+<tr>
+<td><strong>YourH</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
+<td><span class="platform-badge p-google">46 🎬</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=yourh" target="_blank">📘 Pesquisar</a></td>
+<td><span class="platform-badge p-linkedin">conf.</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=YouRH" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>+500k usuários confiam no YouRH</li><li>Performance e desempenho da sua equipe em um só lugar</li><li>Tudo que seu RH precisa integrado (🎬 formato vídeo no Google)</li><li>Sistema de RH completo para médias empresas</li></ul></td>
+</tr>
+<tr>
+<td><strong>Revvo</strong><br><span style="font-size:10px;color:#6b7280">LMS/LXP</span></td>
+<td><span class="platform-badge p-google">22</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/LEO%20EDUCACAO?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">~4</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=474671152723516" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">10</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Revvo" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>LearningFlix — conteúdo pronto + plataforma integrada</li><li>A Revvolução da Aprendizagem corporativa</li><li>InMail personalizado para varejo (Vanessa Malta)</li><li>Novo Meta Ad disparado 05/05/2026 — monitorar</li></ul></td>
+</tr>
+<tr>
+<td><strong>Woli</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/woli?region=BR" target="_blank">🔍 Pesquisar</a></td>
+<td><span class="platform-badge p-meta">2 🆕</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=1470440886550691" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Woli" target="_blank">💼 Pesquisar</a></td>
+<td><ul class="gatilho-list"><li>Quanto do seu esforço em T&D vira resultado de verdade?</li><li>T&DX Platform — novo posicionamento (lançado 30/04/2026)</li><li>IA identifica e resolve desafios do T&D</li><li>Dores: engajamento baixo, produção lenta, dúvidas persistentes</li></ul></td>
+</tr>
+<tr>
+<td><strong>Kubo LXP</strong><br><span style="font-size:10px;color:#6b7280">LXP</span></td>
+<td><span class="platform-badge p-google">10</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/NDD%20TECH?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=102271805201087" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">5</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Kubo+LXP" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>KIA: tutora de IA que personaliza o aprendizado</li><li>Colaboradores aprendem no próprio ritmo e aceleram resultados</li><li>NR-01 compliance com tecnologia — implementação viável</li><li>Microlearning para maior engajamento em T&D</li></ul></td>
+</tr>
+<tr>
+<td><strong>Mobiliza</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
+<td><span class="platform-badge p-google">6</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/MOBILIZA%20TECNOLOGIA?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=205967299421126" target="_blank">📘 Ver biblioteca</a></td>
+<td><span class="platform-badge p-linkedin">0</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Mobiliza+EAD" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Equipes de T&D enxutas merecem ferramentas que entregam autonomia</li><li>Fábrica de Conteúdos resolve o gargalo de produção de cursos</li><li>T&D como função estratégica (thought leadership CEO)</li></ul></td>
+</tr>
+<tr>
+<td><strong>Engage</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
+<td><span class="platform-badge p-google">4</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/ENGAGE%20SERVICOS?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=engage+lms" target="_blank">📘 Pesquisar</a></td>
+<td><span class="platform-badge p-linkedin">0</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Engage+LMS" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>LMS #1 do Brasil</li><li>Gamificação que engaja o aprendizado corporativo</li><li>Treinamentos que as pessoas querem fazer</li></ul></td>
+</tr>
+<tr>
+<td><strong>Edusense</strong><br><span style="font-size:10px;color:#6b7280">LXP</span></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/edusense?region=BR" target="_blank">🔍 Pesquisar</a></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=edusense" target="_blank">📘 Pesquisar</a></td>
+<td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Edusense" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Aprendizagem só funciona quando a experiência faz sentido</li><li>Agile & Lifelong Learning</li><li>Gestão de habilidades integrada (LMS+LXP+IA+Analytics)</li></ul></td>
+</tr>
+<tr>
+<td><strong>TeamCulture</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/teamculture?region=BR" target="_blank">🔍 Pesquisar</a></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=teamculture" target="_blank">📘 Pesquisar</a></td>
+<td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=TeamCulture" target="_blank">💼 Ver biblioteca</a></td>
+<td><ul class="gatilho-list"><li>Gestão de pessoas que transforma ambientes de trabalho</li><li>IA Axel para clima organizacional e feedback</li><li>4 módulos integrados para RH completo</li></ul></td>
+</tr>
+<tr>
+<td><strong>SmartLeader</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
+<td><span class="platform-badge p-google">0</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR" target="_blank">🔍 Ver biblioteca</a></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=smartleader" target="_blank">📘 Pesquisar</a></td>
+<td><span class="platform-badge p-linkedin">n/d</span><br><a class="link-btn" href="https://www.linkedin.com/search/results/companies/?keywords=smartleader" target="_blank">💼 Pesquisar</a></td>
+<td><ul class="gatilho-list"><li>Sem anúncios ativos identificados em nenhuma plataforma</li><li>Menor investimento em paid media do grupo</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- REDES SOCIAIS -->
+<div id="redes" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026 · Dados LinkedIn + Instagram</div>
+<div style="overflow-x:auto">
+<table class="social-table">
+<thead><tr>
+<th>Player</th><th>LinkedIn</th><th>Instagram</th><th>Posts Abril (LI)</th><th>Principais Temas — Abril/2026</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Qulture.Rocks</strong><br><span style="font-size:10px;color:#6b7280">DHO · ALTO</span></td>
+<td><strong>50.627 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/qulturerocks/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/qulturerocks/" target="_blank">📸 @qulturerocks</a></td>
+<td>~12 posts</td>
+<td>
+<div class="post-preview">IA no RH não é sobre usar ferramenta — é sobre tomar decisões melhores com mais contexto</div>
+<div class="post-preview">Certificação em IA Generativa para RH (Módulo 2 lançado)</div>
+<div class="post-preview">O que muda quando performance e desenvolvimento deixam de ser coisas separadas?</div>
+<div class="post-preview">Saúde mental no trabalho — nova lei a partir de 26/05/2026</div>
+</td>
+</tr>
+<tr>
+<td><strong>Revvo</strong><br><span style="font-size:10px;color:#6b7280">LMS/LXP · MÉDIO</span></td>
+<td><strong>251.029 seg 🏆</strong><br><a class="link-btn" href="https://www.linkedin.com/company/somosrevvo/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/somosrevvo/" target="_blank">📸 @somosrevvo</a></td>
+<td>~5 posts</td>
+<td>
+<div class="post-preview">LearningFlix — conteúdo pronto para empresas</div>
+<div class="post-preview">Novidades da plataforma Revvo</div>
+</td>
+</tr>
+<tr>
+<td><strong>Woli</strong><br><span style="font-size:10px;color:#6b7280">LMS · ALTO</span></td>
+<td><strong>11.112 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/woli/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/wolicursos/" target="_blank">📸 @wolicursos</a></td>
+<td>~6 posts</td>
+<td>
+<div class="post-preview">A IA pode te ajudar a identificar e resolver boa parte dos desafios do T&D (1 dia atrás)</div>
+<div class="post-preview">Quanto do seu esforço em T&D vira resultado de verdade?</div>
+<div class="post-preview">Novo posicionamento T&DX Platform — lançado 30/04/2026</div>
+</td>
+</tr>
+<tr>
+<td><strong>Mobiliza</strong><br><span style="font-size:10px;color:#6b7280">LMS · BAIXO</span></td>
+<td><strong>11.070 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/mobilizaead/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/mobilizaead/" target="_blank">📸 @mobilizaead</a></td>
+<td>~7 posts</td>
+<td>
+<div class="post-preview">Equipes de T&D enxutas carregam um gargalo que raramente aparece nos relatórios (vídeo, 5h atrás)</div>
+<div class="post-preview">T&D como função estratégica — evento online 06/05 com CEO João Romão</div>
+<div class="post-preview">Existe um padrão silencioso nas áreas de T&D que entregam muito e não são reconhecidas como estratégicas</div>
+</td>
+</tr>
+<tr>
+<td><strong>TeamCulture</strong><br><span style="font-size:10px;color:#6b7280">DHO · BAIXO</span></td>
+<td><strong>10.621 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/teamculture/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/teamcultureapp/" target="_blank">📸 @teamcultureapp</a></td>
+<td>~6 posts</td>
+<td>
+<div class="post-preview">Gestão de cultura organizacional — dicas práticas</div>
+<div class="post-preview">Cases de implementação de OKR e reconhecimento</div>
+</td>
+</tr>
+<tr>
+<td><strong>Scaffold Education</strong><br><span style="font-size:10px;color:#6b7280">LMS · ALTO</span></td>
+<td><strong>8.149 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/scaffoldeducation/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/scaffold.education/" target="_blank">📸 @scaffold.education</a></td>
+<td>~8 posts</td>
+<td>
+<div class="post-preview">Treinamento Isolado NÃO MUDA EMPRESA. ROTINA MUDA. (7h atrás)</div>
+<div class="post-preview">Se o seu investimento em treinamento não aparece nos indicadores do negócio, o problema não está no conteúdo</div>
+<div class="post-preview">Aprendizagem integrada à rotina — document 7 páginas</div>
+</td>
+</tr>
+<tr>
+<td><strong>Edusense</strong><br><span style="font-size:10px;color:#6b7280">LXP · MÉDIO</span></td>
+<td><strong>7.122 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/edusenseedtech/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/edusenseoficial/" target="_blank">📸 @edusenseoficial</a></td>
+<td>~4 posts</td>
+<td>
+<div class="post-preview">Aprendizagem só funciona quando a experiência faz sentido para quem usa (Learning Awards)</div>
+<div class="post-preview">Agile & Lifelong Learning — novo banner de posicionamento</div>
+</td>
+</tr>
+<tr>
+<td><strong>YouRH by Umentor</strong><br><span style="font-size:10px;color:#6b7280">DHO · MÉDIO</span></td>
+<td><strong>6.962 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/yourhoficial/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/yourhoficial/" target="_blank">📸 @yourhoficial</a></td>
+<td>~5 posts</td>
+<td>
+<div class="post-preview">RH estratégico — performance e desempenho em foco</div>
+<div class="post-preview">+500k usuários — cases de gestão de pessoas</div>
+</td>
+</tr>
+<tr>
+<td><strong>Ludos Pro</strong><br><span style="font-size:10px;color:#6b7280">LMS · MÉDIO</span></td>
+<td><strong>5.343 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/company/ludospro/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/ludospro/" target="_blank">📸 @ludospro</a></td>
+<td>~8 posts</td>
+<td>
+<div class="post-preview">O futuro do trabalho já começou e o T&D precisa acompanhar (4 dias atrás — document 7 pgs)</div>
+<div class="post-preview">Falar sobre o futuro do trabalho é também falar sobre T&D</div>
+</td>
+</tr>
+<tr>
+<td><strong>Kubo LXP</strong><br><span style="font-size:10px;color:#6b7280">LXP · BAIXO</span></td>
+<td><strong>996 seg</strong><br><a class="link-btn" href="https://www.linkedin.com/showcase/kubolxp/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/kubolxp/" target="_blank">📸 @kubolxp</a></td>
+<td>~4 posts</td>
+<td>
+<div class="post-preview">KIA — tutora de IA do Kubo transforma o aprendizado corporativo (1 semana atrás)</div>
+<div class="post-preview">Medo ou segurança: o que está guiando sua liderança? (artigo)</div>
+</td>
+</tr>
+<tr>
+<td><strong>SmartLeader</strong><br><span style="font-size:10px;color:#6b7280">DHO · BAIXO</span></td>
+<td><strong>n/d</strong><br><a class="link-btn" href="https://www.linkedin.com/company/smartleader/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/smartleader_oficial/" target="_blank">📸 Instagram</a></td>
+<td>0 posts</td>
+<td><div class="post-preview">Sem atividade identificada em Abril/2026 — página LinkedIn não gerenciada</div></td>
+</tr>
+<tr>
+<td><strong>Engage</strong><br><span style="font-size:10px;color:#6b7280">LMS · BAIXO</span></td>
+<td><strong>n/d</strong><br><a class="link-btn" href="https://www.linkedin.com/company/engageapp/" target="_blank">💼 Ver perfil</a></td>
+<td><a class="link-btn" href="https://www.instagram.com/engagebz/" target="_blank">📸 @engagebz</a></td>
+<td>~3 posts</td>
+<td>
+<div class="post-preview">Conteúdo sobre gamificação corporativa</div>
+<div class="post-preview">Dicas de engajamento em T&D</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- NEWSLETTER -->
+<div id="newsletter" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026 · Fontes: LinkedIn Newsletter, sites oficiais</div>
+<table class="news-table">
+<thead><tr><th>Player</th><th>Newsletter</th><th>Freq. Estimada</th><th>Assinantes</th><th>Principais Tópicos — Abril/2026</th><th>Link</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Qulture.Rocks</strong></td>
+<td>Unlock.News</td>
+<td>Quinzenal</td>
+<td><strong>13.057</strong></td>
+<td>
+<span class="topic-chip">Gestão de Pessoas</span>
+<span class="topic-chip">IA no RH</span>
+<span class="topic-chip">Performance</span>
+<span class="topic-chip">Liderança</span>
+<span class="topic-chip">Saúde Mental no Trabalho</span>
+</td>
+<td><a class="link-btn" href="https://www.linkedin.com/newsletters/unlock-news-6958374396791697408/" target="_blank">📧 Assinar</a></td>
+</tr>
+<tr>
+<td><strong>Scaffold Education</strong></td>
+<td>Newsletter Scaffold</td>
+<td>Semanal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">ROI de T&D</span>
+<span class="topic-chip">Aprendizagem integrada à operação</span>
+<span class="topic-chip">Métricas de treinamento</span>
+<span class="topic-chip">Cases de resultado</span>
+</td>
+<td><a class="link-btn" href="https://scaffoldeducation.com.br" target="_blank">🌐 Site</a></td>
+</tr>
+<tr>
+<td><strong>Mobiliza</strong></td>
+<td>Blog + email Mobiliza</td>
+<td>Semanal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">T&D estratégico</span>
+<span class="topic-chip">Design instrucional</span>
+<span class="topic-chip">Fábrica de conteúdo</span>
+<span class="topic-chip">Gestão de aprendizado</span>
+</td>
+<td><a class="link-btn" href="https://mobiliza.com.br/blog" target="_blank">📰 Blog</a></td>
+</tr>
+<tr>
+<td><strong>Ludos Pro</strong></td>
+<td>Newsletter Ludos</td>
+<td>Quinzenal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">Gamificação corporativa</span>
+<span class="topic-chip">Futuro do trabalho</span>
+<span class="topic-chip">T&D e tecnologia</span>
+<span class="topic-chip">Cases de treinamento</span>
+</td>
+<td><a class="link-btn" href="https://ludospro.com.br/blog" target="_blank">📰 Blog</a></td>
+</tr>
+<tr>
+<td><strong>Revvo</strong></td>
+<td>Blog Revvo / Email</td>
+<td>Mensal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">LearningFlix</span>
+<span class="topic-chip">Conteúdo pronto</span>
+<span class="topic-chip">Aprendizagem corporativa</span>
+</td>
+<td><a class="link-btn" href="https://revvo.com.br/blog" target="_blank">📰 Blog</a></td>
+</tr>
+<tr>
+<td><strong>Woli</strong></td>
+<td>Email T&DX</td>
+<td>Quinzenal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">T&DX Platform</span>
+<span class="topic-chip">IA no T&D</span>
+<span class="topic-chip">Resultados de aprendizagem</span>
+<span class="topic-chip">Universo de soluções</span>
+</td>
+<td><a class="link-btn" href="https://woli.com.br" target="_blank">🌐 Site</a></td>
+</tr>
+<tr>
+<td><strong>Edusense</strong></td>
+<td>Blog Edusense</td>
+<td>Mensal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">Agile Learning</span>
+<span class="topic-chip">Gestão de habilidades</span>
+<span class="topic-chip">LXP e experiência</span>
+<span class="topic-chip">Learning Awards</span>
+</td>
+<td><a class="link-btn" href="https://edusense.com.br/blog" target="_blank">📰 Blog</a></td>
+</tr>
+<tr>
+<td><strong>Kubo LXP</strong></td>
+<td>Kubo em Rede (LI)</td>
+<td>Semanal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">Microlearning</span>
+<span class="topic-chip">NR-01 compliance</span>
+<span class="topic-chip">IA (KIA tutora)</span>
+<span class="topic-chip">Liderança</span>
+</td>
+<td><a class="link-btn" href="https://www.linkedin.com/showcase/kubolxp/" target="_blank">💼 LinkedIn</a></td>
+</tr>
+<tr>
+<td><strong>YouRH</strong></td>
+<td>Email YouRH</td>
+<td>Mensal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">RH estratégico</span>
+<span class="topic-chip">Performance de equipes</span>
+<span class="topic-chip">Gestão de RH</span>
+</td>
+<td><a class="link-btn" href="https://yourh.com.br" target="_blank">🌐 Site</a></td>
+</tr>
+<tr>
+<td><strong>TeamCulture</strong></td>
+<td>Blog TeamCulture</td>
+<td>Mensal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">Cultura organizacional</span>
+<span class="topic-chip">OKR</span>
+<span class="topic-chip">Reconhecimento</span>
+<span class="topic-chip">IA Axel</span>
+</td>
+<td><a class="link-btn" href="https://teamculture.com.br/blog" target="_blank">📰 Blog</a></td>
+</tr>
+<tr>
+<td><strong>SmartLeader</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span style="color:#9ca3af;font-size:11px">Sem newsletter identificada</span></td>
+<td><a class="link-btn" href="https://smartleader.com.br" target="_blank">🌐 Site</a></td>
+</tr>
+<tr>
+<td><strong>Engage</strong></td>
+<td>Email Engage</td>
+<td>Mensal</td>
+<td>n/d</td>
+<td>
+<span class="topic-chip">LMS gamificado</span>
+<span class="topic-chip">Engajamento T&D</span>
+</td>
+<td><a class="link-btn" href="https://engage.bz" target="_blank">🌐 Site</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- INSIGHTS PMM -->
+<div id="insights" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Perspectiva PMM — Posicionamento, Messaging e GTM da Twygo</div>
+<div class="insight-card">
+<h3>🎯 Gap 1 — "LMS completo + IA" ainda é território livre</h3>
+<p>Qulture foca em performance/DHO. Scaffold foca em ROI operacional. Ludos foca em gamificação. Nenhum competitor comunica claramente "LMS completo + IA para criação de conteúdo" como Twygo. Oportunidade: reforçar que Sophia (IA da Twygo) cria cursos em minutos — diferencial que nenhum concorrente LMS comunica com essa especificidade.</p>
+</div>
+<div class="insight-card">
+<h3>🔥 Gap 2 — Dor de "produção lenta de conteúdo" está sendo explorada por Woli, não por Twygo</h3>
+<p>Woli lançou ad em 30/04 com "Produção que leva semanas" como dor principal. Mobiliza fala em "gargalo de design instrucional". A Twygo (FIN-013 +119% com gancho IA) tem o argumento mais forte aqui mas não está ocupando esse espaço nos ads. Ação: criar campanha direta com "De brief a curso em X minutos — com a IA Sophia".</p>
+</div>
+<div class="insight-card">
+<h3>💡 Gap 3 — ROI/resultado de T&D como tema quente — Scaffold lidera, Twygo pode contra-atacar</h3>
+<p>Scaffold Education concentra 76 LinkedIn Ads em mensagens de ROI e resultado. Mobiliza fala em "T&D estratégico". A Twygo tem benchmark FIN-012 (-35% CPL) e R$93 MQL meta. Ação: criar conteúdo de thought leadership em LinkedIn sobre "Como medir ROI do LMS em 30 dias" — resposta direta ao posicionamento Scaffold.</p>
+</div>
+<div class="insight-card">
+<h3>⚠️ Ameaça 1 — Qulture vai de DHO para LMS (ecossistema completo)</h3>
+<p>A fusão Qulture+Learning Rocks+Ciatech cria um player que cobre performance + aprendizagem + consultoria em um único contrato enterprise. Risco: CTO/CHROs enterprise podem preferir fornecedor único ao invés de Twygo separado. Ação: fortalecer argumento de integração nativa com ferramentas de RH como diferencial de implementação mais rápida.</p>
+</div>
+<div class="insight-card">
+<h3>📊 Benchmark de investimento em mídia paga (Abril/2026)</h3>
+<p>Qulture lidera com ~200 Google Ads + 67 Meta. Scaffold lidera em LinkedIn (76 ads). Ludos Pro tem maior consistência multicanal (41G+13M+34Li). YourH único com vídeo no Google (46 ads). Revvo tem maior base orgânica LinkedIn (251k). A Twygo deve priorizar Search (FIN-013) + LinkedIn InMail (FIN-008 +24%) como canais prioritários onde benchmarks próprios estão positivos.</p>
+</div>
 </div>
 
-<div class="dash">
-<p class="last-update">Coleta: 05/05/2026 &nbsp;|&nbsp; Cobertura: 12 players &nbsp;|&nbsp; Fontes: Sites, Google Ads, Meta Ads Library, LinkedIn Ad Library</p>
-<div class="divider"></div>
-
-<!-- ===== VISÃO GERAL ===== -->
-<div id="view-visao" class="view-pane active">
-  <div class="grid4" style="margin-bottom:10px">
-    <div class="card" style="text-align:center"><div class="num-big">3</div><div class="num-label">Alertas ALTO</div></div>
-    <div class="card" style="text-align:center"><div class="num-big">4</div><div class="num-label">Alertas MÉDIO</div></div>
-    <div class="card" style="text-align:center"><div class="num-big" style="color:#16A34A">~200</div><div class="num-label">Google Ads Qulture</div></div>
-    <div class="card" style="text-align:center"><div class="num-big">76</div><div class="num-label">LinkedIn Ads Scaffold</div></div>
-  </div>
-
-  <div class="grid2">
-    <div>
-      <div class="card">
-        <div class="section-label">Segmento LMS/LXP</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
-          <span style="background:var(--p);color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">● Twygo</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Mobiliza</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Ludos Pro</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Engage</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Woli</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Revvo</span>
-          <span style="background:var(--rdb);color:var(--rd);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">⚠ Scaffold</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Edusense</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">Kubo LXP</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-label">Segmento DHO (Radar 2026)</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
-          <span style="background:var(--rdb);color:var(--rd);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700">⚠ Qulture (UOL EdTech)</span>
-          <span style="background:var(--amb);color:var(--am);padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600">YourH</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">SmartLeader</span>
-          <span style="background:var(--g100);padding:3px 10px;border-radius:12px;font-size:12px">TeamCulture</span>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="section-label">Temas dominantes no mercado (semana)</div>
-      <div class="temas-grid">
-        <span class="tema-tag">IA para RH analítico</span>
-        <span class="tema-tag">Gamificação LMS</span>
-        <span class="tema-tag">ABM + InMail LinkedIn</span>
-        <span class="tema-tag">Ecossistema DHO+LMS</span>
-        <span class="tema-tag">ROI de capacitação</span>
-        <span class="tema-tag">Roadshows presenciais</span>
-        <span class="tema-tag">Conteúdo gratuito IA T&D</span>
-        <span class="tema-tag">Varejo + alta rotatividade</span>
-        <span class="tema-tag">Logística + operações</span>
-        <span class="tema-tag">Certificação IA RH</span>
-        <span class="tema-tag">Desenvolvimento de cultura</span>
-        <span class="tema-tag">Avaliação de desempenho</span>
-      </div>
-      <div class="divider"></div>
-      <div class="section-label">Gap Twygo — ausente nos temas acima</div>
-      <div class="temas-grid">
-        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">IA que CRIA conteúdo</span>
-        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">Webinars integrados (Connect)</span>
-        <span style="background:#FEF3C7;color:#92400E;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">LMS completo + facilidade</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="section-label">Top 3 Alertas Esta Semana</div>
-    <div class="alert-card alert-alto">
-      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; Qulture (UOL EdTech) — Fusão DHO+LMS + ~200 Google Ads + 67 Meta Ads + 52 LinkedIn Ads</div>
-      <div class="alert-desc">Qulture Rocks uniu Learning Rocks e Ciatech em ecossistema "mais completo de performance e aprendizagem do Brasil". Invadem o espaço LMS com IA e maior orçamento de mídia do mercado. <strong>Ação: criar campanha "IA que cria treinamentos, não só analisa dados".</strong></div>
-    </div>
-    <div class="alert-card alert-alto">
-      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; Scaffold Education — 76 LinkedIn InMail Ads + ABM por verticais + Roadshows presenciais</div>
-      <div class="alert-desc">Scaffold tem a operação GTM mais sofisticada do segmento LMS puro: InMail personalizado com nome do diretor, eventos presenciais como hook, segmentação por logística/varejo/operações. <strong>Ação: escalar LinkedIn InMail com gancho de evento próprio.</strong></div>
-    </div>
-    <div class="alert-card alert-alto">
-      <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; YourH — 46 Google Ads ativos (incl. vídeo) no segmento DHO</div>
-      <div class="alert-desc">YourH é o 2º maior investidor em Google Ads no segmento DHO. Se Twygo planeja expansão DHO em 2026, YourH já está estabelecida com orçamento vídeo expressivo. <strong>Ação: mapear keywords YourH antes de expansão.</strong></div>
-    </div>
-  </div>
+<!-- MATRIZ -->
+<div id="matriz" class="tab-content">
+<div class="meta">Coleta: 05/05/2026 · Matriz comparativa dos 12 players</div>
+<div class="matrix-wrap">
+<table class="matrix-table">
+<thead><tr>
+<th>Player</th><th>Seg.</th><th>Threat</th><th>IA</th><th>G.Ads</th><th>Meta</th><th>Li.Ads</th><th>LI.Seg</th><th>Posts Abr</th><th>Newsletter</th>
+</tr></thead>
+<tbody>
+<tr><td>Qulture.Rocks</td><td>DHO</td><td class="cell-hi">ALTO</td><td>✅</td><td class="cell-hi">~200</td><td class="cell-hi">67</td><td>52</td><td>50.627</td><td>~12</td><td>Unlock.News (13k)</td></tr>
+<tr><td>Scaffold Education</td><td>LMS</td><td class="cell-hi">ALTO</td><td>✅</td><td>UTM</td><td>11</td><td class="cell-hi">76🏆</td><td>8.149</td><td>~8</td><td>Semanal</td></tr>
+<tr><td>Woli</td><td>LMS</td><td class="cell-hi">ALTO</td><td>✅</td><td>n/v</td><td>2🆕</td><td>n/v</td><td>11.112</td><td>~6</td><td>Quinzenal</td></tr>
+<tr><td>Ludos Pro</td><td>LMS</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>41</td><td>~13</td><td>34</td><td>5.343</td><td>~8</td><td>Quinzenal</td></tr>
+<tr><td>Revvo</td><td>LMS/LXP</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>22</td><td>~4</td><td>10</td><td class="cell-hi">251.029🏆</td><td>~5</td><td>Mensal</td></tr>
+<tr><td>YourH by Umentor</td><td>DHO</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>❌</td><td>46🎬</td><td>n/v</td><td>conf.</td><td>6.962</td><td>~5</td><td>Mensal</td></tr>
+<tr><td>Edusense</td><td>LXP</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>n/v</td><td>n/v</td><td>n/v</td><td>7.122</td><td>~4</td><td>Mensal</td></tr>
+<tr><td>TeamCulture</td><td>DHO</td><td class="cell-ok">BAIXO</td><td>✅</td><td>n/v</td><td>n/v</td><td>n/v</td><td>10.621</td><td>~6</td><td>Mensal</td></tr>
+<tr><td>Mobiliza</td><td>LMS</td><td class="cell-ok">BAIXO</td><td>❌</td><td>6</td><td>0</td><td>0</td><td>11.070</td><td>~7</td><td>Semanal</td></tr>
+<tr><td>Kubo LXP</td><td>LXP</td><td class="cell-ok">BAIXO</td><td>✅</td><td>10</td><td>0</td><td>5</td><td>996</td><td>~4</td><td>Semanal</td></tr>
+<tr><td>SmartLeader</td><td>DHO</td><td class="cell-ok">BAIXO</td><td>❌</td><td class="cell-na">0</td><td class="cell-na">n/v</td><td class="cell-na">n/d</td><td class="cell-na">n/d</td><td class="cell-na">0</td><td class="cell-na">—</td></tr>
+<tr><td>Engage</td><td>LMS</td><td class="cell-ok">BAIXO</td><td>❌</td><td>4</td><td>n/v</td><td>0</td><td class="cell-na">n/d</td><td>~3</td><td>Mensal</td></tr>
+</tbody>
+</table>
 </div>
-<!-- ===== ALERTAS ===== -->
-<div id="view-alertas" class="view-pane">
-  <div class="alert-card alert-alto">
-    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; QULTURE ROCKS — Fusão UOL EdTech: ecossistema LMS+DHO com maior volume de ads do mercado</div>
-    <div class="alert-desc"><strong>Player:</strong> Qulture Rocks (QULTURE INFORMATICA S.A.) via UOL EdTech, fusão com Learning Rocks e Ciatech<br><strong>Evidências:</strong> ~200 Google Ads | 67 Meta Ads (desde mar/2026) | 52 LinkedIn Ads | Headline: "O ecossistema mais completo de performance e aprendizagem do Brasil" | 1.500+ clientes (Nubank, Cacau Show, Ipiranga, Tigre, Alelo)<br><strong>Criativos-chave:</strong> "O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a IA para ganhar escala" / "Certificação em IA para RH" / "A Qulture.Rocks automatiza esse ciclo inteiro e usa inteligência artificial e dados"<br><strong>Gap Twygo explorar:</strong> Qulture = IA para RH analítico. Twygo = IA para T&D operacional (CRIA conteúdo). Comunicar: "Sophia cria cursos em minutos — Qulture analisa dados de pessoas"<br><strong>Ação imediata:</strong> Landing page comparativa Twygo vs Qulture. Campanha "IA que cria treinamentos, não só analisa dados"</div>
-  </div>
-  <div class="alert-card alert-alto">
-    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; SCAFFOLD EDUCATION — 76 LinkedIn InMail + Roadshows presenciais + ABM por vertical</div>
-    <div class="alert-desc"><strong>Player:</strong> Scaffold Education<br><strong>Evidências:</strong> 76 LinkedIn Ads | 11 Meta Ads (desde jan/2026) | Google Ads com UTMs estruturados | InMails de Vagner Santana (Diretor de Negócios) e Marcos Braga | Eventos presenciais: Roadshow Curitiba (18/03), Campinas | Verticais: logística, varejo, operações<br><strong>Criativos-chave:</strong> "Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão" / Segmento logística: "baixa aderência, retrabalho, falhas operacionais" / Pop culture hook: #ODiaboVestePrada<br><strong>Gap Twygo explorar:</strong> Scaffold tem ROI/métricas mas IA de conteúdo não é foco. Twygo = "Sophia cria o curso antes de você precisar das métricas". Scaffold não tem Twygo Connect (webinars).<br><strong>Ação imediata:</strong> Escalar InMail LinkedIn com gancho de evento/webinar. Criar sequência por vertical.</div>
-  </div>
-  <div class="alert-card alert-alto">
-    <div class="alert-title"><span class="badge badge-alto">ALTO</span> &nbsp; YOURH — 46 Google Ads ativos (vídeo+display) no espaço DHO pré-Twygo</div>
-    <div class="alert-desc"><strong>Player:</strong> YourH (YOURH LTDA)<br><strong>Evidências:</strong> 46 Google Ads verificados | múltiplos criativos vídeo | LinkedIn Ads confirmados<br><strong>Risco:</strong> Se Twygo expande para DHO em 2026, YourH já tem brand awareness estabelecida via vídeo<br><strong>Ação:</strong> Mapear keywords de YourH. Monitorar site yourh.com.br. Reservar budget para termos DHO antes de expansão.</div>
-  </div>
-  <div class="alert-card alert-medio">
-    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; LUDOS PRO — 34 LinkedIn Ads + 41 Google Ads + 13 Meta Ads com gancho gamificação</div>
-    <div class="alert-desc"><strong>Player:</strong> Ludos Pro (LUDOS PRO TECNOLOGIA E APRENDIZAGEM LTDA)<br><strong>Evidências:</strong> 41 Google Ads | ~13 Meta Ads (último: 28/04/2026, impressões baixas) | 34 LinkedIn Ads | Criativo dominante: "🎯 Aumente engajamento e retenção ✅ missões, pontos, recompensas ✅ +1,5M pessoas treinadas"<br><strong>Gap Twygo:</strong> Ludos usa "IA" no headline mas não explica como funciona. Twygo pode atacar com especificidade: "Sophia cria curso completo em minutos" vs "IA" genérica.<br><strong>Ação:</strong> Criar conteúdo comparativo sobre IA real vs IA marketing. Monitorar volume de impressões (crescendo ou estagnado).</div>
-  </div>
-  <div class="alert-card alert-medio">
-    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; WOLI — Lança T&DX (freemium IA no T&D) como lead gen para profissionais de RH/T&D</div>
-    <div class="alert-desc"><strong>Player:</strong> Woli Tecnologia<br><strong>Evidências:</strong> 2 Meta Ads ativos desde 30/04/2026 | Plataforma T&DX com cursos gratuitos sobre IA no T&D | "Aprenda tudo sobre IA aplicado no T&D para não ficar para trás na carreira ✅ Acesso gratuito"<br><strong>Estratégia:</strong> Freemium de educação para capturar profissionais T&D como leads — estratégia de top-of-funnel interessante<br><strong>Ação:</strong> Twygo deve criar conteúdo educativo sobre IA na criação de treinamentos (blog, YouTube, LinkedIn) para capturar esse público antes da Woli converter.</div>
-  </div>
-  <div class="alert-card alert-medio">
-    <div class="alert-title"><span class="badge badge-medio">MÉDIO</span> &nbsp; REVVO — 10 LinkedIn Ads (varejo) + 22 Google Ads + Meta Ads lançados 05/05/2026</div>
-    <div class="alert-desc"><strong>Player:</strong> Revvo (LEO EDUCACAO E PARTICIPACOES EIRELI)<br><strong>Evidências:</strong> 22 Google Ads | ~4 Meta Ads | 10 LinkedIn Ads | Meta Ad lançado HOJE (05/05/2026) — novo teste de criativo | LinkedIn InMail: "Como seria seu dia se 60% do time nas lojas fosse novo" — Learn 360 com 500+ títulos<br><strong>Gap Twygo:</strong> Revvo tem biblioteca própria de conteúdo (LearningFlix, 800h+). Twygo não tem biblioteca — mas Sophia resolve a dor de forma diferente. Comunicar: "Em vez de biblioteca pronta, crie conteúdo personalizado em minutos".<br><strong>Ação:</strong> Monitorar novo criativo Meta de hoje. Criar conteúdo "Conteúdo pronto vs Conteúdo personalizado com IA".</div>
-  </div>
-  <div class="alert-card alert-baixo">
-    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; MOBILIZA — 6 Google Ads, zero Meta, zero LinkedIn. Player em desinvestimento de aquisição.</div>
-    <div class="alert-desc">Sem IA no messaging. Foca em Cursos Prontos + Customizados como serviço. Sem movimentos novos identificados.</div>
-  </div>
-  <div class="alert-card alert-baixo">
-    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; ENGAGE — 4 Google Ads. Claim "#1 do Brasil" mas zero LinkedIn. Sem IA.</div>
-    <div class="alert-desc">Gamificação como diferencial. Atividade publicitária mínima. Sem movimentos novos.</div>
-  </div>
-  <div class="alert-card alert-baixo">
-    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; KUBO LXP — 10 Google Ads + 5 LinkedIn Ads (1 desatualizado de 2025). Sem IA.</div>
-    <div class="alert-desc">Anúncio de CONARH 2025 ainda ativo = desinvestimento em gestão de mídia. Sem movimentos novos.</div>
-  </div>
-  <div class="alert-card alert-baixo">
-    <div class="alert-title"><span class="badge badge-baixo">BAIXO</span> &nbsp; SMARTLEADER — Zero Google Ads ativos. Sem atividade detectada.</div>
-    <div class="alert-desc">Anunciante verificado no Google Ads Transparency mas sem criativos ativos. Baixa ameaça de aquisição direta.</div>
-  </div>
-</div>
-<!-- ===== PLAYERS ===== -->
-<div id="view-players" class="view-pane">
-<div style="margin-bottom:8px;font-size:12px;color:var(--txm)">Clique em um player para ver detalhes completos</div>
-<div class="grid3" id="players-grid"></div>
-<div id="player-detail" class="detail-panel"></div>
 </div>
 
-<!-- ===== ANÚNCIOS ===== -->
-<div id="view-ads" class="view-pane">
-  <div class="card">
-    <div class="section-label">Volume de Anúncios Ativos por Player e Canal (05/mai/2026)</div>
-    <table class="matrix-table">
-      <thead><tr><th>Player</th><th>Segmento</th><th>Google Ads</th><th>Meta Ads</th><th>LinkedIn Ads</th><th>Total</th><th>Intensidade</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Qulture Rocks</strong></td><td>DHO</td><td style="color:var(--rd);font-weight:700">~200</td><td style="color:var(--bl);font-weight:700">67</td><td style="color:var(--gn);font-weight:700">52</td><td><strong>~319</strong></td><td><span class="badge badge-alto">MÁXIMA</span></td></tr>
-        <tr><td><strong>Scaffold Education</strong></td><td>LMS</td><td>confirmado (UTM)</td><td>11</td><td style="color:var(--gn);font-weight:700">76</td><td><strong>87+</strong></td><td><span class="badge badge-alto">MUITO ALTA</span></td></tr>
-        <tr><td><strong>YourH</strong></td><td>DHO</td><td style="color:var(--rd);font-weight:700">46</td><td>n/v</td><td>confirmado</td><td><strong>46+</strong></td><td><span class="badge badge-alto">ALTA</span></td></tr>
-        <tr><td>Ludos Pro</td><td>LMS</td><td>41</td><td>13</td><td>34</td><td><strong>88</strong></td><td><span class="badge badge-medio">ALTA</span></td></tr>
-        <tr><td>Revvo</td><td>LMS</td><td>22</td><td>4</td><td>10</td><td><strong>36</strong></td><td><span class="badge badge-medio">MÉDIA</span></td></tr>
-        <tr><td>Kubo LXP</td><td>LXP</td><td>10</td><td>0</td><td>5</td><td><strong>15</strong></td><td><span class="badge badge-baixo">BAIXA</span></td></tr>
-        <tr><td>Mobiliza</td><td>LMS</td><td>6</td><td>0</td><td>0</td><td><strong>6</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
-        <tr><td>Engage</td><td>LMS</td><td>4</td><td>n/v</td><td>0</td><td><strong>4+</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
-        <tr><td>Woli</td><td>LMS</td><td>n/v</td><td>2</td><td>n/v</td><td><strong>2+</strong></td><td><span class="badge badge-baixo">MÍNIMA</span></td></tr>
-        <tr><td>TeamCulture</td><td>DHO</td><td>n/v</td><td>n/v</td><td>n/v</td><td>—</td><td>n/v</td></tr>
-        <tr><td>Edusense</td><td>LXP</td><td>n/v</td><td>n/v</td><td>n/v</td><td>—</td><td>n/v</td></tr>
-        <tr><td>SmartLeader</td><td>DHO</td><td>0</td><td>n/v</td><td>n/v</td><td><strong>0</strong></td><td><span class="badge badge-baixo">ZERO</span></td></tr>
-      </tbody>
-    </table>
-    <div style="margin-top:8px;font-size:11px;color:var(--txm)">n/v = não verificado nesta coleta | confirmado = presença confirmada sem contagem exata</div>
-  </div>
-
-  <div class="grid2">
-    <div class="card">
-      <div class="section-label">Criativos Meta Ads — Top Performers (por data + volume)</div>
-      <div class="criativo"><strong>Qulture (mar/2026):</strong> "A transformação não começa na resposta. Começa na pergunta que a gente decide fazer. O Q é esse começo."</div>
-      <div class="criativo"><strong>Qulture (abr/2026):</strong> "O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a IA para ganhar escala, profundidade e precisão."</div>
-      <div class="criativo"><strong>Scaffold (jan/2026):</strong> "Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão dos times."</div>
-      <div class="criativo"><strong>Scaffold (mar/2026):</strong> "Sua operação logística exige precisão, velocidade e padrão. Mas o desenvolvimento do time acompanha essa complexidade?"</div>
-      <div class="criativo"><strong>Ludos Pro (mar/2026):</strong> "🎯 Aumente o engajamento e a retenção de conteúdo de sua equipe! ✅ missões, pontos e recompensas ✅ Líder em gamificação ✅ +1,5M pessoas"</div>
-      <div class="criativo"><strong>Woli (abr/2026):</strong> "Atualize agora suas competências com os cursos gratuitos na plataforma T&DX. Aprenda tudo sobre IA aplicado no T&D. ✅ Acesso gratuito"</div>
-      <div class="criativo"><strong>Revvo (mai/2026):</strong> [Novo criativo lançado hoje — vídeo, sem copy visível na biblioteca]</div>
-    </div>
-    <div class="card">
-      <div class="section-label">Criativos LinkedIn InMail — Top Performers</div>
-      <div class="criativo"><strong>Scaffold (Vagner Santana):</strong> "Olá %FIRSTNAME%, Você foi selecionado para receber este convite: o Scaffold Roadshow, dia 18 de março, em Curitiba. Uma imersão com líderes e especialistas sobre multipotencialidade e capacidade organizacional real."</div>
-      <div class="criativo"><strong>Scaffold (Marcos Braga):</strong> "Estou organizando um evento presencial em Campinas com um grupo seleto de executivos para debater: Como transformar [competências] em resultados."</div>
-      <div class="criativo"><strong>Revvo (Vanessa Malta):</strong> "Oi %FIRSTNAME%, Como seria seu dia se 60% do time nas lojas fosse novo? Criamos o Learn 360: catálogo com 500+ títulos. Webséries, videocasts e pílulas rápidas. Uso direto na plataforma ou no seu LMS."</div>
-      <div class="criativo"><strong>Ludos Pro:</strong> "🎯 Aumente o engajamento e retenção! ✅ missões, pontos e recompensas ✅ Líder em treinamentos gamificados ✅ +1,5M pessoas treinadas"</div>
-      <div class="criativo"><strong>Qulture:</strong> "Avaliar desempenho ainda é um caos na sua empresa? Planilhas soltas, feedbacks genéricos e colaboradores desmotivados?"</div>
-    </div>
-  </div>
-</div>
-<!-- ===== INSIGHTS PMM ===== -->
-<div id="view-insights" class="view-pane">
-  <div class="grid2">
-    <div>
-      <div class="insight-box">
-        <div class="insight-title">💡 Gap #1 — IA de CRIAÇÃO vs IA de ANÁLISE</div>
-        <div class="insight-txt">Todos os concorrentes que mencionam IA (Qulture, Ludos Pro, Scaffold, Edusense) usam IA para ANALISAR dados, RECOMENDAR conteúdo ou AUTOMATIZAR processos de RH. Nenhum comunica IA como motor de CRIAÇÃO DE CONTEÚDO. Twygo Sophia é única neste posicionamento. <strong>Oportunidade: campanha "A IA que cria o treinamento — não só analisa quem fez".</strong></div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">💡 Gap #2 — Completude vs Especialização</div>
-        <div class="insight-txt">O mercado está fragmentando: Ludos Pro = gamificação; Revvo = conteúdo proprietário; Scaffold = ROI operacional; Qulture = DHO+LMS. Nenhum comunica COMPLETUDE como Twygo. Benchmark interno FIN-013 (+119% com gancho IA) confirma que o posicionamento "LMS completo + IA" ressoa. <strong>Oportunidade: reforçar "único que combina plataforma completa com criação de conteúdo por IA".</strong></div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">💡 Gap #3 — LinkedIn InMail como canal subutilizado pela Twygo</div>
-        <div class="insight-txt">Scaffold tem 76 anúncios LinkedIn InMail com personalização ABM (nome do diretor, evento como hook). Twygo tem benchmark FIN-008 de +24% com InMail. Mas o volume de Scaffold é ordens de magnitude maior. <strong>Oportunidade: escalar InMail com criativo de evento (webinar Twygo Connect como hook) e segmentar por vertical (RH/T&D, varejo, logística).</strong></div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">💡 Gap #4 — Woli e a captura de profissionais T&D com conteúdo gratuito</div>
-        <div class="insight-txt">Woli lança T&DX como plataforma freemium de cursos sobre IA no T&D para capturar profissionais de RH. Esta é uma estratégia de top-of-funnel que Twygo não executa. O risco: Woli educando o ICP de Twygo sobre IA, criando preferência de marca antes da decisão de compra. <strong>Oportunidade: criar série de conteúdo educativo "IA na Criação de Treinamentos" (blog + LinkedIn + YouTube) antes que Woli estabeleça autoridade.</strong></div>
-      </div>
-    </div>
-    <div>
-      <div class="insight-box">
-        <div class="insight-title">⚡ Ação imediata #1 — Contra-narrativa Qulture</div>
-        <div class="insight-txt"><strong>Contexto:</strong> Qulture está investindo pesado em "IA para RH" com ~200 Google Ads e 67 Meta Ads. Risco de confusão de mercado entre "IA para DHO" e "IA para T&D operacional".<br><br><strong>Ação:</strong> Criar landing page específica posicionando Twygo vs Qulture com foco em: (1) Twygo = LMS-first com IA de criação; (2) Qulture = DHO-first com IA de análise. Capturar tráfego de termos como "plataforma aprendizagem corporativa IA". Custo/MQL meta: R$93.</div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">⚡ Ação imediata #2 — Benchmark de mídia vs concorrentes</div>
-        <div class="insight-txt"><strong>Contexto:</strong> Qulture (~319 ads), Ludos Pro (88 ads), Scaffold (87+ ads). Twygo precisa avaliar se seu volume está competitivo.<br><br><strong>Ação:</strong> Benchmark interno do volume de ads ativos. Prioridade para Google Ads Search (onde FIN-013 gerou +119%) e LinkedIn InMail (FIN-008 +24%). Dor operacional -35% CPL (FIN-012) reforça foco em Search com gancho de dor.</div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">⚡ Ação imediata #3 — Verticais não ocupadas</div>
-        <div class="insight-txt"><strong>Gap identificado:</strong> Scaffold domina logística/operações e varejo no LinkedIn. Revvo domina varejo com Learn 360. Qulture domina enterprises de RH.<br><br><strong>Oportunidade para Twygo:</strong> Segmentos não atacados de forma específica: (1) Franquias/redes (padronização de treinamento), (2) Saúde/hospitais (compliance + treinamento), (3) Financeiro (regulatório). Criar campanhas verticais com landing pages específicas.</div>
-      </div>
-      <div class="insight-box">
-        <div class="insight-title">⚡ Ação imediata #4 — Defender o claim de IA antes que concorrentes estabeleçam</div>
-        <div class="insight-txt"><strong>Risco:</strong> Múltiplos players usando "IA" sem especificidade (Ludos Pro, Edusense, Scaffold, Qulture). O mercado pode desenvolver "IA fatigue" e desvalorizar o diferencial.<br><br><strong>Ação:</strong> Ser o MAIS ESPECÍFICO sobre IA: "Sophia cria um curso completo de 1 hora em menos de 10 minutos" — número concreto. Usar benchmarks reais de velocidade de criação em todos os materiais de marketing. Evitar "IA integrada" genérico.</div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ===== MATRIZ ===== -->
-<div id="view-matriz" class="view-pane">
-  <div class="card">
-    <div class="section-label">Matriz Competitiva — Posicionamento e Diferenciais (05/mai/2026)</div>
-    <table class="matrix-table">
-      <thead>
-        <tr>
-          <th>Player</th><th>Segmento</th><th>Headline Principal</th><th>IA?</th><th>Diferencial Central</th><th>ICP</th><th>Ameaça Twygo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong style="color:var(--p)">TWYGO</strong></td><td>LMS</td>
-          <td>LMS completo + IA Sophia para criação de conteúdo</td>
-          <td><span class="tag-ia">IA CRIAÇÃO</span></td>
-          <td>Sophia (criação rápida de cursos), completude, Twygo Connect (webinars)</td>
-          <td>RH/T&D empresas médio/grande porte</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><strong>Qulture Rocks</strong></td><td>DHO→LMS</td>
-          <td>Ecossistema mais completo de performance e aprendizagem do Brasil</td>
-          <td><span class="tag-ia">IA ANÁLISE</span></td>
-          <td>DHO+LMS integrado, 1500+ clientes, backing UOL EdTech</td>
-          <td>RH estratégico enterprise</td>
-          <td><span class="badge badge-alto">ALTO</span></td>
-        </tr>
-        <tr>
-          <td><strong>Scaffold Education</strong></td><td>LMS</td>
-          <td>Reduza capacitação em 85%, adesão +125%, custos -97%</td>
-          <td><span class="tag-ia">IA BUILDER</span></td>
-          <td>ROI quantificado, ABM presencial por vertical, BI integrado</td>
-          <td>Operações/logística/varejo</td>
-          <td><span class="badge badge-alto">ALTO</span></td>
-        </tr>
-        <tr>
-          <td>YourH</td><td>DHO</td>
-          <td>n/v</td>
-          <td><span class="tag-noai">n/v</span></td>
-          <td>DHO com alto investimento em Google Ads vídeo</td>
-          <td>RH estratégico</td>
-          <td><span class="badge badge-alto">ALTO (DHO)</span></td>
-        </tr>
-        <tr>
-          <td>Ludos Pro</td><td>LMS</td>
-          <td>Plataforma Gamificada com IA</td>
-          <td><span class="tag-ia">IA (vago)</span></td>
-          <td>Gamificação, +1,5M pessoas treinadas</td>
-          <td>T&D engajamento</td>
-          <td><span class="badge badge-medio">MÉDIO</span></td>
-        </tr>
-        <tr>
-          <td>Revvo</td><td>LMS/LXP</td>
-          <td>A Revvolução da Aprendizagem</td>
-          <td><span class="tag-ia">IA PLATAFORMA</span></td>
-          <td>LearningFlix (plataforma + 800h conteúdo proprietário), varejo ABM</td>
-          <td>Varejo, alta rotatividade</td>
-          <td><span class="badge badge-medio">MÉDIO</span></td>
-        </tr>
-        <tr>
-          <td>Woli</td><td>LMS</td>
-          <td>T&DX — IA aplicada ao T&D</td>
-          <td><span class="tag-ia">IA TEMA</span></td>
-          <td>Freemium educação para profissionais T&D (conteúdo sobre IA)</td>
-          <td>Profissionais T&D</td>
-          <td><span class="badge badge-medio">MÉDIO</span></td>
-        </tr>
-        <tr>
-          <td>TeamCulture</td><td>DHO</td>
-          <td>Potencialize sua gestão de pessoas</td>
-          <td><span class="tag-ia">IA AXEL</span></td>
-          <td>Engajamento+Performance+Talentos integrados, 150+ clientes, Grupo Boticário</td>
-          <td>RH gestão de pessoas 100-10k+</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-        <tr>
-          <td>Edusense</td><td>LXP</td>
-          <td>Plataforma de Gestão de Habilidades</td>
-          <td><span class="tag-ia">IA SKILLS</span></td>
-          <td>Social learning, recomendação por habilidades, chatbot de jornada</td>
-          <td>T&D skills-focused</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-        <tr>
-          <td>Engage</td><td>LMS</td>
-          <td>LMS #1 do Brasil</td>
-          <td><span class="tag-noai">SEM IA</span></td>
-          <td>Gamificação, claim de liderança de mercado, 3M pessoas/600+ empresas</td>
-          <td>T&D engajamento</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-        <tr>
-          <td>Mobiliza</td><td>LMS</td>
-          <td>Cursos Prontos + LMS personalizado</td>
-          <td><span class="tag-noai">SEM IA</span></td>
-          <td>Biblioteca de cursos prontos + customizados, app white-label</td>
-          <td>T&D conteúdo</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-        <tr>
-          <td>Kubo LXP</td><td>LXP</td>
-          <td>Plataforma LXP para gestão da educação corporativa</td>
-          <td><span class="tag-noai">SEM IA</span></td>
-          <td>Centralização de gestão, automação, NDD TECH LTDA</td>
-          <td>T&D gestão</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-        <tr>
-          <td>SmartLeader</td><td>DHO</td>
-          <td>n/v</td>
-          <td><span class="tag-noai">n/v</span></td>
-          <td>Zero Google Ads ativos — baixa presença digital</td>
-          <td>DHO liderança</td>
-          <td><span class="badge badge-baixo">BAIXO</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-</div><!-- /dash -->
 <script>
-var playersData = [
-  {id:'qulture',name:'Qulture Rocks',seg:'DHO',ameaca:'alto',ia:true,gads:'~200',meta:'67',li:'52',
-   headline:'O ecossistema mais completo de performance e aprendizagem do Brasil',
-   dif:'Fusao Qulture+Learning Rocks+Ciatech (UOL EdTech). DHO+LMS integrado. 1500+ clientes: Nubank, Cacau Show, Ipiranga, Tigre, Alelo.',
-   icp:'RH estratégico enterprise',
-   msgIA:'IA para automação de ciclos de gestão de desempenho, análise de dados, geração de insights — foco analítico/operacional de RH, NAO criação de conteúdo',
-   criativos:['A transformação não começa na resposta. Começa na pergunta que a gente decide fazer.','O RH estratégico do futuro não perde tempo com tarefas operacionais. Ele usa a Inteligência Artificial para ganhar escala','Certificação em IA para RH — a maioria ainda está usando de forma superficial','A Qulture.Rocks automatiza esse ciclo inteiro, integra todos os processos em um só lugar e usa inteligência artificial e dados','Avaliar desempenho ainda é um caos na sua empresa? Planilhas soltas, feedbacks genéricos e colaboradores desmotivados?'],
-   gap:'Qulture = IA para RH analítico. Twygo = IA para T&D operacional (CRIA conteúdo). Comunicar: Sophia cria cursos em minutos — Qulture analisa dados de pessoas.',
-   movimentos:'Fusão operacional de 3 marcas publicada no site. ~200 Google Ads e 67 Meta Ads indicam ofensiva de market share massiva em 2026. Certificação em IA para RH como produto de lead gen.'},
-  {id:'scaffold',name:'Scaffold Education',seg:'LMS',ameaca:'alto',ia:true,gads:'UTM confirmado',meta:'11',li:'76',
-   headline:'PLATAFORMA LMS, LXP E EAD — Reduza capacitação 85%, adesão +125%, custos -97%',
-   dif:'ROI quantificado em 3 métricas. ABM presencial por vertical (logística/varejo/operações). BI integrado. 600 mil pessoas impactadas. Roadshows físicos como pipeline.',
-   icp:'Operações, logística, varejo — segmentos com alta necessidade de padronização',
-   msgIA:'Construtor de Cursos com IA mencionado mas não é diferencial central — métricas de ROI dominam o messaging',
-   criativos:['Processos longos de capacitação atrasam resultados, aumentam custos e reduzem a adesão dos times','Sua operação logística exige precisão, velocidade e padrão. Mas o desenvolvimento do time acompanha essa complexidade?','#ODiaboVestePrada — analogia para desenvolvimento e sustentação de performance','InMail Vagner Santana: Scaffold Roadshow Curitiba 18/03/2026 — imersão com líderes e especialistas (GRATUITO, poucas vagas)','InMail Marcos Braga: Evento presencial Campinas — grupo seleto de executivos'],
-   gap:'Scaffold forte em ROI/métricas mas IA de conteúdo não é foco central. Twygo: Sophia cria o curso ANTES de você precisar das métricas. Scaffold não tem webinars (Twygo Connect).',
-   movimentos:'Volume LinkedIn acima de 75 anúncios = campanha ABM nacional. Roadshow como produto de marketing sofisticado. Blog ativo com conteúdo de liderança e IA.'},
-  {id:'yourh',name:'YourH',seg:'DHO',ameaca:'alto',ia:false,gads:'46',meta:'n/v',li:'confirmado',
-   headline:'(site não acessível nesta coleta)',
-   dif:'Alto investimento em Google Ads vídeo + display no segmento DHO. Segundo maior investidor Google Ads do radar DHO.',
-   icp:'RH estratégico',
-   msgIA:'Não verificado',
-   criativos:['Criativos não acessíveis — somente contagem confirmada (46 Google Ads, inclui vídeo)'],
-   gap:'Se Twygo planeja expansão DHO em 2026, YourH já está estabelecida com orçamento substancial. Mapear keywords antes de entrar no segmento.',
-   movimentos:'46 anúncios Google com vídeo = awareness play expressivo. Necessita monitoramento aprofundado.'},
-  {id:'ludospro',name:'Ludos Pro',seg:'LMS',ameaca:'medio',ia:true,gads:'41',meta:'~13',li:'34',
-   headline:'Plataforma Gamificada com IA para treinamento e desenvolvimento',
-   dif:'Gamificação (missões, pontos, recompensas) como diferencial principal. +1,5 milhão de pessoas treinadas. IA mencionada mas não explicada.',
-   icp:'T&D focado em engajamento',
-   msgIA:'IA no headline mas gamificação é o verdadeiro diferencial. IA não especificada.',
-   criativos:['🎯 Aumente o engajamento e a retenção de conteúdo de sua equipe!','✅ Plataforma intuitiva com missões, pontos e recompensas','✅ Líder no mercado como plataforma de treinamentos gamificados','✅ +1,5 milhão de pessoas treinadas','Conheça a melhor plataforma gamificada!'],
-   gap:'Ludos usa IA no headline mas não explica. Twygo pode atacar com especificidade: Sophia cria curso completo em minutos — vs IA genérica de Ludos.',
-   movimentos:'Novo Meta Ad lançado 28/04/2026 com volume baixo — possível teste de criativo. LinkedIn com 34 anúncios indica expansão de canal.'},
-  {id:'revvo',name:'Revvo',seg:'LMS/LXP',ameaca:'medio',ia:true,gads:'22',meta:'~4',li:'10',
-   headline:'A Revvolução da Aprendizagem — LearningFlix + Experiências de Aprendizagem',
-   dif:'LearningFlix (plataforma + 800h+ conteúdo proprietário + 500+ títulos). IA integrada. Forte posição em varejo (alta rotatividade). Learn 360 como produto de conteúdo.',
-   icp:'Varejo, empresas com alta rotatividade de equipe',
-   msgIA:'IA como componente do LearningFlix — não diferencial principal comunicado',
-   criativos:['InMail Vanessa Malta: Como seria seu dia se 60% do time nas lojas fosse novo?','Learn 360: catálogo 500+ títulos prontos, webséries, videocasts, pílulas — uso na plataforma ou no seu LMS','O maior benchmarking de aprendizagem [campanha LinkedIn]','Anúncio vídeo Meta lançado HOJE 05/05/2026 — novo criativo em teste'],
-   gap:'Revvo tem forte biblioteca de conteúdo proprietário — gap real da Twygo. Mas Sophia resolve a dor de forma diferente: criar conteúdo personalizado vs biblioteca pronta.',
-   movimentos:'Meta Ad lançado hoje (05/05/2026) com 4h de veiculação — possível nova campanha. LinkedIn InMail com foco em varejo.'},
-  {id:'woli',name:'Woli',seg:'LMS',ameaca:'medio',ia:true,gads:'n/v',meta:'2',li:'n/v',
-   headline:'T&DX — Aprenda IA aplicada ao T&D (cursos gratuitos)',
-   dif:'Plataforma T&DX com cursos gratuitos sobre IA no T&D para profissionais de RH — modelo freemium para top-of-funnel.',
-   icp:'Profissionais de T&D e RH (lead gen)',
-   msgIA:'IA como TEMA de treinamento (treinar profissionais SOBRE IA) vs IA como ferramenta da plataforma',
-   criativos:['Atualize agora suas competências com os cursos gratuitos na plataforma T&DX','Aprenda tudo sobre IA aplicado no T&D para não ficar para trás na carreira','✅ Acesso gratuito ✅ Conteúdo atual'],
-   gap:'Woli educando o ICP de Twygo sobre IA antes da decisão de compra. Twygo deve criar conteúdo similar para capturar o mesmo público.',
-   movimentos:'Lançamento T&DX em 30/04/2026 como produto freemium — nova estratégia de top-of-funnel.'},
-  {id:'teamculture',name:'TeamCulture',seg:'DHO',ameaca:'baixo',ia:true,gads:'n/v',meta:'n/v',li:'n/v',
-   headline:'Potencialize sua gestão de pessoas — Hub com IA Axel',
-   dif:'Módulos integrados: Engajamento (10 Pilares), Performance (OKRs), Gestão de Talentos (360/PDI), Pesquisas. IA Axel para insights. 150+ clientes em 37 países: Grupo Boticário (+17pp engajamento), AMBEV Tech (6o GPTW), Meta.',
-   icp:'RH gestão de pessoas empresas 100-10k+ colaboradores',
-   msgIA:'IA Axel para diagnóstico mensal, alertas preditivos de desengajamento, recomendações personalizadas, Score de Liderança',
-   criativos:['Quanto custa não investir em gestão de pessoas?','NR-1: prazo para adequação aos riscos psicossociais se aproxima (banner de urgência)','Dados que conversam entre si — pesquisa de engajamento alimenta o PDI'],
-   gap:'TeamCulture é DHO puro — não compete diretamente com LMS. Possível cross-sell para clientes Twygo que precisam de DHO.',
-   movimentos:'Banner de urgência NR-1 em toda a homepage — aproveitando prazo regulatório como gatilho de conversão.'},
-  {id:'edusense',name:'Edusense',seg:'LXP',ameaca:'baixo',ia:true,gads:'n/v',meta:'n/v',li:'n/v',
-   headline:'Plataforma de Gestão de Habilidades — LXP com IA, Gamificação e Integrações',
-   dif:'Social Learning, chatbot de acompanhamento de jornada, recomendação automática de conteúdo por skills/desempenho, API omnichannel.',
-   icp:'T&D focado em gestão de competências e habilidades',
-   msgIA:'IA para recomendação de conteúdo e gestão de habilidades — foco em skills framework',
-   criativos:['Conteúdo de site: plataforma flexível adaptada às necessidades e estratégia de desenvolvimento'],
-   gap:'Edusense foca em skills management — nicho mais técnico que Twygo. Baixa sobreposição direta.',
-   movimentos:'Sem movimentos de mídia identificados nesta coleta.'},
-  {id:'engage',name:'Engage',seg:'LMS',ameaca:'baixo',ia:false,gads:'4',meta:'n/v',li:'0',
-   headline:'LMS #1 do Brasil — transforme treinamentos com gamificação',
-   dif:'Claim de liderança de mercado. Gamificação automatizada. 3 milhões de pessoas em 600+ empresas.',
-   icp:'T&D engajamento generalista',
-   msgIA:'Sem IA comunicada',
-   criativos:['LMS para empresas que precisam capacitar colaboradores','Transforme seus treinamentos com a Gamificação'],
-   gap:'Claim #1 Brasil é defensável — Twygo pode criar comparativo sobre completude de features. Engage não comunica facilidade de uso nem IA.',
-   movimentos:'Atividade publicitária mínima. Player aparentemente em consolidação.'},
-  {id:'mobiliza',name:'Mobiliza',seg:'LMS',ameaca:'baixo',ia:false,gads:'6',meta:'0',li:'0',
-   headline:'Acelere o lançamento com Cursos Prontos — LMS + Cursos Customizados',
-   dif:'Cursos Prontos (biblioteca), Cursos Customizados (serviço humano), LMS plataforma, App white-label.',
-   icp:'T&D que precisa de conteúdo pronto rapidamente',
-   msgIA:'Sem IA comunicada em nenhum canal',
-   criativos:['Cursos Prontos — Deixe com nosso time a criação de seus Cursos Customizados'],
-   gap:'Mobiliza não comunica IA. Foco em serviço de conteúdo humano. Twygo pode destacar Sophia como alternativa mais rápida e barata vs serviço humano de Mobiliza.',
-   movimentos:'Zero Meta Ads, zero LinkedIn. Desinvestimento em aquisição paga.'},
-  {id:'kubo',name:'Kubo LXP',seg:'LXP',ameaca:'baixo',ia:false,gads:'10',meta:'0',li:'5',
-   headline:'Plataforma LXP para gestão da educação corporativa',
-   dif:'Centralização de gestão de treinamentos, automação, aprendizado fora do horário comercial. Tecnologia via NDD TECH LTDA.',
-   icp:'T&D gestão centralizada',
-   msgIA:'Sem IA comunicada',
-   criativos:['Você já preparou um conteúdo incrível e viu o engajamento despencar?','Se sua equipe só pode aprender das 9h às 18h, você está limitando o crescimento','Kubo no CONARH 2025 [anúncio desatualizado ainda ativo]'],
-   gap:'Kubo sem IA. Anúncio CONARH 2025 desatualizado = baixa maturidade de mídia. Oportunidade de ataque no tema de engajamento de conteúdo.',
-   movimentos:'Volume estagnado. Anúncio de evento de 2025 ainda ativo = desinvestimento.'},
-  {id:'smartleader',name:'SmartLeader',seg:'DHO',ameaca:'baixo',ia:false,gads:'0',meta:'n/v',li:'n/v',
-   headline:'(site não acessível nesta coleta)',
-   dif:'Zero atividade publicitária paga detectada. SMARTLEADER DESENVOLVIMENTO ORGANIZACIONAL LTDA verificado mas sem anúncios.',
-   icp:'DHO liderança',
-   msgIA:'Não verificado',
-   criativos:['Nenhum criativo encontrado'],
-   gap:'Baixa ameaça de aquisição direta.',
-   movimentos:'Nenhum movimento identificado.'}
-];
-
-function showView(v) {
-  document.querySelectorAll('.view-pane').forEach(p => p.classList.remove('active'));
-  document.getElementById('view-'+v).classList.add('active');
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  // Hide all detail panels when switching tabs
+  document.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('show'));
 }
 
-function renderPlayers() {
-  var grid = document.getElementById('players-grid');
-  if (!grid) return;
-  grid.innerHTML = playersData.map(function(p) {
-    var aClr = p.ameaca === 'alto' ? 'badge-alto' : p.ameaca === 'medio' ? 'badge-medio' : 'badge-baixo';
-    var aLbl = p.ameaca === 'alto' ? 'ALTO' : p.ameaca === 'medio' ? 'MÉDIO' : 'BAIXO';
-    return '<div class="player-card" onclick="showPlayer(\'' + p.id + '\')" id="pc-' + p.id + '"><div class="player-name">' + p.name + '</div><div class="player-seg">' + p.seg + '</div><span class="badge ' + aClr + '">' + aLbl + '</span>' + (p.ia ? ' <span class="tag-ia">IA</span>' : ' <span class="tag-noai">SEM IA</span>') + '<div class="ads-row"><span class="ad-chip ad-gads">G: ' + p.gads + '</span><span class="ad-chip ad-meta">M: ' + p.meta + '</span><span class="ad-chip ad-li">LI: ' + p.li + '</span></div></div>';
-  }).join('');
+function showDetail(playerId) {
+  const allPanels = document.querySelectorAll('.detail-panel');
+  const allCards = document.querySelectorAll('.player-card');
+  const panel = document.getElementById('detail-' + playerId);
+  const card = document.getElementById('card-' + playerId);
+  
+  if (panel && panel.classList.contains('show')) {
+    panel.classList.remove('show');
+    if(card) card.classList.remove('active');
+    return;
+  }
+  
+  allPanels.forEach(p => p.classList.remove('show'));
+  allCards.forEach(c => c.classList.remove('active'));
+  
+  if (panel) {
+    panel.classList.add('show');
+    if(card) card.classList.add('active');
+    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
 }
-
-function showPlayer(id) {
-  document.querySelectorAll('.player-card').forEach(function(c) { c.classList.remove('active'); });
-  var card = document.getElementById('pc-' + id);
-  if (card) card.classList.add('active');
-  var p = playersData.find(function(x) { return x.id === id; });
-  if (!p) return;
-  var detail = document.getElementById('player-detail');
-  detail.classList.add('show');
-  var aClr = p.ameaca === 'alto' ? 'badge-alto' : p.ameaca === 'medio' ? 'badge-medio' : 'badge-baixo';
-  var aLbl = p.ameaca === 'alto' ? 'ALTO' : p.ameaca === 'medio' ? 'MÉDIO' : 'BAIXO';
-  detail.innerHTML = '<div class="card-title">' + p.name + ' <span class="badge ' + aClr + '">' + aLbl + '</span>' + (p.ia ? ' <span class="tag-ia">IA</span>' : '') + '</div>' +
-    '<div class="kv"><div class="kv-key">Segmento</div><div class="kv-val">' + p.seg + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Headline site</div><div class="kv-val"><em>' + p.headline + '</em></div></div>' +
-    '<div class="kv"><div class="kv-key">ICP</div><div class="kv-val">' + p.icp + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Diferencial</div><div class="kv-val">' + p.dif + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Messaging IA</div><div class="kv-val">' + p.msgIA + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Ads</div><div class="kv-val">Google: ' + p.gads + ' &nbsp;|&nbsp; Meta: ' + p.meta + ' &nbsp;|&nbsp; LinkedIn: ' + p.li + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Criativos ativos</div><div class="kv-val">' + p.criativos.map(function(c) { return '<div class="criativo">' + c + '</div>'; }).join('') + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Gap Twygo</div><div class="kv-val" style="color:var(--pd);font-weight:600">' + p.gap + '</div></div>' +
-    '<div class="kv"><div class="kv-key">Movimentos novos</div><div class="kv-val">' + p.movimentos + '</div></div>';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  renderPlayers();
-});
-renderPlayers();
 </script>
 </body>
 </html>
