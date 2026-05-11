@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Twygo IC — Inteligência Competitiva</title>
@@ -97,7 +96,92 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 .link-edit-save{background:var(--p);color:#fff}
 .link-edit-cancel{background:var(--g50);color:var(--txm);border:1px solid var(--g200) !important}
 </style>
-</head>
+<style id="claude-agent-animation-styles">
+      @keyframes claude-pulse {
+        0% {
+          box-shadow: 
+            inset 0 0 10px rgba(217, 119, 87, 0.5),
+            inset 0 0 20px rgba(217, 119, 87, 0.3),
+            inset 0 0 30px rgba(217, 119, 87, 0.1);
+        }
+        50% {
+          box-shadow: 
+            inset 0 0 15px rgba(217, 119, 87, 0.7),
+            inset 0 0 25px rgba(217, 119, 87, 0.5),
+            inset 0 0 35px rgba(217, 119, 87, 0.2);
+        }
+        100% {
+          box-shadow: 
+            inset 0 0 10px rgba(217, 119, 87, 0.5),
+            inset 0 0 20px rgba(217, 119, 87, 0.3),
+            inset 0 0 30px rgba(217, 119, 87, 0.1);
+        }
+      }
+    </style><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script><style id="overview-enhanced-styles">
+/* ===== VISÃO GERAL ENHANCED ===== */
+.ov-grid { display: grid; gap: 16px; }
+.ov-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.ov-kpi { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 1px 8px rgba(80,60,180,.08); border-left: 4px solid #6c63ff; display: flex; flex-direction: column; gap: 4px; }
+.ov-kpi.red { border-left-color: #e74c3c; }
+.ov-kpi.orange { border-left-color: #f39c12; }
+.ov-kpi.green { border-left-color: #27ae60; }
+.ov-kpi.blue { border-left-color: #2980b9; }
+.ov-kpi.purple { border-left-color: #8e44ad; }
+.ov-kpi-val { font-size: 1.75rem; font-weight: 800; color: #2d2d4e; line-height: 1; }
+.ov-kpi-label { font-size: .72rem; color: #888; text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+.ov-kpi-sub { font-size: .72rem; color: #aaa; margin-top: 2px; }
+
+.ov-section { background: #fff; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 8px rgba(80,60,180,.08); margin-bottom: 16px; }
+.ov-section-title { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #6c63ff; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+.ov-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.ov-three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+/* Threat badges */
+.threat-row { display: flex; flex-direction: column; gap: 8px; }
+.threat-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 8px; background: #fafafa; }
+.threat-item.alto { border-left: 3px solid #e74c3c; }
+.threat-item.medio { border-left: 3px solid #f39c12; }
+.threat-item.baixo { border-left: 3px solid #27ae60; }
+.threat-badge { font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.threat-badge.alto { background: #fdecea; color: #c0392b; }
+.threat-badge.medio { background: #fef5e7; color: #d35400; }
+.threat-badge.baixo { background: #eafaf1; color: #1e8449; }
+.threat-name { font-weight: 700; font-size: .82rem; color: #2d2d4e; }
+.threat-desc { font-size: .75rem; color: #666; margin-top: 2px; line-height: 1.4; }
+
+/* Channel bars */
+.ch-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ch-bar-label { font-size: .75rem; color: #444; font-weight: 600; min-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ch-bar-track { flex: 1; height: 10px; background: #f0eeff; border-radius: 99px; overflow: hidden; }
+.ch-bar-fill { height: 100%; border-radius: 99px; background: #6c63ff; }
+.ch-bar-val { font-size: .72rem; color: #666; min-width: 32px; text-align: right; }
+
+/* Signal pills */
+.signal-list { display: flex; flex-direction: column; gap: 7px; }
+.signal-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background: #f9f9ff; }
+.signal-icon { font-size: 1rem; flex-shrink: 0; }
+.signal-text { font-size: .76rem; color: #333; line-height: 1.4; }
+.signal-text strong { color: #2d2d4e; }
+
+/* Landscape donut legend */
+.donut-legend { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+.donut-leg-item { display: flex; align-items: center; gap: 8px; font-size: .75rem; color: #444; }
+.donut-leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* Movers table */
+.movers-table { width: 100%; border-collapse: collapse; font-size: .77rem; }
+.movers-table th { text-align: left; padding: 6px 8px; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; color: #999; border-bottom: 1px solid #f0eeff; font-weight: 700; }
+.movers-table td { padding: 8px 8px; border-bottom: 1px solid #f8f8ff; color: #333; vertical-align: middle; }
+.movers-table tr:last-child td { border-bottom: none; }
+.movers-table tr:hover td { background: #f9f9ff; }
+.tag-lms { background: #e8f4fc; color: #1a6fa0; padding: 1px 7px; border-radius: 4px; font-size: .65rem; font-weight: 700; }
+.tag-lxp { background: #fef5e7; color: #b7770d; padding: 1px 7px; border-radius: 4px; font-size: .65rem; font-weight: 700; }
+.tag-dho { background: #f0e8ff; color: #6c31c9; padding: 1px 7px; border-radius: 4px; font-size: .65rem; font-weight: 700; }
+.intensity-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.canvas-wrap { position: relative; height: 180px; }
+.canvas-wrap-sm { position: relative; height: 160px; }
+</style></head>
 <body>
 <header>
 <div>
@@ -106,33 +190,226 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <nav id="nav">
 <button class="active" onclick="showTab('visao-geral',this)">Visão Geral</button>
-<button onclick="showTab('alertas',this)">Alertas</button>
-<button onclick="showTab('players',this)">Players</button>
-<button onclick="showTab('anuncios',this)">Anúncios</button>
-<button onclick="showTab('redes',this)">Redes Sociais</button>
-<button onclick="showTab('newsletter',this)">Newsletter</button>
-<button onclick="showTab('insights',this)">Insights PMM</button>
-<button onclick="showTab('matriz',this)">Matriz</button>
+<button onclick="showTab('alertas',this)" class="">Alertas</button>
+<button onclick="showTab('players',this)" class="">Players</button>
+<button onclick="showTab('anuncios',this)" class="">Anúncios</button>
+<button onclick="showTab('redes',this)" class="">Redes Sociais</button>
+<button onclick="showTab('newsletter',this)" class="">Newsletter</button>
+<button onclick="showTab('insights',this)" class="">Insights PMM</button>
+<button onclick="showTab('matriz',this)" class="">Matriz</button>
 </nav>
 </header>
 
 <!-- VISÃO GERAL -->
 <div id="visao-geral" class="tab-content active">
 <div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026 · Cobertura: 12 players · Fontes: Sites, Google Ads, Meta Ads Library, LinkedIn Ad Library, LinkedIn Orgânico</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:16px">
-<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:var(--p)">12</div><div style="font-size:11px;color:var(--txm)">Players monitorados</div></div>
-<div style="background:#fff;border-radius:8px;padding:14px;text-align:center;border:1px solid var(--g200)"><div style="font-size:24px;font-weight:800;color:#065f46">351k+</div><div style="font-size:11px;color:var(--txm)">Seguidores LinkedIn (total)</div></div>
+
+<!-- KPIs ROW -->
+<div class="ov-kpis">
+  <div class="ov-kpi purple">
+    <span class="ov-kpi-val">12</span>
+    <span class="ov-kpi-label">Players monitorados</span>
+    <span class="ov-kpi-sub">LMS · LXP · DHO</span>
+  </div>
+  <div class="ov-kpi red">
+    <span class="ov-kpi-val">3</span>
+    <span class="ov-kpi-label">Ameaças de nível ALTO</span>
+    <span class="ov-kpi-sub">Qulture · Scaffold · Woli</span>
+  </div>
+  <div class="ov-kpi orange">
+    <span class="ov-kpi-val">351k+</span>
+    <span class="ov-kpi-label">Seguidores LinkedIn (total)</span>
+    <span class="ov-kpi-sub">Revvo lidera com 251k</span>
+  </div>
+  <div class="ov-kpi blue">
+    <span class="ov-kpi-val">~498</span>
+    <span class="ov-kpi-label">Google Ads ativos (total)</span>
+    <span class="ov-kpi-sub">Qulture lidera com ~200</span>
+  </div>
+  <div class="ov-kpi green">
+    <span class="ov-kpi-val">~199</span>
+    <span class="ov-kpi-label">LinkedIn Ads ativos (total)</span>
+    <span class="ov-kpi-sub">Scaffold lidera com 76</span>
+  </div>
+  <div class="ov-kpi">
+    <span class="ov-kpi-val">4</span>
+    <span class="ov-kpi-label">Novos Ads detectados em Mai/26</span>
+    <span class="ov-kpi-sub">Woli (2) · Revvo (1) · Scaffold (1)</span>
+  </div>
 </div>
-<div style="background:#fff;border-radius:8px;border:1px solid var(--g200);padding:14px;margin-bottom:10px">
-<div class="section-title">🔥 Top Movimentos de Abril/2026</div>
-<div style="font-size:12px;color:var(--txm);line-height:1.8">
-<b>Qulture.Rocks</b> — Fusão com Learning Rocks + Ciatech (UOL EdTech) consolidada. ~200 Google Ads ativos + 67 Meta Ads. Maior investimento em paid do mercado.<br>
-<b>Scaffold Education</b> — ABM agressivo via LinkedIn InMail (76 ads). Roadshows presenciais como isca. Foco em ROI de T&D e "aprendizagem integrada à rotina".<br>
-<b>Woli</b> — Novo posicionamento "T&DX Platform" lançado. Meta Ad sobre IA no T&D disparado em 30/04/2026 (1 dia antes da coleta).<br>
-<b>Revvo</b> — 251k seguidores LinkedIn, novo Meta Ad em 05/05/2026. LearningFlix como diferencial. 22 Google Ads ativos.<br>
-<b>Ludos Pro</b> — 41 Google Ads + 13 Meta + 34 LinkedIn. Consistência de mensagem gamificação + "+1,5M treinados".<br>
-<b>YourH</b> — 46 Google Ads com vídeos. Único com formato vídeo em destaque no Google Ads.
+
+<!-- ROW 1: Threat map + Channel ranking -->
+<div class="ov-two-col">
+
+  <!-- Threat map -->
+  <div class="ov-section">
+    <div class="ov-section-title">🎯 Mapa de Ameaças — Abril/2026</div>
+    <div class="threat-row">
+      <div class="threat-item alto">
+        <span class="threat-badge alto">ALTO</span>
+        <div>
+          <div class="threat-name">Qulture.Rocks</div>
+          <div class="threat-desc">Ecossistema completo DHO+LMS pós-fusão UOL EdTech. ~200 Google Ads + 67 Meta. Risco direto ao posicionamento Twygo.</div>
+        </div>
+      </div>
+      <div class="threat-item alto">
+        <span class="threat-badge alto">ALTO</span>
+        <div>
+          <div class="threat-name">Scaffold Education</div>
+          <div class="threat-desc">ABM LinkedIn agressivo (76 InMails). ROI de T&amp;D como diferencial. Ataque direto à base enterprise da Twygo.</div>
+        </div>
+      </div>
+      <div class="threat-item alto">
+        <span class="threat-badge alto">ALTO</span>
+        <div>
+          <div class="threat-name">Woli</div>
+          <div class="threat-desc">Novo posicionamento "T&amp;DX Platform + IA" lançado 30/04. Ocupa territory de "LMS completo com IA".</div>
+        </div>
+      </div>
+      <div class="threat-item medio">
+        <span class="threat-badge medio">MÉDIO</span>
+        <div>
+          <div class="threat-name">Ludos Pro · Revvo · YourH</div>
+          <div class="threat-desc">Alta consistência multicanal (Ludos), maior base orgânica (Revvo 251k), vídeo no Google (YourH).</div>
+        </div>
+      </div>
+      <div class="threat-item baixo">
+        <span class="threat-badge baixo">BAIXO</span>
+        <div>
+          <div class="threat-name">Edusense · Mobiliza · Kubo · SmartLeader · Engage</div>
+          <div class="threat-desc">Baixo investimento em paid ou presença limitada em múltiplos canais.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Channel ranking -->
+  <div class="ov-section">
+    <div class="ov-section-title">📊 Ranking — Google Ads por Player</div>
+    <div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Qulture.Rocks</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:100%;background:#e74c3c"></div></div><div class="ch-bar-val">~200</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">YourH</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:23%"></div></div><div class="ch-bar-val">46</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Ludos Pro</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:20.5%"></div></div><div class="ch-bar-val">41</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Revvo</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:11%"></div></div><div class="ch-bar-val">22</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Kubo LXP</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:5%"></div></div><div class="ch-bar-val">10</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Mobiliza</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:3%"></div></div><div class="ch-bar-val">6</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Engage</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:2%"></div></div><div class="ch-bar-val">4</div></div>
+    </div>
+    <div class="ov-section-title" style="margin-top:18px;">💼 Ranking — LinkedIn Ads por Player</div>
+    <div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Scaffold Education</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:100%;background:#0077b5"></div></div><div class="ch-bar-val">76 🏆</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Qulture.Rocks</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:68%;background:#0077b5"></div></div><div class="ch-bar-val">52</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Ludos Pro</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:45%;background:#0077b5"></div></div><div class="ch-bar-val">34</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Revvo</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:13%;background:#0077b5"></div></div><div class="ch-bar-val">10</div></div>
+      <div class="ch-bar-row"><div class="ch-bar-label">Kubo LXP</div><div class="ch-bar-track"><div class="ch-bar-fill" style="width:6.5%;background:#0077b5"></div></div><div class="ch-bar-val">5</div></div>
+    </div>
+  </div>
 </div>
+
+<!-- ROW 2: Charts row -->
+<div class="ov-three-col">
+  <!-- Segmento donut -->
+  <div class="ov-section">
+    <div class="ov-section-title">🗂️ Mix de Segmentos</div>
+    <div class="canvas-wrap-sm"><canvas id="ov-chart-seg" width="579" height="160" style="display: block; box-sizing: border-box; height: 160px; width: 579px;"></canvas></div>
+    <div class="donut-legend" style="margin-top:12px;">
+      <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#6c63ff"></div>LMS — 6 players (50%)</div>
+      <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#f39c12"></div>DHO — 4 players (33%)</div>
+      <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#27ae60"></div>LXP — 2 players (17%)</div>
+    </div>
+  </div>
+
+  <!-- LinkedIn followers bar -->
+  <div class="ov-section">
+    <div class="ov-section-title">👥 Seguidores LinkedIn (Top 6)</div>
+    <div class="canvas-wrap-sm"><canvas id="ov-chart-li" width="579" height="160" style="display: block; box-sizing: border-box; height: 160px; width: 579px;"></canvas></div>
+  </div>
+
+  <!-- Intensidade multicanal -->
+  <div class="ov-section">
+    <div class="ov-section-title">📡 Intensidade Multicanal</div>
+    <div class="canvas-wrap-sm"><canvas id="ov-chart-multi" width="579" height="160" style="display: block; box-sizing: border-box; height: 160px; width: 579px;"></canvas></div>
+  </div>
+</div>
+
+<!-- ROW 3: Top Movimentos + Sinais de Mercado -->
+<div class="ov-two-col">
+  <!-- Top movimentos -->
+  <div class="ov-section">
+    <div class="ov-section-title">🔥 Top Movimentos — Abril/2026</div>
+    <table class="movers-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Seg.</th>
+          <th>Movimento principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Qulture.Rocks</strong></td>
+          <td><span class="tag-dho">DHO</span></td>
+          <td>Fusão UOL EdTech consolidada · ~200 Google Ads · ecossistema completo</td>
+        </tr>
+        <tr>
+          <td><strong>Scaffold</strong></td>
+          <td><span class="tag-lms">LMS</span></td>
+          <td>76 InMails LinkedIn · roadshow presencial como isca · ROI T&amp;D</td>
+        </tr>
+        <tr>
+          <td><strong>Woli</strong></td>
+          <td><span class="tag-lms">LMS</span></td>
+          <td>Novo posicionamento "T&amp;DX Platform" + Meta Ad IA lançado 30/04</td>
+        </tr>
+        <tr>
+          <td><strong>Revvo</strong></td>
+          <td><span class="tag-lms">LMS</span></td>
+          <td>251k seguidores LinkedIn · novo Meta Ad 05/05 · LearningFlix</td>
+        </tr>
+        <tr>
+          <td><strong>Ludos Pro</strong></td>
+          <td><span class="tag-lms">LMS</span></td>
+          <td>41G + 13M + 34LI simultâneos · maior consistência multicanal</td>
+        </tr>
+        <tr>
+          <td><strong>YourH</strong></td>
+          <td><span class="tag-dho">DHO</span></td>
+          <td>46 Google Ads com vídeo · único com formato vídeo em destaque</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Sinais de mercado -->
+  <div class="ov-section">
+    <div class="ov-section-title">📡 Sinais de Mercado &amp; Oportunidades Twygo</div>
+    <div class="signal-list">
+      <div class="signal-item">
+        <span class="signal-icon">🎯</span>
+        <div class="signal-text"><strong>Gap: "LMS completo + IA" ainda território livre.</strong> Nenhum concorrente comunica Sophia (IA para criação de cursos) com essa especificidade.</div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-icon">🔥</span>
+        <div class="signal-text"><strong>Dor de "produção lenta" explorada por Woli, não pela Twygo.</strong> Ad "produção que leva semanas" lançado 30/04. Twygo tem argumento mais forte (FIN-013 +119%).</div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-icon">💡</span>
+        <div class="signal-text"><strong>ROI de T&amp;D como tema quente — Scaffold lidera.</strong> Twygo pode contra-atacar com thought leadership "Como medir ROI do LMS em 30 dias".</div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-icon">⚠️</span>
+        <div class="signal-text"><strong>Qulture vai de DHO → LMS (ecossistema completo).</strong> Risco: CTO/CHROs enterprise podem preferir fornecedor único em vez da Twygo.</div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-icon">📈</span>
+        <div class="signal-text"><strong>Vídeo no Google Ads: YourH pioneiro (46 ads).</strong> Twygo ainda sem formato vídeo detectado — oportunidade de diferenciação em brand awareness.</div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-icon">🤝</span>
+        <div class="signal-text"><strong>Revvo tem 251k seguidores LinkedIn</strong> — maior base orgânica do segmento. Monitorar frequência de posts e engajamento para benchmarking de conteúdo.</div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -140,14 +417,14 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <div id="alertas" class="tab-content">
 <div class="meta">Coleta: 05/05/2026 · Referência: Abril/2026</div>
 <div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Qulture.Rocks — Ecossistema completo DHO + LMS (UOL EdTech)</div><div class="alert-desc">Fusão com Learning Rocks + Ciatech consolida oferta que vai de performance a LMS em uma única plataforma. ~200 Google Ads + 67 Meta Ads ativos. Posicionamento: "ecossistema mais completo de performance e aprendizagem do Brasil". Risco direto ao posicionamento Twygo como solução completa.</div></div>
-<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Scaffold Education — ABM LinkedIn agressivo (76 InMails)</div><div class="alert-desc">76 LinkedIn Ads rodando — maior volume de todos. InMail personalizado por vendedores (Vagner Santana, Marcos Braga). Isca: Roadshows presenciais. Gancho: ROI de T&D, "treinamento isolado não muda empresa". Ataque direto à base de prospects enterprise da Twygo.</div></div>
-<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Woli — Novo posicionamento "T&DX Platform" + IA lançado em 30/04/2026</div><div class="alert-desc">Meta Ad novo lançado 1 dia antes da coleta posicionando Woli como plataforma T&DX com IA integrada. Move diretamente ao posicionamento de "plataforma completa com IA" da Twygo. 11k seguidores LinkedIn, 11k Google Ads estimados.</div></div>
+<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Scaffold Education — ABM LinkedIn agressivo (76 InMails)</div><div class="alert-desc">76 LinkedIn Ads rodando — maior volume de todos. InMail personalizado por vendedores (Vagner Santana, Marcos Braga). Isca: Roadshows presenciais. Gancho: ROI de T&amp;D, "treinamento isolado não muda empresa". Ataque direto à base de prospects enterprise da Twygo.</div></div>
+<div class="alert-card alert-alto"><span class="alert-badge badge-alto">ALTO</span><div class="alert-title">Woli — Novo posicionamento "T&amp;DX Platform" + IA lançado em 30/04/2026</div><div class="alert-desc">Meta Ad novo lançado 1 dia antes da coleta posicionando Woli como plataforma T&amp;DX com IA integrada. Move diretamente ao posicionamento de "plataforma completa com IA" da Twygo. 11k seguidores LinkedIn, 11k Google Ads estimados.</div></div>
 <div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Ludos Pro — Consistência multicanal (41G + 13M + 34LI)</div><div class="alert-desc">Maior consistência de mensagem entre todos os players: gamificação + "+1,5M treinados" em todos os canais simultâneos. Risco de ocupar o mindshare de "LMS gamificado" antes da Twygo.</div></div>
 <div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Revvo — Novo Meta Ad em 05/05/2026 + 251k seguidores LinkedIn</div><div class="alert-desc">Ad novo disparado no dia da coleta. LearningFlix como diferencial único de conteúdo pronto. 251k seguidores no LinkedIn é a maior base orgânica do segmento. 22 Google Ads + 10 LinkedIn Ads ativos.</div></div>
 <div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">YourH — 46 Google Ads com formato vídeo em destaque</div><div class="alert-desc">Único player com vídeo como formato prioritário no Google Ads. Sinaliza investimento em brand awareness além de performance. DHO posicionado como "ecossistema RH".</div></div>
-<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Edusense — Integração DOT Digital Group + novo foco Agile Learning</div><div class="alert-desc">Agora parte do ecossistema DOT. Banner "Agile & Lifelong Learning". Posts sobre Learning Awards e experiência de aprendizagem. 7,1k seguidores, crescimento estável.</div></div>
+<div class="alert-card alert-medio"><span class="alert-badge badge-medio">MÉDIO</span><div class="alert-title">Edusense — Integração DOT Digital Group + novo foco Agile Learning</div><div class="alert-desc">Agora parte do ecossistema DOT. Banner "Agile &amp; Lifelong Learning". Posts sobre Learning Awards e experiência de aprendizagem. 7,1k seguidores, crescimento estável.</div></div>
 <div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">SmartLeader — 0 Google Ads, sem página LinkedIn gerenciada</div><div class="alert-desc">Sem investimento detectado em mídia paga. Página LinkedIn é automática, não gerenciada. Baixa relevância competitiva em paid media.</div></div>
-<div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">Mobiliza — 6 Google Ads, foco em conteúdo de thought leadership</div><div class="alert-desc">CEO João Romão com evento online "T&D como função estratégica" (06/05). Foco em Fábrica de Conteúdos como diferencial. Sem agressividade em paid. 11k seguidores LinkedIn.</div></div>
+<div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">Mobiliza — 6 Google Ads, foco em conteúdo de thought leadership</div><div class="alert-desc">CEO João Romão com evento online "T&amp;D como função estratégica" (06/05). Foco em Fábrica de Conteúdos como diferencial. Sem agressividade em paid. 11k seguidores LinkedIn.</div></div>
 <div class="alert-card alert-baixo"><span class="alert-badge badge-baixo">BAIXO</span><div class="alert-title">Kubo LXP — 10 Google Ads, IA "KIA" como tutora</div><div class="alert-desc">Novo diferencial: KIA (tutora de IA do Kubo). Posts sobre NR-01 e microlearning. 996 seguidores LinkedIn — menor base do grupo LMS/LXP.</div></div>
 </div>
 <!-- PLAYERS -->
@@ -155,21 +432,21 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <div class="meta">Coleta: 05/05/2026 · Clique em um player para ver detalhes completos</div>
 <div class="players-grid">
 <div class="player-card" id="card-qulture" onclick="showDetail('qulture')"><div class="player-name">Qulture.Rocks</div><div class="player-seg">DHO</div><div class="player-summary">Ecossistema DHO + LMS pós-fusão com Learning Rocks + Ciatech. 1.500+ clientes enterprise. Maior investimento em paid do segmento.</div></div>
-<div class="player-card" id="card-scaffold" onclick="showDetail('scaffold')"><div class="player-name">Scaffold Education</div><div class="player-seg">LMS</div><div class="player-summary">ABM LinkedIn agressivo com 76 InMails. Foco em ROI mensurável de T&D e aprendizagem integrada à rotina operacional.</div></div>
-<div class="player-card" id="card-woli" onclick="showDetail('woli')"><div class="player-name">Woli</div><div class="player-seg">LMS</div><div class="player-summary">Novo posicionamento "T&DX Platform" lançado em 30/04/2026. 21 anos de mercado. Meta Ad sobre IA no T&D ativo.</div></div>
+<div class="player-card active" id="card-scaffold" onclick="showDetail('scaffold')"><div class="player-name">Scaffold Education</div><div class="player-seg">LMS</div><div class="player-summary">ABM LinkedIn agressivo com 76 InMails. Foco em ROI mensurável de T&amp;D e aprendizagem integrada à rotina operacional.</div></div>
+<div class="player-card" id="card-woli" onclick="showDetail('woli')"><div class="player-name">Woli</div><div class="player-seg">LMS</div><div class="player-summary">Novo posicionamento "T&amp;DX Platform" lançado em 30/04/2026. 21 anos de mercado. Meta Ad sobre IA no T&amp;D ativo.</div></div>
 <div class="player-card" id="card-revvo" onclick="showDetail('revvo')"><div class="player-name">Revvo</div><div class="player-seg">LMS/LXP</div><div class="player-summary">LearningFlix como diferencial — conteúdo pronto + plataforma. Maior base LinkedIn do segmento (251k seguidores).</div></div>
 <div class="player-card" id="card-ludos" onclick="showDetail('ludos')"><div class="player-name">Ludos Pro</div><div class="player-seg">LMS</div><div class="player-summary">Gamificação como core. +1,5M pessoas treinadas. Maior consistência multicanal: 41 Google + 13 Meta + 34 LinkedIn Ads.</div></div>
 <div class="player-card" id="card-edusense" onclick="showDetail('edusense')"><div class="player-name">Edusense</div><div class="player-seg">LXP</div><div class="player-summary">LMS+LXP+IA+Analytics integrados. Parte do ecossistema DOT Digital Group. Learning Awards como credencial de mercado.</div></div>
 <div class="player-card" id="card-yourh" onclick="showDetail('yourh')"><div class="player-name">YouRH by Umentor</div><div class="player-seg">DHO</div><div class="player-summary">500k+ usuários. Único player com formato vídeo em destaque no Google Ads (46 anúncios ativos).</div></div>
 <div class="player-card" id="card-teamculture" onclick="showDetail('teamculture')"><div class="player-name">TeamCulture</div><div class="player-seg">DHO</div><div class="player-summary">4 módulos integrados: Clima, Reconhecimento, OKR, Feedback. IA Axel para análise de clima. 150+ clientes.</div></div>
-<div class="player-card" id="card-mobiliza" onclick="showDetail('mobiliza')"><div class="player-name">Mobiliza</div><div class="player-seg">LMS</div><div class="player-summary">Fábrica de Conteúdos para T&D enxuto. Thought leadership com CEO João Romão. Foco em autoria e gestão de conteúdo.</div></div>
+<div class="player-card" id="card-mobiliza" onclick="showDetail('mobiliza')"><div class="player-name">Mobiliza</div><div class="player-seg">LMS</div><div class="player-summary">Fábrica de Conteúdos para T&amp;D enxuto. Thought leadership com CEO João Romão. Foco em autoria e gestão de conteúdo.</div></div>
 <div class="player-card" id="card-kubo" onclick="showDetail('kubo')"><div class="player-name">Kubo LXP</div><div class="player-seg">LXP</div><div class="player-summary">KIA — tutora de IA do Kubo. Especialidade em microlearning e compliance NR-01. 10 Google Ads ativos.</div></div>
 <div class="player-card" id="card-smartleader" onclick="showDetail('smartleader')"><div class="player-name">SmartLeader</div><div class="player-seg">DHO</div><div class="player-summary">Sem investimento detectado em mídia paga. Página LinkedIn não gerenciada. Baixa presença competitiva no período.</div></div>
 <div class="player-card" id="card-engage" onclick="showDetail('engage')"><div class="player-name">Engage</div><div class="player-seg">LMS</div><div class="player-summary">Gamificação como diferencial. 4 Google Ads ativos com mensagem "LMS #1 do Brasil". Presença discreta no mercado.</div></div>
 </div>
 <div class="detail-panel" id="detail-qulture">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Qulture.Rocks</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;O ecossistema mais completo de performance e aprendizagem do Brasil&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"O ecossistema mais completo de performance e aprendizagem do Brasil"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">DHO</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">RH estratégico enterprise</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Fusão Qulture+Learning Rocks+Ciatech (UOL EdTech). 1500+ clientes: Nubank, Cacau Show, Ipiranga, Tigre, Alelo.</span></div>
@@ -180,7 +457,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-scaffold">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Scaffold Education</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Resultados pela Aprendizagem&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Resultados pela Aprendizagem"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Enterprise B2B, médio/grande porte, RH e T&amp;D</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">ABM via LinkedIn InMail personalizado (Vagner Santana, Marcos Braga). ROI mensurável. Roadshows presenciais como isca.</span></div>
@@ -191,7 +468,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-woli">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Woli</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Tech-knowledge. Anyway. Anywhere.&quot; / T&amp;DX Platform</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Tech-knowledge. Anyway. Anywhere." / T&amp;DX Platform</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, T&amp;D corporativo, multi-setor</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">T&amp;DX Platform — ecossistema educação + segurança + marketing + varejo. Grupo Woli 21 anos no mercado.</span></div>
@@ -202,7 +479,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-revvo">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Revvo</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;A Revvolução da Aprendizagem&quot; / LearningFlix</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"A Revvolução da Aprendizagem" / LearningFlix</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS/LXP</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, diversificado (varejo, saúde, industria)</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">LearningFlix: catálogo de conteúdo pronto + plataforma LMS. Maior base LinkedIn do segmento (251k).</span></div>
@@ -212,10 +489,10 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <div class="section-title">📱 Redes Sociais — Abril/2026</div><div class="social-net-card"><div class="sn-header"><span style="font-size:16px">💼</span><div><div class="sn-name">LinkedIn</div><div class="sn-meta"><span class="sn-seg">251.029 seguidores 🏆</span>· ~5 posts em Abril</div></div><a class="link-btn" href="https://www.linkedin.com/company/somosrevvo/" target="_blank">Ver perfil</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div><div class="post-preview">LearningFlix — conteúdo pronto disponível</div><div class="post-preview">Novidades da plataforma Revvo</div></div><div class="social-net-card"><div class="sn-header"><span style="font-size:16px">📸</span><div><div class="sn-name">Instagram</div><div class="sn-meta">@somosrevvo</div></div><a class="link-btn" href="https://www.instagram.com/somosrevvo/" target="_blank">Ver perfil</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div></div><div style="margin-top:6px"><a class="link-btn" href="https://revvo.com.br" target="_blank">🌐 Site</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div>
 </div><div class="detail-panel" id="detail-ludos">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Ludos Pro</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Plataforma Gamificada com IA&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Plataforma Gamificada com IA"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, setores diversificados, T&amp;D</span></div>
-<div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Gamificação como core. &quot;+1,5M pessoas treinadas&quot;. Maior consistência multicanal (41G+13M+34LI).</span></div>
+<div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Gamificação como core. "+1,5M pessoas treinadas". Maior consistência multicanal (41G+13M+34LI).</span></div>
 
 <div class="section-title">🎯 Principais Gatilhos dos Anúncios</div>
 <div class="creative-box">Gamificação que engaja e transforma</div><div class="creative-box">Mais de 1,5 milhão de pessoas treinadas</div><div class="creative-box">O futuro do trabalho já começou e o T&amp;D precisa acompanhar</div><div class="creative-box">Falar sobre o futuro do trabalho é também falar sobre T&amp;D</div>
@@ -223,7 +500,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-edusense">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Edusense</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Aprendizagem Ágil e Contínua&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Aprendizagem Ágil e Contínua"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LXP</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, foco em gestão de habilidades</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">LMS+LXP+IA+Analytics integrados. Parte do ecossistema DOT Digital Group. Learning Awards como credencial.</span></div>
@@ -234,7 +511,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-yourh">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">YouRH by Umentor</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Sistema de RH para performance e desempenho&quot; / +500k usuários</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Sistema de RH para performance e desempenho" / +500k usuários</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">DHO</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, RH generalista, multi-setor</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">500k+ usuários. Único com formato vídeo em destaque no Google Ads (46 anúncios).</span></div>
@@ -245,7 +522,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-teamculture">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">TeamCulture</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Plataforma Completa de Gestão de Pessoas&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Plataforma Completa de Gestão de Pessoas"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">DHO</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio/grande porte, RH e cultura organizacional</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">4 módulos integrados: Clima, Reconhecimento, OKR, Feedback. IA Axel. 150+ clientes.</span></div>
@@ -255,7 +532,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <div class="section-title">📱 Redes Sociais — Abril/2026</div><div class="social-net-card"><div class="sn-header"><span style="font-size:16px">💼</span><div><div class="sn-name">LinkedIn</div><div class="sn-meta"><span class="sn-seg">10.621 seguidores</span>· ~6 posts em Abril</div></div><a class="link-btn" href="https://www.linkedin.com/company/teamculture/" target="_blank">Ver perfil</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div><div class="post-preview">Conteúdo sobre gestão de cultura organizacional</div><div class="post-preview">Cases de implementação de OKR</div><div class="post-preview">Dicas de reconhecimento e engajamento</div></div><div class="social-net-card"><div class="sn-header"><span style="font-size:16px">📸</span><div><div class="sn-name">Instagram</div><div class="sn-meta">@teamcultureapp</div></div><a class="link-btn" href="https://www.instagram.com/teamcultureapp/" target="_blank">Ver perfil</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div></div><div style="margin-top:6px"><a class="link-btn" href="https://teamculture.com.br" target="_blank">🌐 Site</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></div>
 </div><div class="detail-panel" id="detail-mobiliza">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Mobiliza</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Cursos Prontos + LMS personalizado&quot; / Transformamos a gestão do aprendizado</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Cursos Prontos + LMS personalizado" / Transformamos a gestão do aprendizado</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">Médio porte, T&amp;D enxuto, foco em conteúdo e-learning</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Fábrica de Conteúdos para equipes de T&amp;D enxutas. Ferramenta de autoria integrada. Thought leadership (CEO João Romão).</span></div>
@@ -266,7 +543,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-kubo">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Kubo LXP</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;Descomplicando a educação corporativa&quot;</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"Descomplicando a educação corporativa"</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LXP</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">PME e médio porte, foco em compliance e microlearning</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">KIA — tutora de IA do Kubo. NR-01 compliance. Microlearning como especialidade.</span></div>
@@ -288,7 +565,7 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 </div>
 <div class="detail-panel" id="detail-engage">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="font-size:15px;font-weight:800">Engage</h2></div>
-<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">&quot;LMS #1 do Brasil&quot; / Gamificação</span></div>
+<div class="kv"><span class="kv-key">Headline site</span><span class="kv-val">"LMS #1 do Brasil" / Gamificação</span></div>
 <div class="kv"><span class="kv-key">Segmento</span><span class="kv-val">LMS</span></div>
 <div class="kv"><span class="kv-key">ICP</span><span class="kv-val">PME/Médio porte</span></div>
 <div class="kv"><span class="kv-key">Diferencial</span><span class="kv-val">Gamificação como diferencial core. 4 Google Ads ativos.</span></div>
@@ -311,84 +588,84 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <tr>
 <td><strong>Qulture.Rocks</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
 <td><span class="platform-badge p-google">~200</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR09268813409321746433?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">67</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=304821343223801" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">67</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=304821343223801" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">52</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Qulture+Rocks" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Ecossistema mais completo de performance e aprendizagem</li><li>Transformação começa na pergunta que se decide fazer</li><li>IA para decisões melhores com mais contexto e precisão</li><li>Certificação em IA Generativa para RH</li><li>Performance + desenvolvimento integrados — não separados</li></ul></td>
 </tr>
 <tr>
 <td><strong>Scaffold Education</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
 <td><span class="platform-badge p-google">UTM ativo</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR15112175651718692865?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">11</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=166079413908756" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">11</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=166079413908756" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">76 🏆</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Scaffold+Education" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Treinamento isolado NÃO muda empresa — rotina muda</li><li>Se o investimento em T&amp;D não aparece nos indicadores, o problema não está no conteúdo</li><li>Aprendizagem integrada à rotina (document 7 páginas)</li><li>InMail ABM personalizado por vendedor/empresa do prospect</li><li>Roadshow presencial como isca de geração de leads</li></ul></td>
 </tr>
 <tr>
 <td><strong>Ludos Pro</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
 <td><span class="platform-badge p-google">41</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR05172242816071368705?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">~13</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=119800505385425" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">~13</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=119800505385425" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">34</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Ludos+Pro" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Gamificação que engaja e transforma o treinamento corporativo</li><li>+1,5 milhão de pessoas treinadas</li><li>Plataforma gamificada com IA integrada</li><li>O futuro do trabalho já começou — T&amp;D precisa acompanhar</li></ul></td>
 </tr>
 <tr>
 <td><strong>YourH</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
 <td><span class="platform-badge p-google">46 🎬</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12441841316671782913?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=yourh" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;q=yourh" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">conf.</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=YouRH" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>+500k usuários confiam no YouRH</li><li>Performance e desempenho da sua equipe em um só lugar</li><li>Tudo que seu RH precisa integrado (🎬 formato vídeo no Google)</li><li>Sistema de RH completo para médias empresas</li></ul></td>
 </tr>
 <tr>
 <td><strong>Revvo</strong><br><span style="font-size:10px;color:#6b7280">LMS/LXP</span></td>
 <td><span class="platform-badge p-google">22</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR16848902474503815169?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">~4</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=474671152723516" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">~4</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=474671152723516" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">10</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Revvo" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>LearningFlix — conteúdo pronto + plataforma integrada</li><li>A Revvolução da Aprendizagem corporativa</li><li>InMail personalizado para varejo (Vanessa Malta)</li><li>Novo Meta Ad disparado 05/05/2026 — monitorar</li></ul></td>
 </tr>
 <tr>
 <td><strong>Woli</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
-<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&query=Woli" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">2 🆕</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=1470440886550691" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&amp;query=Woli" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">2 🆕</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=1470440886550691" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Woli" target="_blank">💼 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Quanto do seu esforço em T&amp;D vira resultado de verdade?</li><li>T&amp;DX Platform — novo posicionamento (lançado 30/04/2026)</li><li>IA identifica e resolve desafios do T&amp;D</li><li>Dores: engajamento baixo, produção lenta, dúvidas persistentes</li></ul></td>
 </tr>
 <tr>
 <td><strong>Kubo LXP</strong><br><span style="font-size:10px;color:#6b7280">LXP</span></td>
 <td><span class="platform-badge p-google">10</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR17255014172328984577?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=102271805201087" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=102271805201087" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">5</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Kubo+LXP" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>KIA: tutora de IA que personaliza o aprendizado</li><li>Colaboradores aprendem no próprio ritmo e aceleram resultados</li><li>NR-01 compliance com tecnologia — implementação viável</li><li>Microlearning para maior engajamento em T&amp;D</li></ul></td>
 </tr>
 <tr>
 <td><strong>Mobiliza</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
 <td><span class="platform-badge p-google">6</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR14449986115236528129?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&id=205967299421126" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">0</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;id=205967299421126" target="_blank">📘 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">0</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Mobiliza+EAD" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Equipes de T&amp;D enxutas merecem ferramentas que entregam autonomia</li><li>Fábrica de Conteúdos resolve o gargalo de produção de cursos</li><li>T&amp;D como função estratégica (thought leadership CEO)</li></ul></td>
 </tr>
 <tr>
 <td><strong>Engage</strong><br><span style="font-size:10px;color:#6b7280">LMS</span></td>
 <td><span class="platform-badge p-google">4</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR08574383958530195457?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=engage+lms" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;q=engage+lms" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">0</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Engage+LMS" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>LMS #1 do Brasil</li><li>Gamificação que engaja o aprendizado corporativo</li><li>Treinamentos que as pessoas querem fazer</li></ul></td>
 </tr>
 <tr>
 <td><strong>Edusense</strong><br><span style="font-size:10px;color:#6b7280">LXP</span></td>
-<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&query=Edusense" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=edusense" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&amp;query=Edusense" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;q=edusense" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=Edusense" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Aprendizagem só funciona quando a experiência faz sentido</li><li>Agile &amp; Lifelong Learning</li><li>Gestão de habilidades integrada (LMS+LXP+IA+Analytics)</li></ul></td>
 </tr>
 <tr>
 <td><strong>TeamCulture</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
-<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&query=TeamCulture" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=teamculture" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-google">n/v</span><br><a class="link-btn" href="https://adstransparency.google.com/search?region=BR&amp;query=TeamCulture" target="_blank">🔍 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;q=teamculture" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">n/v</span><br><a class="link-btn" href="https://www.linkedin.com/ad-library/search?q=TeamCulture" target="_blank">💼 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Gestão de pessoas que transforma ambientes de trabalho</li><li>IA Axel para clima organizacional e feedback</li><li>4 módulos integrados para RH completo</li></ul></td>
 </tr>
 <tr>
 <td><strong>SmartLeader</strong><br><span style="font-size:10px;color:#6b7280">DHO</span></td>
 <td><span class="platform-badge p-google">0</span><br><a class="link-btn" href="https://adstransparency.google.com/advertiser/AR12343909765900926977?region=BR" target="_blank">🔍 Ver biblioteca</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
-<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=BR&q=smartleader" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
+<td><span class="platform-badge p-meta">n/v</span><br><a class="link-btn" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=BR&amp;q=smartleader" target="_blank">📘 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><span class="platform-badge p-linkedin">n/d</span><br><a class="link-btn" href="https://www.linkedin.com/search/results/companies/?keywords=smartleader" target="_blank">💼 Pesquisar</a><button class="edit-link-btn" onclick="editLink(this)" title="Editar link">✏</button></td>
 <td><ul class="gatilho-list"><li>Sem anúncios ativos identificados em nenhuma plataforma</li><li>Menor investimento em paid media do grupo</li></ul></td>
 </tr>
@@ -685,21 +962,162 @@ nav button:hover,nav button.active{background:rgba(255,255,255,.35);font-weight:
 <div class="matrix-wrap">
 <table class="matrix-table">
 <thead><tr>
-<th>Player</th><th>Seg.</th><th>Threat</th><th>IA</th><th>G.Ads</th><th>Meta</th><th>Li.Ads</th><th>LI.Seg</th><th>Posts Abr</th><th>Newsletter</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: left;">Player</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">Seg.</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">Threat</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">IA</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: left; white-space: nowrap;">Funcionalidades</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: left; white-space: nowrap;">Pontos Fortes</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: left; white-space: nowrap;">Pontos Fracos</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">LI.Seg</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">Posts Abr</th>
+  <th style="padding: 10px 8px; font-size: 0.82rem; text-align: center;">Newsletter</th>
 </tr></thead>
 <tbody>
-<tr><td>Qulture.Rocks</td><td>DHO</td><td class="cell-hi">ALTO</td><td>✅</td><td class="cell-hi">~200</td><td class="cell-hi">67</td><td>52</td><td>50.627</td><td>~12</td><td>Unlock.News (13k)</td></tr>
-<tr><td>Scaffold Education</td><td>LMS</td><td class="cell-hi">ALTO</td><td>✅</td><td>UTM</td><td>11</td><td class="cell-hi">76🏆</td><td>8.149</td><td>~8</td><td>Semanal</td></tr>
-<tr><td>Woli</td><td>LMS</td><td class="cell-hi">ALTO</td><td>✅</td><td>n/v</td><td>2🆕</td><td>n/v</td><td>11.112</td><td>~6</td><td>Quinzenal</td></tr>
-<tr><td>Ludos Pro</td><td>LMS</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>41</td><td>~13</td><td>34</td><td>5.343</td><td>~8</td><td>Quinzenal</td></tr>
-<tr><td>Revvo</td><td>LMS/LXP</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>22</td><td>~4</td><td>10</td><td class="cell-hi">251.029🏆</td><td>~5</td><td>Mensal</td></tr>
-<tr><td>YourH by Umentor</td><td>DHO</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>❌</td><td>46🎬</td><td>n/v</td><td>conf.</td><td>6.962</td><td>~5</td><td>Mensal</td></tr>
-<tr><td>Edusense</td><td>LXP</td><td style="background:#fff8e1;color:#92400e">MÉDIO</td><td>✅</td><td>n/v</td><td>n/v</td><td>n/v</td><td>7.122</td><td>~4</td><td>Mensal</td></tr>
-<tr><td>TeamCulture</td><td>DHO</td><td class="cell-ok">BAIXO</td><td>✅</td><td>n/v</td><td>n/v</td><td>n/v</td><td>10.621</td><td>~6</td><td>Mensal</td></tr>
-<tr><td>Mobiliza</td><td>LMS</td><td class="cell-ok">BAIXO</td><td>❌</td><td>6</td><td>0</td><td>0</td><td>11.070</td><td>~7</td><td>Semanal</td></tr>
-<tr><td>Kubo LXP</td><td>LXP</td><td class="cell-ok">BAIXO</td><td>✅</td><td>10</td><td>0</td><td>5</td><td>996</td><td>~4</td><td>Semanal</td></tr>
-<tr><td>SmartLeader</td><td>DHO</td><td class="cell-ok">BAIXO</td><td>❌</td><td class="cell-na">0</td><td class="cell-na">n/v</td><td class="cell-na">n/d</td><td class="cell-na">n/d</td><td class="cell-na">0</td><td class="cell-na">—</td></tr>
-<tr><td>Engage</td><td>LMS</td><td class="cell-ok">BAIXO</td><td>❌</td><td>4</td><td>n/v</td><td>0</td><td class="cell-na">n/d</td><td>~3</td><td>Mensal</td></tr>
+<tr>
+    <td>Qulture.Rocks</td>
+    <td>DHO</td>
+    <td class="cell-hi">ALTO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">Performance, Feedback, OKR, LMS, PDI, Consultoria</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Ecossistema completo DHO+LMS; 1.500+ clientes enterprise; forte em paid media</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Produto muito amplo pode gerar percepção de complexidade; foco em enterprise exclui PMEs</td>
+    <td>50.627</td>
+    <td>~12</td>
+    <td>Unlock.News (13k)</td>
+  </tr>
+<tr>
+    <td>Scaffold Education</td>
+    <td>LMS</td>
+    <td class="cell-hi">ALTO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS, trilhas de aprendizagem, ABM LinkedIn, roadshows presenciais</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ ABM altamente personalizado; mensagem de ROI diferenciada; forte em enterprise</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Baixa presença orgânica (8k LinkedIn); sem produto de IA nativo identificado</td>
+    <td>8.149</td>
+    <td>~8</td>
+    <td>Semanal</td>
+  </tr>
+<tr>
+    <td>Woli</td>
+    <td>LMS</td>
+    <td class="cell-hi">ALTO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS, T&amp;DX (educação+segurança+marketing), IA integrada</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ 21 anos de mercado; novo posicionamento T&amp;DX diferenciado; IA como gancho</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Baixa base LinkedIn (11k); pouco investimento em paid; presença multicanal limitada</td>
+    <td>11.112</td>
+    <td>~6</td>
+    <td>Quinzenal</td>
+  </tr>
+<tr>
+    <td>Ludos Pro</td>
+    <td>LMS</td>
+    <td style="background:#fff8e1;color:#92400e">MÉDIO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS gamificado, IA integrada, trilhas de aprendizagem</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Maior consistência multicanal; gamificação como core; +1,5M treinados como prova</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Nicho em gamificação pode limitar ICP; base LinkedIn pequena (5,3k)</td>
+    <td>5.343</td>
+    <td>~8</td>
+    <td>Quinzenal</td>
+  </tr>
+<tr>
+    <td>Revvo</td>
+    <td>LMS/LXP</td>
+    <td style="background:#fff8e1;color:#92400e">MÉDIO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS+LXP, LearningFlix (catálogo de conteúdo pronto)</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Maior base LinkedIn do segmento (251k); diferencial único de conteúdo pronto</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Baixo volume em paid media; proposta de valor depende do LearningFlix</td>
+    <td class="cell-hi">251.029🏆</td>
+    <td>~5</td>
+    <td>Mensal</td>
+  </tr>
+<tr>
+    <td>YourH by Umentor</td>
+    <td>DHO</td>
+    <td style="background:#fff8e1;color:#92400e">MÉDIO</td>
+    <td>❌</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">DHO, gestão de performance, desempenho, RH integrado</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ +500k usuários; único com vídeo no Google Ads; abrangência RH generalista</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Sem LinkedIn Ads confirmado; foco em RH pode não resonar com T&amp;D puro</td>
+    <td>6.962</td>
+    <td>~5</td>
+    <td>Mensal</td>
+  </tr>
+<tr>
+    <td>Edusense</td>
+    <td>LXP</td>
+    <td style="background:#fff8e1;color:#92400e">MÉDIO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS+LXP+IA+Analytics, gestão de habilidades, Agile Learning</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Ecossistema DOT Digital Group; credencial Learning Awards; proposta integrada</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Sem paid media identificado; crescimento de seguidores estável mas baixo</td>
+    <td>7.122</td>
+    <td>~4</td>
+    <td>Mensal</td>
+  </tr>
+<tr>
+    <td>TeamCulture</td>
+    <td>DHO</td>
+    <td class="cell-ok">BAIXO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">Clima, Reconhecimento, OKR, Feedback, IA Axel</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ 4 módulos integrados; IA Axel como diferencial de clima; 150+ clientes</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Sem paid media; foco estreito em cultura pode limitar expansão de ICP</td>
+    <td>10.621</td>
+    <td>~6</td>
+    <td>Mensal</td>
+  </tr>
+<tr>
+    <td>Mobiliza</td>
+    <td>LMS</td>
+    <td class="cell-ok">BAIXO</td>
+    <td>❌</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS, Fábrica de Conteúdos, ferramenta de autoria</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Thought leadership forte (CEO João Romão); nicho em equipes T&amp;D enxutas</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Sem LinkedIn/Meta Ads; baixo investimento em paid; menor visibilidade de marca</td>
+    <td>11.070</td>
+    <td>~7</td>
+    <td>Semanal</td>
+  </tr>
+<tr>
+    <td>Kubo LXP</td>
+    <td>LXP</td>
+    <td class="cell-ok">BAIXO</td>
+    <td>✅</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LXP, microlearning, IA tutora (KIA), compliance NR-01</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Nicho bem definido em compliance e microlearning; KIA como diferencial de IA</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Menor base LinkedIn do grupo (996); sem Meta Ads; escala limitada</td>
+    <td>996</td>
+    <td>~4</td>
+    <td>Semanal</td>
+  </tr>
+<tr>
+    <td>SmartLeader</td>
+    <td>DHO</td>
+    <td class="cell-ok">BAIXO</td>
+    <td>❌</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">Desenvolvimento organizacional</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Presença de mercado estabelecida; nicho DHO</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Zero investimento em paid; página LinkedIn não gerenciada; baixíssima visibilidade</td>
+    <td class="cell-na">n/d</td>
+    <td class="cell-na">0</td>
+    <td class="cell-na">—</td>
+  </tr>
+<tr>
+    <td>Engage</td>
+    <td>LMS</td>
+    <td class="cell-ok">BAIXO</td>
+    <td>❌</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px;">LMS gamificado, trilhas de aprendizagem corporativa</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#16a34a;">✅ Posicionamento assertivo "LMS #1 do Brasil"; gamificação como core</td>
+    <td style="font-size:0.78rem; text-align:left; padding:6px 8px; color:#dc2626;">⚠️ Mínimo investimento em paid (4 ads); presença digital muito discreta</td>
+    <td class="cell-na">n/d</td>
+    <td>~3</td>
+    <td>Mensal</td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -782,5 +1200,6 @@ function saveLinkEdit() {
   popup.remove();
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
